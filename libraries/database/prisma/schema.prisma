@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id               String    @id @default(cuid())
+  guildId          String    @unique
+  subDomain        String?
+  stripeCustomerId String    @unique
+  users            UserOrganization[]
+  faqs             Faq[]
+  jobs             Jobs[]
+  subscriptions    Subscription[]
+  categories       Category[]
+  domains          Domains[]
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String?
+  internalId    String    @unique
+  organization  UserOrganization[]
+}
+
+model UserOrganization {
+  userId         String
+  user           User         @relation(fields: [userId], references: [id])
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  role           Role @default(USER)
+  @@id([userId, organizationId])
+}
+
+model Faq {
+  id             String    @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  title          String
+  content        String
+  order          Int
+  categories     FaqCategory[]
+  deletedAt      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model Category {
+  id             String    @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  name           String
+  description    String
+  order          Int
+  faqs           FaqCategory[]
+  deletedAt      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model FaqCategory {
+  faqId      String
+  faq        Faq      @relation(fields: [faqId], references: [id])
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+  @@id([faqId, categoryId])
+}
+
+enum JobState {
+  PENDING
+  COMPLETED
+  FAILED
+}
+model Jobs {
+  id             String    @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  referenceId    String
+  messageContent Json
+  state          JobState
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+enum SubscriptionTier {
+  BASIC
+  PRO
+}
+
+enum SubscriptionState {
+  ACTIVE
+  INACTIVE
+}
+
+enum Period {
+  MONTHLY
+  YEARLY
+}
+
+model Subscription {
+  id                String    @id @default(cuid())
+  organizationId    String    @unique
+  organization      Organization @relation(fields: [organizationId], references: [id])
+  subscriptionTier  SubscriptionTier
+  subscriptionState SubscriptionState
+  identifier        String?
+  cancelAt          DateTime?
+  period            Period
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+enum DomainState {
+  ACTIVE
+  INACTIVE
+}
+
+model Domains {
+  id             String    @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  domain         String
+  state          DomainState
+  deletedAt      DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}

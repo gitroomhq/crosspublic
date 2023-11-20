@@ -1,0 +1,43 @@
+import {ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus} from "@nestjs/common";
+import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/authorization/authorization.service";
+
+export class SubscriptionException extends HttpException {
+  constructor(message: {
+    section: Sections,
+    action: AuthorizationActions
+  }) {
+    super(message, HttpStatus.PAYMENT_REQUIRED);
+  }
+}
+
+@Catch(SubscriptionException)
+export class SubscriptionExceptionFilter implements ExceptionFilter {
+  catch(exception: HttpException, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+    const status = exception.getStatus();
+    const error: {section: Sections, action: AuthorizationActions} = exception.getResponse() as any;
+
+    const message = getErrorMessage(error);
+
+    response.status(status).json({
+        statusCode: status,
+        message
+    });
+  }
+}
+
+const getErrorMessage = (error: {section: Sections, action: AuthorizationActions}) => {
+  switch (error.section) {
+    case Sections.FAQ:
+      switch (error.action) {
+        default:
+          return 'You have reached the maximum number of FAQ\'s for your subscription. Please upgrade your subscription to add more FAQ\'s.';
+      }
+    case Sections.CATEGORY:
+      switch (error.action) {
+        default:
+          return 'You have reached the maximum number of categories for your subscription. Please upgrade your subscription to add more categories.';
+      }
+  }
+}
