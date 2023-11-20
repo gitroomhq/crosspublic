@@ -2,7 +2,6 @@ import {CommandsInterface} from "@meetqa/discord/src/packages/commands/commands.
 import {ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, ChatInputCommandInteraction} from "discord.js";
 import {Injectable} from "@nestjs/common";
 import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
-import {Axios} from "axios";
 import {uniqBy} from "lodash";
 import EventEmitter from 'events';
 
@@ -22,13 +21,13 @@ const total = () => {
 export class AddCommand implements CommandsInterface {
   name = "add";
   description = "Add forum thread to the FAQ"
-  async runButton(axios: Axios, user: UserInterface, interactions: ButtonInteraction) {
+  async runButton(fetchObject: any, user: UserInterface, interactions: ButtonInteraction) {
     total();
     const reply = await interactions.deferReply();
     event.emit(interactions.customId);
     await reply.delete();
   }
-  async run(axios: Axios, user: UserInterface, interactions: ChatInputCommandInteraction) {
+  async run(fetchObject: any, user: UserInterface, interactions: ChatInputCommandInteraction) {
     if (!interactions.channel.isThread()) {
       await interactions.deleteReply('Not a thread');
       return ;
@@ -76,7 +75,7 @@ export class AddCommand implements CommandsInterface {
       name: allAuthors[p.name]
     }));
 
-    const {data} = await axios.post('/faq/job', {
+    const {data} = await fetchObject.post('/faq/job', {
       reference,
       messagesList: mapper.filter(f => f.message)
     });

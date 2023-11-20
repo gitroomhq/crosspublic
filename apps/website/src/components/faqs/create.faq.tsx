@@ -6,7 +6,7 @@ import {Button} from "@meetqa/website/src/components/utils/button";
 import {useCallback, useEffect, useState} from "react";
 
 export const CreateFAQ = wrapModal<{faq?: string, cat?: string}>((props) => {
-  const axios = useFetch();
+  const fetchObject = useFetch();
   const {faq, cat} = props;
   const [loading, setLoading] = useState(!!faq);
   const {formState, register, handleSubmit} = useForm();
@@ -19,11 +19,11 @@ export const CreateFAQ = wrapModal<{faq?: string, cat?: string}>((props) => {
 
   const submit = async (values: any) => {
     try {
-      const {data, status} = faq ? await axios.put(`/faq/${faq}`, {
+      const {data, status} = faq ? await fetchObject.put(`/faq/${faq}`, {
         question: values.name,
         answer: values.editor,
         categoryId: cat,
-      }) : await axios.post('/faq', {
+      }) : await fetchObject.post('/faq', {
         question: values.name,
         answer: values.editor,
         categoryId: cat,
@@ -40,7 +40,7 @@ export const CreateFAQ = wrapModal<{faq?: string, cat?: string}>((props) => {
     if (!faq) {
       return ;
     }
-    const {data: {title: nameValue, content: descriptionValue}} = await axios.get(`/faq/${faq}`);
+    const {data: {title: nameValue, content: descriptionValue}} = await fetchObject.get(`/faq/${faq}`);
     await name.onChange({target: {name: 'name', value: nameValue}});
     await editor.onChange({target: {name: 'editor', value: descriptionValue}});
     setEditorValue(descriptionValue);

@@ -12,6 +12,7 @@ import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
 import {useRouter} from "next/navigation";
 import {deleteDialog} from "@meetqa/website/src/helpers/delete.dialog";
 import {Oval} from "react-loader-spinner";
+import {useUser} from "@meetqa/website/src/helpers/user.context";
 
 const Check = () => (
   <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px">
@@ -28,13 +29,13 @@ const Not = () => (
 
 export const Loader: FC<{id: string, onSuccess: () => void}> = (props) => {
   const {id, onSuccess} = props;
-  const axios = useFetch();
+  const fetchObject = useFetch();
   useEffect(() => {
     check();
   }, []);
 
   const check = useCallback(async () => {
-    const {data} = await axios.get(`/billing/check/${id}`);
+    const {data} = await fetchObject.get(`/billing/check/${id}`);
     if (!data.exists) {
       await new Promise((res) => {
         setTimeout(res, 5000);
@@ -57,10 +58,10 @@ export const PricingComponent: FC<{period: 'MONTHLY' | 'YEARLY', pricing: Pricin
   const {period, pricing, billing, p} = props;
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const axios = useFetch();
+  const fetchObject = useFetch();
   const subscribe = useCallback(async () => {
     setLoading(true);
-    const {data: {url, id, portal}} = await axios.post('/billing/subscribe', {billing: p, period});
+    const {data: {url, id, portal}} = await fetchObject.post('/billing/subscribe', {billing: p, period});
     if (url) {
       window.open(url, '_blank');
     }
@@ -107,6 +108,10 @@ export const PricingComponent: FC<{period: 'MONTHLY' | 'YEARLY', pricing: Pricin
             <div>{pricing?.[p]?.categories} Categories</div>
           </li>
           <li className="flex">
+            <div className="mr-1"><Check /></div>
+            <div>{pricing?.[p]?.user} Users</div>
+          </li>
+          <li className="flex">
             <div className="mr-1">
               {pricing?.[p]?.domains ? <Check /> : <Not />}
             </div>
@@ -122,7 +127,7 @@ export const PricingComponent: FC<{period: 'MONTHLY' | 'YEARLY', pricing: Pricin
             <div className="mr-1">
               {pricing?.[p]?.embed ? <Check /> : <Not />}
             </div>
-            <div>Documentation Embedding</div>
+            <div>Documentation Embedding (soon)</div>
           </li>
         </ul>
         {
@@ -158,7 +163,9 @@ export const BillingComponent = wrapMeta<{billing?: Subscription, check?: string
   const [cancelLoading, setCancelLoading] = useState(false);
   const router = useRouter();
   const [period, setPeriod] = useState<'MONTHLY' | 'YEARLY'>((billing?.period || 'MONTHLY') as 'MONTHLY' | 'YEARLY');
-  const axios = useFetch();
+  const fetchObject = useFetch();
+  const user = useUser();
+  console.log(user);
 
   useEffect(() => {
     if (check === topLoading) {
@@ -175,7 +182,7 @@ export const BillingComponent = wrapMeta<{billing?: Subscription, check?: string
     try {
       await deleteDialog('Are you sure you want to continue? Some data will be deleted', 'Yes', 'Subscription set to cancel');
       setCancelLoading(true);
-      const {data} = await axios.post('/billing/cancel');
+      const {data} = await fetchObject.post('/billing/cancel');
       setCancelLoading(false);
       router.push(`/dashboard/billing?check=${data.id}`)
     }
@@ -185,7 +192,7 @@ export const BillingComponent = wrapMeta<{billing?: Subscription, check?: string
   const undoCancel = useCallback(async () => {
     try {
       setCancelLoading(true);
-      const {data} = await axios.post('/billing/cancel');
+      const {data} = await fetchObject.post('/billing/cancel');
       setCancelLoading(false);
       router.push(`/dashboard/billing?check=${data.id}`);
     }
@@ -195,7 +202,7 @@ export const BillingComponent = wrapMeta<{billing?: Subscription, check?: string
   const modifyPayment = useCallback(async () => {
     try {
       setCancelLoading(true);
-      const {data} = await axios.post('/billing/modify');
+      const {data} = await fetchObject.post('/billing/modify');
       window.open(data.portal, '_blank');
       setCancelLoading(false);
     }

@@ -1,7 +1,6 @@
 import {Injectable} from "@nestjs/common";
 import OpenAI from "openai";
 import Handlebars from "handlebars";
-import axios from "axios";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,

@@ -1,5 +1,5 @@
 import {ChatInputCommandInteraction} from "discord.js";
-import {customFetchBackend} from "@meetqa/helpers/src/axios/custom.fetch.backend";
+import {customFetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 
 export class AuthService {
   async check(interaction: ChatInputCommandInteraction) {

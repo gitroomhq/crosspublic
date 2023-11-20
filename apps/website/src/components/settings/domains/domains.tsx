@@ -9,7 +9,7 @@ import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 export default function Domains({domains} : {domains: any[]}) {
-    const axios = useFetch();
+    const fetchObject = useFetch();
     const [domainList, setDomainList] = useState<any[]>(domains);
     const {handleSubmit, register, formState} = useForm({
         values: {
@@ -20,7 +20,7 @@ export default function Domains({domains} : {domains: any[]}) {
 
     const submit: SubmitHandler<{domain: string}> = useCallback(async (a) => {
         try {
-            const {data, status} = await axios.post('/settings/domain', {domain: a.domain});
+            const {data, status} = await fetchObject.post('/settings/domain', {domain: a.domain});
             if (status !== 200 && status !== 201) return;
             setDomainList([...domainList, data]);
         }

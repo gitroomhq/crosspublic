@@ -1,5 +1,5 @@
 import {SettingsComponent} from "@meetqa/website/src/components/settings/settings.component";
-import {customFetchBackend} from "@meetqa/helpers/src/axios/custom.fetch.backend";
+import {customFetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 import {userToken} from "@meetqa/website/src/components/utils/user.token";
 import {Metadata} from "next";
 import {Suspense} from "react";

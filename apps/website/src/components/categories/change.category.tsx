@@ -8,7 +8,7 @@ import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
 
 export const ChangeCategory: FC<{categories: ExtendedCategory[], faq: string, changeCategory: (cat: string) => void}> = (props) =>  {
   const {categories, changeCategory} = props;
-  const axios = useFetch();
+  const fetchObject = useFetch();
   const [current, setCurrent] = useState('');
   const [state, setState] = useState(0);
   const changeSelect = useCallback(async (e: any) => {
@@ -19,7 +19,7 @@ export const ChangeCategory: FC<{categories: ExtendedCategory[], faq: string, ch
 
     try {
       const successDialog = await deleteDialog('Are you sure you want to change the category of this FAQ?', 'Yes, change it!', 'FAQ category changed!');
-      await axios.put(`/faq/${props.faq}/category/${e.target.value}`);
+      await fetchObject.put(`/faq/${props.faq}/category/${e.target.value}`);
       successDialog();
       changeCategory(e.target.value);
       setState(0);

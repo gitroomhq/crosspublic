@@ -13,7 +13,7 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
     const {subDomain} = props;
     const [initialSubdomain, setInitialSubdomain] = useState(subDomain);
     const router = useRouter();
-    const axios = useFetch();
+    const fetchObject = useFetch();
 
     const {watch, register, formState} = useForm({
         defaultValues: {
@@ -39,7 +39,7 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
         const newUrl = currentUrl.replace(initialSubdomain, subDomainWatch);
         try {
             await deleteDialog('Are you sure you want to change your subdomain? Other people would be able to claim this subdomain. Any previous SEO you have had will be lost', 'Yes, do it!');
-            await axios.post('/settings/subdomain', {subDomain: subDomainWatch});
+            await fetchObject.post('/settings/subdomain', {subDomain: subDomainWatch});
             setInitialSubdomain(subDomainWatch);
             router.replace(window.location.href.replace(currentUrl, newUrl));
         }

@@ -29,7 +29,7 @@ export interface ExtendedCategory extends Category {
 
 const FaqComponent = wrapMeta<{categories: ExtendedCategory[]}>((props) => {
   const {categories} = props;
-  const axios = useFetch();
+  const fetchObject = useFetch();
   const [items, setItems] = useState(categories);
   useEffect(() => {
     setItems(categories);
@@ -59,7 +59,7 @@ const FaqComponent = wrapMeta<{categories: ExtendedCategory[]}>((props) => {
           return m.id !== items[index].id;
         }).map(p => ({id: p.id, order: move.indexOf(p) + 1}));
 
-        axios.post('/categories/order', {order: dbOrderUpdate});
+        fetchObject.post('/categories/order', {order: dbOrderUpdate});
 
         return move;
       });
@@ -106,7 +106,7 @@ export const Categories: FC<{cat: ExtendedCategory, id: string}> = (props) => {
     transform,
     transition,
   } = useSortable({id: props.id});
-  const axios = useFetch();
+  const fetchObject = useFetch();
   const {cat} = props;
   const [catState, setCatState] = useState(cat);
   useEffect(() => {
@@ -142,7 +142,7 @@ export const Categories: FC<{cat: ExtendedCategory, id: string}> = (props) => {
           return m.id !== items[index].id;
         }).map(p => ({id: p.id, order: move.indexOf(p) + 1}));
 
-        axios.post('/faq/order', {order: dbOrderUpdate});
+        fetchObject.post('/faq/order', {order: dbOrderUpdate});
         return move;
       });
     }
@@ -273,7 +273,7 @@ export const Faqs: FC<{faq: Faq, cat: string, id: string, deleteFAQFunc: () => v
       easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
     },
   });
-  const axios = useFetch();
+  const fetchObject = useFetch();
 
   const style = {
     transform: CSS.Transform.toString(transform)?.split(' ')?.slice(0, -1)?.join(' '),
@@ -283,7 +283,7 @@ export const Faqs: FC<{faq: Faq, cat: string, id: string, deleteFAQFunc: () => v
   const deleteFaq = useCallback(async () => {
     try {
       const success = await deleteDialog('You will not be able to recover this faq!');
-      await axios.delete(`/faq/${faqState.id}`);
+      await fetchObject.delete(`/faq/${faqState.id}`);
       success();
       deleteFAQFunc();
     }

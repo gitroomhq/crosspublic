@@ -8,7 +8,7 @@ import {Button} from "@meetqa/website/src/components/utils/button";
 import {useCallback, useEffect, useState} from "react";
 
 export const CreateCategory = wrapModal<{cat?: string}>((props) => {
-  const axios = useFetch();
+  const fetchObject = useFetch();
   const {cat} = props;
   const [loading, setLoading] = useState(!!cat);
   const {formState, register, handleSubmit} = useForm();
@@ -21,7 +21,7 @@ export const CreateCategory = wrapModal<{cat?: string}>((props) => {
 
   const submit = async (values: any) => {
     try {
-      const {data, status} = cat ? await axios.put(`/categories/${cat}`, values) : await axios.post('/categories', values);
+      const {data, status} = cat ? await fetchObject.put(`/categories/${cat}`, values) : await fetchObject.post('/categories', values);
       if (status === 200 || status === 201) {
         props?.modal?.resolve(data);
       }
@@ -34,7 +34,7 @@ export const CreateCategory = wrapModal<{cat?: string}>((props) => {
     if (!cat) {
       return ;
     }
-    const {data: {name: nameValue, description: descriptionValue}} = await axios.get(`/categories/${cat}`);
+    const {data: {name: nameValue, description: descriptionValue}} = await fetchObject.get(`/categories/${cat}`);
     await name.onChange({target: {name: 'name', value: nameValue}});
     await editor.onChange({target: {name: 'editor', value: descriptionValue}});
     setEditorValue(descriptionValue);

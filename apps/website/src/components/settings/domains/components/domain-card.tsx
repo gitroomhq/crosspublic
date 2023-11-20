@@ -8,7 +8,7 @@ import {deleteDialog} from "@meetqa/website/src/helpers/delete.dialog";
 import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
 
 const DomainCard = ({ domain, id, deleteDomain }: any) => {
-    const axios = useFetch();
+    const fetchObject = useFetch();
     const { data: domainInfo, isValidating } = useSWR(
         `/settings/check-domain/${id}`,
         fetcher,
@@ -63,7 +63,7 @@ const DomainCard = ({ domain, id, deleteDomain }: any) => {
                                     const delDialog = await deleteDialog(`Are you sure you want to remove ${domain}?`);
                                     setRemoving(true)
                                     try {
-                                        await axios.delete(`/settings/delete-domain/${id}`);
+                                        await fetchObject.delete(`/settings/delete-domain/${id}`);
                                         delDialog();
                                         deleteDomain();
                                     } catch (error) {

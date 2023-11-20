@@ -21,6 +21,7 @@ model Organization {
   subscriptions    Subscription[]
   categories       Category[]
   domains          Domains[]
+  apiKey           String? @default(cuid())
 }
 
 enum Role {

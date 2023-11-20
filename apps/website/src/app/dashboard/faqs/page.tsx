@@ -1,4 +1,4 @@
-import {customFetchBackend} from "@meetqa/helpers/src/axios/custom.fetch.backend";
+import {customFetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 import dynamic from "next/dynamic";
 import {userToken} from "@meetqa/website/src/components/utils/user.token";
 import {Metadata} from "next";

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import {fetchBackend} from "@meetqa/helpers/src/axios/custom.fetch.backend";
+import {fetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {

@@ -38,7 +38,7 @@ export function ShowEditor(props: {
     const [loading, setLoading] = useState(true);
     const [editorValue, setEditorValue] = useState(``);
     const [currentCat, setCurrentCat] = useState<undefined|Category>();
-    const axios = useFetch();
+    const fetchObject = useFetch();
     const [newQuestionValue, setNewQuestionValue] = useState(question);
 
     const addToList = useCallback((category: Category) => {
@@ -48,7 +48,7 @@ export function ShowEditor(props: {
     const loadAnswer = useCallback(async () => {
         setLoading(true);
         try {
-          const {data: {answer}} = await axios.post('/faq/answers', {question: newQuestionValue, messagesList});
+          const {data: {answer}} = await fetchObject.post('/faq/answers', {question: newQuestionValue, messagesList});
           setEditorValue(answer.trim());
         }
         catch (err) {}
@@ -64,7 +64,7 @@ export function ShowEditor(props: {
         return;
       }
 
-      axios.post('/faq', {question: newQuestionValue, answer: editorValue, categoryId: currentCat.id});
+      fetchObject.post('/faq', {question: newQuestionValue, answer: editorValue, categoryId: currentCat.id});
       Swal.fire({
         title: 'Success!',
         text: 'Your FAQ has been added',
@@ -108,7 +108,7 @@ export function ShowEditor(props: {
 }
 export function MessageWizard(props: {id: string, messagesList: any[], categories: Category[]}) {
     const {messagesList, categories} = props;
-    const axios = useFetch();
+    const fetchObject = useFetch();
     const [loadingStepOne, setLoadingStepOne] = useState(false);
     const [questions, setQuestions] = useState([] as Array<{question: string}>);
     const [selectedQuestions, setSelectedQuestions] = useState([] as string[]);
@@ -126,7 +126,7 @@ export function MessageWizard(props: {id: string, messagesList: any[], categorie
         setSelectedQuestions([]);
         setQuestions([]);
         try {
-          const {data} = await axios.post('/faq/jobs/questions', {messagesList: messagesList.filter(f => !f.deleted)});
+          const {data} = await fetchObject.post('/faq/jobs/questions', {messagesList: messagesList.filter(f => !f.deleted)});
           setQuestions(data.questions);
         }
         catch (err) {

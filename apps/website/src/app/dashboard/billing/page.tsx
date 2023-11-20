@@ -1,7 +1,7 @@
 import {BillingComponent} from "@meetqa/website/src/components/billing/billing.component";
 import {Metadata} from "next";
 import {userToken} from "@meetqa/website/src/components/utils/user.token";
-import {customFetchBackend} from "@meetqa/helpers/src/axios/custom.fetch.backend";
+import {customFetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 
 export const metadata: Metadata = {
   title: 'Billing',

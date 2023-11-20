@@ -8,7 +8,7 @@ import {Oval} from "react-loader-spinner";
 export const CheckDomainComponent: FC<{initialValue: string, newValue: string, setValidInvalid: (b: boolean) => void}> = (props) => {
   const {initialValue, newValue, setValidInvalid} = props;
   const [check, setCheck] = useState(0);
-  const axios = useFetch();
+  const fetchObject = useFetch();
 
   const checkDomain = useDebouncedCallback(async (val: string) => {
     if (!val || val.length < 3) {
@@ -16,7 +16,7 @@ export const CheckDomainComponent: FC<{initialValue: string, newValue: string, s
     }
 
     setCheck(1);
-    const {data} = await axios.post('/settings/check-subdomain', {subDomain: val});
+    const {data} = await fetchObject.post('/settings/check-subdomain', {subDomain: val});
     if (data.exists) {
       setCheck(3);
     }

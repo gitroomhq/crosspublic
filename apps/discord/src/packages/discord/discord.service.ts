@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import {Client, GatewayIntentBits, Interaction, Partials, REST, Routes} from 'discord.js';
 import {CommandsInterface} from "@meetqa/discord/src/packages/commands/commands.interface";
-import {customFetchBackend} from "@meetqa/helpers/src/axios/custom.fetch.backend";
+import {customFetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 import {AuthService} from "@meetqa/discord/src/packages/auth/auth.service";
 import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
 
@@ -57,7 +57,6 @@ export class DiscordService {
         return ;
       }
 
-      console.log(interaction);
       const findCommand = commands.find(p =>  (interaction.commandName || interaction.customId).indexOf(p.name) > -1);
       if (findCommand) {
         try {

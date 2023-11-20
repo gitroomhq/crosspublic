@@ -8,10 +8,10 @@ import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
 
 export const DeleteCategory = wrapModal<{cat?: string, isFaq?: boolean, categories?: ExtendedCategory[]}>((props) => {
   const {modal, isFaq, categories} = props;
-  const axios = useFetch();
+  const fetchObject = useFetch();
   const {handleSubmit, register, formState} = useForm();
   const submitForm = useCallback(async (data: FieldValues) => {
-    await axios.delete(`/categories/${props.cat}`, {data});
+    await fetchObject.delete(`/categories/${props.cat}`, {data});
     modal?.resolve({
       from: props.cat,
       to: data?.category
