@@ -2,6 +2,9 @@
   "name": "meetqa",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:discord\" \"npm run dev:stripe\"",
     "dev:discord": "nx run-many --target=serve --projects=discord,backend,website --parallel",
