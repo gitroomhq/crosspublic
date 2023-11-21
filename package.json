@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "engines": {
-    "node": ">=18.0.0 <19.0.0"
+    "node": ">=20.0.0 <21.0.0"
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:discord\" \"npm run dev:stripe\"",
@@ -118,6 +118,8 @@
     "tiptap-markdown": "^0.8.2",
     "tslib": "^2.3.0",
     "use-debounce": "^10.0.0"
+  },
+  "optionalDependencies": {
+    "@nrwl/nx-linux-x64-gnu": "^15.9.3"
   }
 }
-
