@@ -13,6 +13,7 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   }
 }
 
+
 @Injectable()
 export class PrismaRepository<T extends keyof PrismaService> {
   public model: Pick<PrismaService, T>;
