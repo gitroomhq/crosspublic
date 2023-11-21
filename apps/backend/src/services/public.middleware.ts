@@ -16,8 +16,6 @@ export class PublicMiddleware implements NestMiddleware {
       return;
     }
 
-    console.log(req);
-
     const apiKey = req.headers['apikey'];
     const serverKey = req.headers['serverkey'];
 

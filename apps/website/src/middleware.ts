@@ -7,7 +7,7 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.href.indexOf('/dashboard') == -1) {
     return NextResponse.next({
       headers: {
-        url: request.nextUrl.href
+        url: request.headers.get('host')!
       }
     });
   }

@@ -12,12 +12,12 @@ export const getOrg = (url: string) => {
     return {subdomain: 'testserver'};
   }
 
-  return {domain: new URL(url).host};
+  return {domain: new URL(url).host.split(':')[0]};
 }
 
 export const publicRequestFetch = async () => {
   const url = headers().get('url');
-  const getDomainSubdomain = getOrg(url as string);
+  const getDomainSubdomain = getOrg('https://' + (url as string));
   const {data: {apiKey}} = await customFetchBackend().get(
     `/public/organization?${new URLSearchParams(getDomainSubdomain as any).toString()}`,
     {cache: 'force-cache', next: {tags: [getDomainSubdomain.domain || getDomainSubdomain.subdomain || '']}}
