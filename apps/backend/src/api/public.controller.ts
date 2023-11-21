@@ -50,6 +50,18 @@ export class PublicController {
     @Param('slug') slug: string,
     @GetOrganizationFromRequest() organization: OrganizationFromRequest
   ) {
-    return (await this._faqService.getFaqsByOrganizationId(organization.id)).find(faq => slugify(faq.title, {lower: true, strict: true}) === slug);
+    const faq = (await this._faqService.getFaqsByOrganizationId(organization.id)).find(faq => slugify(faq.title, {lower: true, strict: true}) === slug);
+
+    return {
+      ...faq,
+      categories: {
+        ...faq.categories.map((category) => ({
+          category: {
+            ...category.category,
+            slug: slugify(category.category.name, {lower: true, strict: true})
+          }
+        }))
+      }
+    }
   }
 }

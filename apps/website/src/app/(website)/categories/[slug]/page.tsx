@@ -6,6 +6,9 @@ export default async function Page({params: {slug}}: {params: {slug: string}}) {
   const {data} = await request.get(`/public/categories/${slug}/faqs`, {cache: 'force-cache', next: {tags: [tags]}});
   return (
     <div className="flex flex-col gap-6">
+      <div className="text-sm flex gap-2">
+        <Link href="/">Home</Link>
+      </div>
       <h1 className="text-xl font-bold">{data.category.name}</h1>
       {data.faq.map((faq: Faq & {slug: string}) => (
         <Link href={`/faq/${faq.slug}`}
