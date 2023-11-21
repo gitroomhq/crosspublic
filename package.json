@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.0.0 <21.0.0"
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:discord\" \"npm run dev:stripe\"",
