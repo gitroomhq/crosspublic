@@ -10,6 +10,7 @@
     "postinstall": "npx prisma generate",
     "dev:discord": "nx run-many --target=serve --projects=discord,backend,website --parallel",
     "dev:stripe": "nx run backend:stripe:development",
+    "generate-prisma": "cd libraries/database && npx prisma generate",
     "update-prisma": "cd libraries/database && npx prisma db push",
     "update-prisma-prod": "cd libraries/database && npx prisma db push --accept-data-loss"
   },
