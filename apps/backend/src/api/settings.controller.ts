@@ -19,7 +19,7 @@ export class SettingsController {
   getSettings(
     @GetUserFromRequest() user: UserInterface
   ) {
-    return this.settingsService.getSettings(user.organization.organizationId);
+    return this.settingsService.getSettings(user.organization.organizationId, user.organization.role);
   }
 
   @Post('/check-subdomain')

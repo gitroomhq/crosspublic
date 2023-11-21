@@ -7,8 +7,10 @@ import {CategoriesController} from "@meetqa/backend/src/api/categories.controlle
 import {SettingsController} from "@meetqa/backend/src/api/settings.controller";
 import {StripeController} from "@meetqa/backend/src/api/stripe.controller";
 import {BillingController} from "@meetqa/backend/src/api/billing.controller";
+import {PublicController} from "@meetqa/backend/src/api/public.controller";
+import {PublicMiddleware} from "@meetqa/backend/src/services/public.middleware";
 
-const authenticatedControllers = [UsersController, FaqController, CategoriesController, SettingsController, BillingController];
+const authenticatedControllers = [UsersController, PublicController, FaqController, CategoriesController, SettingsController, BillingController];
 @Global()
 @Module({
   imports: [],
@@ -16,6 +18,6 @@ const authenticatedControllers = [UsersController, FaqController, CategoriesCont
 })
 export class ApiModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AuthMiddleware).forRoutes(...authenticatedControllers);
+    consumer.apply(AuthMiddleware, PublicMiddleware).forRoutes(...authenticatedControllers);
   }
 }

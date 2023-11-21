@@ -1,10 +1,14 @@
 import {NestMiddleware} from "@nestjs/common";
 import { Request, Response, NextFunction } from 'express';
 import {AuthService} from "@meetqa/helpers/src/auth/auth.service";
-import rawbody from "raw-body";
 
 export class AuthMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
+    if(req.url.indexOf('/public') > -1) {
+      next();
+      return;
+    }
+
     if (!req.headers.auth && !req.cookies.auth) {
       res.status(401).json({ message: 'Unauthorized' });
       return;

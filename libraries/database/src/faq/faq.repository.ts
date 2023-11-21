@@ -29,6 +29,44 @@ export class FaqRepository {
     });
   }
 
+  async getFaqsByOrganizationId(orgId: string) {
+    return this._prisma.model.faq.findMany({
+      where: {
+        organizationId: orgId,
+        deletedAt: null,
+      },
+      orderBy: {
+        order: 'asc',
+      },
+      include: {
+        categories: {
+          select: {
+            category: true,
+          }
+        }
+      }
+    });
+  }
+
+  async getFaqsByCategoryId(orgId: string, categoryId: string) {
+    return this._prisma.model.faq.findMany({
+      where: {
+        organizationId: orgId,
+        categories: {
+          every: {
+            category: {
+              id: categoryId,
+            }
+          }
+        },
+        deletedAt: null,
+      },
+      orderBy: {
+        order: 'asc',
+      },
+    });
+  }
+
   async deleteFaq(orgId: string, id: string) {
     const getFaq = await this._prisma.model.faq.findFirst({
         where: {

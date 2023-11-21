@@ -1,6 +1,7 @@
 import {Injectable} from "@nestjs/common";
 import {SettingsRepository} from "@meetqa/database/src/settings/settings.repository";
 import axios from "axios";
+import {OrganizationRepository} from "@meetqa/database/src/organization/organization.repository";
 
 const vercelAxios = (version = 9, prefix = 'projects') => {
   const create = axios.create({
@@ -27,19 +28,24 @@ const vercelAxios = (version = 9, prefix = 'projects') => {
 
 @Injectable()
 export class SettingsService {
-  constructor(private readonly _settingsRepository: SettingsRepository) {
+  constructor(
+      private readonly _settingsRepository: SettingsRepository,
+      private readonly _organizationRepository: OrganizationRepository,
+  ) {
   }
 
   checkSubdomain(orgId: string, subDomain: string) {
     return this._settingsRepository.checkSubDomain(orgId, subDomain);
   }
 
-  async getSettings(orgId: string) {
+  async getSettings(orgId: string, role: 'ADMIN' | 'USER') {
     const {subDomain} = await this._settingsRepository.getSubDomain(orgId);
     const getDomain = await this._settingsRepository.getDomain(orgId);
-
+    const apiKey = role === 'ADMIN' ? (await this._organizationRepository.getOrgById(orgId))?.apiKey : null;
     return {
-      subDomain, domains: [getDomain].filter(f => f)
+      subDomain,
+      domains: [getDomain].filter(f => f),
+      apiKey
     };
   }
 

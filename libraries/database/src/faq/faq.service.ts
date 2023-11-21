@@ -13,6 +13,14 @@ export class FaqService {
     return this._faqRepository.getFaqById(orgId, id);
   }
 
+  getFaqsByOrganizationId(orgId: string) {
+    return this._faqRepository.getFaqsByOrganizationId(orgId);
+  }
+
+  async getFaqsByCategoryId(orgId: string, categoryId: string) {
+    return this._faqRepository.getFaqsByCategoryId(orgId, categoryId);
+  }
+
   async deleteFaq(orgId: string, id: string) {
     return this._faqRepository.deleteFaq(orgId, id);
   }

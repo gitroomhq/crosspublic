@@ -13,7 +13,7 @@ datasource db {
 model Organization {
   id               String    @id @default(cuid())
   guildId          String    @unique
-  subDomain        String?
+  subDomain        String?   @unique
   stripeCustomerId String    @unique
   users            UserOrganization[]
   faqs             Faq[]
@@ -21,7 +21,7 @@ model Organization {
   subscriptions    Subscription[]
   categories       Category[]
   domains          Domains[]
-  apiKey           String? @default(cuid())
+  apiKey           String? @default(cuid()) @unique
 }
 
 enum Role {
@@ -133,7 +133,7 @@ model Domains {
   id             String    @id @default(cuid())
   organizationId String
   organization   Organization @relation(fields: [organizationId], references: [id])
-  domain         String
+  domain         String @unique
   state          DomainState
   deletedAt      DateTime?
   createdAt      DateTime  @default(now())

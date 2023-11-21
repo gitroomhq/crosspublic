@@ -18,7 +18,7 @@ export default async function Settings(props: any) {
    */
   return (
       <Suspense>
-        <SettingsComponent metadata={metadata} subDomain={settings.subDomain} domains={settings.domains} />
+        <SettingsComponent apiKey={settings.apiKey} metadata={metadata} subDomain={settings.subDomain} domains={settings.domains} />
       </Suspense>
   );
 }

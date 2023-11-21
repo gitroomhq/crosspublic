@@ -1,4 +1,5 @@
 import '../styles.css';
+import 'react-toastify/dist/ReactToastify.css';
 import {LayoutComponent} from "@meetqa/website/src/components/layout/layout.component";
 import {Metadata} from "next";
 import { headers } from 'next/dist/client/components/headers';
@@ -15,8 +16,10 @@ export const metadata: Metadata = {
 export default function DashboardLayout({ children, params }: { children: React.ReactNode, params: any }) {
     const headersList = headers();
     return (
-        <LayoutComponent user={JSON.parse(headersList.get('user')!)} className={inter.className}>
-            {children}
-        </LayoutComponent>
+        <>
+            <LayoutComponent user={JSON.parse(headersList.get('user')!)} className={inter.className}>
+                {children}
+            </LayoutComponent>
+        </>
     )
 }

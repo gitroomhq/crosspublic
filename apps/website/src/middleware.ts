@@ -4,6 +4,13 @@ import {fetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
+  if (request.nextUrl.href.indexOf('/dashboard') == -1) {
+    return NextResponse.next({
+      headers: {
+        url: request.nextUrl.href
+      }
+    });
+  }
   const cookies = request.cookies.get('auth')?.value!;
   const auth = request.nextUrl.searchParams.get('auth')!;
   if (auth || cookies) {
@@ -40,6 +47,6 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ['/dashboard/:path*', '/dashboard'],
+  matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)',
 }
 

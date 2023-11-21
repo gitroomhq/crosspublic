@@ -11,18 +11,19 @@ const parseData = async (response: Response) => {
     }
 }
 
-export const customFetchBackend = (token?: UserInterface | string) => {
+export const customFetchBackend = (token?: UserInterface | string, defaultHeaders?: object) => {
   return {
     get: async (url: string, request?: RequestInit) => {
       const load = await fetch(process?.env?.BACKEND_URL + url, {
         ...request,
         method: "GET",
-        cache: request?.cache || "no-store",
+        cache: process.env.NODE_ENV === 'development' ? "no-store" : request?.cache || "no-store",
         headers: {
           ...token ? {
               auth: typeof token === "string" ? token : AuthService.signJWT(token)
           } : {},
-          ...request?.headers
+          ...request?.headers,
+          ...defaultHeaders
         }
       });
 
@@ -38,7 +39,8 @@ export const customFetchBackend = (token?: UserInterface | string) => {
                     auth: typeof token === "string" ? token : AuthService.signJWT(token)
                 } : {},
               ...request?.headers,
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              ...defaultHeaders
             },
             cache: request?.cache || "no-store",
         });
@@ -55,7 +57,8 @@ export const customFetchBackend = (token?: UserInterface | string) => {
                     auth: typeof token === "string" ? token : AuthService.signJWT(token)
                 } : {},
                 ...request?.headers,
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+              ...defaultHeaders
             }
         });
 
@@ -71,7 +74,8 @@ export const customFetchBackend = (token?: UserInterface | string) => {
                     auth: typeof token === "string" ? token : AuthService.signJWT(token)
                 } : {},
                 ...request?.headers,
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+              ...defaultHeaders
             }
         });
 
