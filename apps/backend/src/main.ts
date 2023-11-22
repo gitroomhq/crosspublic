@@ -10,6 +10,7 @@ import cookieParser from 'cookie-parser';
 import {SubscriptionExceptionFilter} from "@meetqa/backend/src/services/authorization/subscription.exception";
 import morgan from 'morgan';
 import {ResponseInterceptor} from "@meetqa/backend/src/services/response.interceptor";
+import * as process from "process";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -25,7 +26,7 @@ async function bootstrap() {
   app.use((req, res, next) => {
     const allowedOrigin = req.headers.origin;
     if (!allowedOrigin || (allowedOrigin && typeof allowedOrigin === 'string' && allowedOrigin.indexOf(new URL(process.env.FRONTEND_URL).hostname) > -1)) {
-      res.header('Access-Control-Allow-Origin', allowedOrigin);
+      res.header('Access-Control-Allow-Origin', allowedOrigin || process.env.FRONTEND_URL);
       res.header('Access-Control-Allow-Credentials', 'true');
       res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
       res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, apikey, serverkey');

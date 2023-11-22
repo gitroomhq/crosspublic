@@ -1,4 +1,4 @@
-import {Injectable, NestInterceptor, ExecutionContext, CallHandler, Inject} from '@nestjs/common';
+import {Injectable, NestInterceptor, ExecutionContext, CallHandler} from '@nestjs/common';
 import {Observable} from 'rxjs';
 import { tap } from 'rxjs/operators';
 import axios from "axios";
@@ -12,11 +12,11 @@ export class ResponseInterceptor implements NestInterceptor {
         tap(async () => {
           const request = context.switchToHttp().getRequest();
           if (request.user && request.revalidate) {
-            await axios.post(`${process.env.BACKEND_URL}/users/revalidate`, {}, {
-              headers: {
-                ...request.headers
-              }
-            });
+              return axios.post(`${process.env.BACKEND_URL}/users/revalidate`, {}, {
+                headers: {
+                  auth: request.cookies.auth
+                }
+              });
           }
         }),
       );
