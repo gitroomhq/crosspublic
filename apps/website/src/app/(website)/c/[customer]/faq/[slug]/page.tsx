@@ -7,8 +7,8 @@ import {Suspense} from "react";
 export const dynamic = 'force-static';
 
 export default async function Page({params: {slug, customer}}: {params: {slug: string, customer: string}}) {
-  const {request} = await publicRequestFetch(customer);
-  const {data}: {data: Faq & {categories: [{category: Category & {slug: string}}]}} = await request.get(`/public/faq/${slug}?c=${customer}`, {cache: 'force-cache'});
+  const {tags, request} = await publicRequestFetch(customer);
+  const {data}: {data: Faq & {categories: [{category: Category & {slug: string}}]}} = await request.get(`/public/faq/${slug}?c=${customer}`, {cache: 'force-cache', next: {tags: [tags]}});
   return (
     <Suspense>
       <div className="flex flex-col gap-6">
