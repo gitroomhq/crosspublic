@@ -15,6 +15,12 @@ import * as process from "process";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     rawBody: true,
+    cors: {
+      allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization', 'apikey', 'serverkey'],
+      credentials: true,
+      methods: ['GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'DELETE'],
+      origin: [process.env.FRONTEND_URL, process.env.MARKETING_WEBSITE_URL],
+    }
   });
 
   app.use(cookieParser());
@@ -22,23 +28,6 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new SubscriptionExceptionFilter());
   app.useGlobalInterceptors(new ResponseInterceptor());
-
-  app.use((req, res, next) => {
-    const allowedOrigin = req.headers.origin;
-    if (!allowedOrigin || (allowedOrigin && typeof allowedOrigin === 'string' && allowedOrigin.indexOf(new URL(process.env.FRONTEND_URL).hostname) > -1)) {
-      res.header('Access-Control-Allow-Origin', allowedOrigin || process.env.FRONTEND_URL);
-      res.header('Access-Control-Allow-Credentials', 'true');
-      res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, apikey, serverkey');
-    }
-
-    if (req.method === 'OPTIONS') {
-      res.status(200).send();
-      return ;
-    }
-
-    next();
-  });
 
   const port = process.env.PORT || 3000;
   await app.listen(port);

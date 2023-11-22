@@ -22,7 +22,8 @@
       "@meetqa/discord/*": ["apps/discord/*"],
       "@meetqa/helpers/*": ["libraries/helpers/*"],
       "@meetqa/validators/*": ["libraries/validators/*"],
-      "@meetqa/website/*": ["apps/website/*"]
+      "@meetqa/website/*": ["apps/website/*"],
+      "@meetqa/marketing/*": ["apps/marketing/*"],
     },
     "resolveJsonModule": true
   },

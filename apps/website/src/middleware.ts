@@ -1,10 +1,9 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import {fetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
-import process from "process";
 
 export const getOrg = (url: string) => {
-  const frontEndUrl = new URL(process.env.FRONTEND_URL!).host;
+  const frontEndUrl = new URL(process.env.MARKETING_WEBSITE_URL!).host;
   if (url.indexOf(frontEndUrl) > -1) {
     const host = new URL(url).hostname;
     return host?.split('.')?.[0] || 'testserver';
@@ -16,15 +15,10 @@ export const getOrg = (url: string) => {
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
   const protocol = request.nextUrl.protocol;
-  const host = `${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host'));
   const searchParams = request.nextUrl.searchParams.toString();
   const path = `${request.nextUrl.pathname}${
     searchParams.length > 0 ? `?${searchParams}` : ""
   }`;
-
-  if (host === process.env.FRONTEND_URL && request.nextUrl.href.indexOf('/dashboard') == -1) {
-    return NextResponse.rewrite(new URL(`/website${path === "/" ? "" : path}`, request.url));
-  }
 
   if (request.nextUrl.href.indexOf('/dashboard') == -1) {
     const getCustomer = getOrg(`${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host')!));
@@ -64,8 +58,6 @@ export async function middleware(request: NextRequest) {
   }
 
   return NextResponse.redirect(`${process.env.FRONTEND_URL}/login`);
-
-  // return NextResponse.redirect(new URL('/home', request.url))
 }
 
 // See "Matching Paths" below to learn more

@@ -1,6 +1,7 @@
 import '../styles.css';
 import {Metadata} from "next";
 import { Inter } from 'next/font/google'
+import HeaderSectionComponent from "@meetqa/website/src/components/website/header.section.component";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +17,10 @@ export default async function DashboardLayout({children}: {children: React.React
   return (
       <html lang="en">
       <body className={inter.className}>
-        <div>{children}</div>
+        <HeaderSectionComponent />
+        <main className="mb-40">
+          {children}
+        </main>
       </body>
       </html>
   )

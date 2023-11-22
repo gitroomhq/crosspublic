@@ -1,7 +1,7 @@
 "use client";
 
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
-import {FC, useCallback, useState} from "react";
+import {FC, useCallback, useMemo, useState} from "react";
 import {Input} from "@meetqa/website/src/components/utils/input";
 import {Button} from "@meetqa/website/src/components/utils/button";
 import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
@@ -34,6 +34,15 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
 
     const {handleSubmit} = useForm();
 
+    const removeSubdomain = useMemo(() => {
+      const frontend = new URL(process.env.FRONTEND_URL!).host;
+      if (frontend.indexOf('.') === -1) {
+        return frontend;
+      }
+
+      return frontend.split('.').slice(1).join('.');
+    }, []);
+
     const onSubmit: SubmitHandler<FieldValues> = useCallback(async (props) => {
         try {
             const dialog = await deleteDialog('Are you sure you want to change your subdomain? Other people would be able to claim this subdomain. Any previous SEO you have had will be lost', 'Yes, do it!', 'Subdomain changed!');
@@ -56,7 +65,7 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
                                 <div className="flex-1">
                                     <Input maxLength={20} className="!border-0 w-full !rounded-none flex-1 py-[10px] px-[15px]" required={true} label="" placeholder="Subdomain" {...register('subDomain', {required: {value: true, message: 'Sub domain name is required'}, pattern: {value: /^[a-zA-Z0-9][a-zA-Z0-9-]{0,62}$/, message: 'Invalid domain name'}, minLength: {value: 3, message: 'Sub domain must be at least 3 characters'}, maxLength: 20})} />
                                 </div>
-                                <div className="ml-[1px] flex items-center">.{new URL(process.env.FRONTEND_URL!).host}</div>
+                                <div className="ml-[1px] flex items-center">.{removeSubdomain}</div>
                                 <div className="flex items-center pr-[15px] w-[47px]">
                                     {formState.isValid && <CheckDomainComponent setValidInvalid={(b) => validInvalid.onChange({target: {name: 'validInvalid', value: b}})} initialValue={initialSubdomain} newValue={subDomainWatch} />}
                                 </div>
