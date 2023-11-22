@@ -31,8 +31,8 @@ export async function middleware(request: NextRequest) {
   }
 
   // if it's the dashboard, but the wrong domain, get a redirect
-  if (realHost.indexOf(process.env.MARKETING_WEBSITE_URL!) == -1) {
-    return NextResponse.redirect(`${process.env.FRONTEND_URL}/dashboard`);
+  if (realHost.indexOf(process.env.FRONTEND_URL!) == -1) {
+    return NextResponse.redirect(new URL('/', process.env.FRONTEND_URL!));
   }
 
   // if it's the dashboard, authenticate the user
