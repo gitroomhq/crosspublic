@@ -20,6 +20,10 @@ export class OrganizationService {
     return this._organizationRepository.getOrganizationByDomainSubDomain(body);
   }
 
+  getOrganizationDomainSubdomainByOrgId(id: string) {
+    return this._organizationRepository.getOrganizationDomainSubdomainByOrgId(id);
+  }
+
   getOrgById(id: string) {
     return this._organizationRepository.getOrgById(id);
   }

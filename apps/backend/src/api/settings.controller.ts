@@ -7,11 +7,16 @@ import {IdStringValidator} from "@meetqa/validators/src/general/id.string.valida
 import {AddDomainValidator} from "@meetqa/validators/src/settings/add.domain.validator";
 import {CheckPolicies} from "@meetqa/backend/src/services/authorization/authorization.ability";
 import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/authorization/authorization.service";
+import {Revalidate} from "@meetqa/backend/src/services/revalidate";
+import {RevalidateService} from "@meetqa/helpers/src/revalidate/revalidate.service";
+import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
 
 @Controller('/settings')
 export class SettingsController {
   constructor(
-    private readonly settingsService: SettingsService,
+    private readonly _settingsService: SettingsService,
+    private readonly _organizationService: OrganizationService,
+    private _revalidateService: RevalidateService
   ) {
   }
 
@@ -19,7 +24,7 @@ export class SettingsController {
   getSettings(
     @GetUserFromRequest() user: UserInterface
   ) {
-    return this.settingsService.getSettings(user.organization.organizationId, user.organization.role);
+    return this._settingsService.getSettings(user.organization.organizationId, user.organization.role);
   }
 
   @Post('/check-subdomain')
@@ -27,7 +32,7 @@ export class SettingsController {
       @GetUserFromRequest() user: UserInterface,
       @Body() body: CheckSubdomainValidator
   ) {
-    const check = await this.settingsService.checkSubdomain(user.organization.organizationId, body.subDomain);
+    const check = await this._settingsService.checkSubdomain(user.organization.organizationId, body.subDomain);
     return {exists: !!check}
   }
 
@@ -36,31 +41,43 @@ export class SettingsController {
       @GetUserFromRequest() user: UserInterface,
       @Param() body: IdStringValidator,
   ) {
-    return this.settingsService.checkDomain(user.organization.organizationId, body.id);
+    return this._settingsService.checkDomain(user.organization.organizationId, body.id);
   }
 
+  @Revalidate()
   @Delete('/delete-domain/:id')
   async deleteDomain(
       @GetUserFromRequest() user: UserInterface,
       @Param() body: IdStringValidator,
   ) {
-    return this.settingsService.deleteDomain(user.organization.organizationId, body.id);
+    const getCurrentSubdomain = await this._organizationService.getOrganizationDomainSubdomainByOrgId(user.organization.organizationId);
+    const domain = await this._settingsService.deleteDomain(user.organization.organizationId, body.id);
+    this._revalidateService.revalidate(getCurrentSubdomain?.domains?.[0]?.domain);
+    return domain;
   }
 
+  @Revalidate()
   @CheckPolicies([AuthorizationActions.Create, Sections.DOMAIN])
   @Post('/domain')
   async addDomain(
       @GetUserFromRequest() user: UserInterface,
       @Body() body: AddDomainValidator,
   ) {
-    return this.settingsService.addDomain(user.organization.organizationId, body.domain);
+    const getCurrentSubdomain = await this._organizationService.getOrganizationDomainSubdomainByOrgId(user.organization.organizationId);
+    const domain = await this._settingsService.addDomain(user.organization.organizationId, body.domain);
+    this._revalidateService.revalidate(getCurrentSubdomain.subDomain);
+    return domain;
   }
 
+  @Revalidate()
   @Post('/subDomain')
   async subDomain(
       @GetUserFromRequest() user: UserInterface,
       @Body() body: CheckSubdomainValidator,
   ) {
-    return this.settingsService.changeSubDomain(user.organization.organizationId, body.subDomain);
+    const getCurrentSubdomain = await this._organizationService.getOrganizationDomainSubdomainByOrgId(user.organization.organizationId);
+    const change = await this._settingsService.changeSubDomain(user.organization.organizationId, body.subDomain);
+    this._revalidateService.revalidate(getCurrentSubdomain.subDomain);
+    return change;
   }
 }

@@ -16,6 +16,7 @@ import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 // @ts-ignore
 import extract from 'extract-json-from-string';
 import {CategoryStringValidator} from "@meetqa/validators/src/general/category.string.validator";
+import {Revalidate} from "@meetqa/backend/src/services/revalidate";
 
 @Controller('/faq')
 export class FaqController {
@@ -27,6 +28,7 @@ export class FaqController {
   ) {
   }
 
+  @Revalidate()
   @Delete('/:id')
   async deleteFaq(
     @GetUserFromRequest() user: UserInterface,
@@ -44,6 +46,7 @@ export class FaqController {
     return this._faqService.getFaqById(user.organization.organizationId, params.id);
   }
 
+  @Revalidate()
   @CheckPolicies([AuthorizationActions.Update, Sections.FAQ])
   @Post('/order')
   orderFaqs(
@@ -53,6 +56,7 @@ export class FaqController {
     return this._faqService.updateFaqOrder(user.organization.organizationId, body);
   }
 
+  @Revalidate()
   @CheckPolicies([AuthorizationActions.Update, Sections.FAQ])
   @Put('/:id/category/:category')
   async changeFaqCategory(
@@ -62,6 +66,7 @@ export class FaqController {
     return this._faqService.changeFaqCategory(user.organization.organizationId, params.id, params.category);
   }
 
+  @Revalidate()
   @CheckPolicies([AuthorizationActions.Create, Sections.FAQ])
   @Post('/')
   async createFaq(
@@ -71,6 +76,7 @@ export class FaqController {
     return this._faqService.createFaq(user.organization.organizationId, body);
   }
 
+  @Revalidate()
   @CheckPolicies([AuthorizationActions.Update, Sections.FAQ])
   @Put('/:id')
   async updateFaq(

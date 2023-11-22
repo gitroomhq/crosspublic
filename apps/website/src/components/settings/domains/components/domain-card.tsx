@@ -67,7 +67,6 @@ const DomainCard = ({ domain, id, deleteDomain }: any) => {
                                         delDialog();
                                         deleteDomain();
                                     } catch (error) {
-                                        console.log(error);
                                         alert(`Error removing domain`)
                                     } finally {
                                         setRemoving(false)

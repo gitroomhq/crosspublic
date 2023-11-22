@@ -4,6 +4,7 @@ import {AbilityPolicy, CHECK_POLICIES_KEY} from "@meetqa/backend/src/services/au
 import {AppAbility, AuthorizationService} from "@meetqa/backend/src/services/authorization/authorization.service";
 import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
 import {SubscriptionException} from "@meetqa/backend/src/services/authorization/subscription.exception";
+import {Revalidate} from "@meetqa/backend/src/services/revalidate";
 
 
 @Injectable()
@@ -14,6 +15,11 @@ export class PoliciesGuard implements CanActivate {
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
+    const revalidate = this._reflector.get(Revalidate, context.getHandler()) || this._reflector.get(Revalidate, context.getClass());
+    if (revalidate) {
+      context.switchToHttp().getRequest().revalidate = true;
+    }
+
     const policyHandlers =
       this._reflector.get<AbilityPolicy[]>(
         CHECK_POLICIES_KEY,

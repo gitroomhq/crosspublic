@@ -12,7 +12,6 @@ import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
 import {useRouter} from "next/navigation";
 import {deleteDialog} from "@meetqa/website/src/helpers/delete.dialog";
 import {Oval} from "react-loader-spinner";
-import {useUser} from "@meetqa/website/src/helpers/user.context";
 
 const Check = () => (
   <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="20px" height="20px">
@@ -164,8 +163,6 @@ export const BillingComponent = wrapMeta<{billing?: Subscription, check?: string
   const router = useRouter();
   const [period, setPeriod] = useState<'MONTHLY' | 'YEARLY'>((billing?.period || 'MONTHLY') as 'MONTHLY' | 'YEARLY');
   const fetchObject = useFetch();
-  const user = useUser();
-  console.log(user);
 
   useEffect(() => {
     if (check === topLoading) {

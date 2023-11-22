@@ -5,6 +5,7 @@ import {HttpStatus} from "@nestjs/common";
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content";
 import {Payment} from "@meetqa/website/src/components/payment/payment";
+import {revalidateDomain} from "@meetqa/website/src/helpers/revalidate.domain";
 const MySwal = withReactContent(Swal);
 
 export const customFetch = {
@@ -94,6 +95,10 @@ const interceptResponse = async (response: Response) => {
             }
         }
         throw new Error(response.statusText);
+    }
+
+    if (response.headers.get('revalidate')) {
+      revalidateDomain();
     }
 
     return {data, status: response.status};

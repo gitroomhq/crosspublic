@@ -9,6 +9,7 @@ import {AppModule} from "@meetqa/backend/src/app.module";
 import cookieParser from 'cookie-parser';
 import {SubscriptionExceptionFilter} from "@meetqa/backend/src/services/authorization/subscription.exception";
 import morgan from 'morgan';
+import {ResponseInterceptor} from "@meetqa/backend/src/services/response.interceptor";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -19,6 +20,7 @@ async function bootstrap() {
   app.use(morgan(':method :url'));
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new SubscriptionExceptionFilter());
+  app.useGlobalInterceptors(new ResponseInterceptor());
 
   app.use((req, res, next) => {
     const allowedOrigin = req.headers.origin;

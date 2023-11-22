@@ -13,7 +13,6 @@ export class GeneratorService {
       return {role: p.role, content: Handlebars.compile(p.prompt)({...globalVariables, ...p.variables})};
     });
 
-    console.log(messages);
     return openai.chat.completions.create({
       messages,
       model

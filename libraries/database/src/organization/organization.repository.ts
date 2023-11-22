@@ -18,6 +18,22 @@ export class OrganizationRepository {
     });
   }
 
+  getOrganizationDomainSubdomainByOrgId(id: string) {
+    return this._prisma.model.organization.findUnique({
+      where: {
+        id
+      },
+      select: {
+        subDomain: true,
+        domains: {
+          select: {
+            domain: true
+          }
+        }
+      }
+    });
+  }
+
   async getOrganizationByDomainSubDomain(body: DomainSubDomainOrganizationValidator) {
     if (body.domain) {
       const data = await this._domains.model.domains.findUnique({

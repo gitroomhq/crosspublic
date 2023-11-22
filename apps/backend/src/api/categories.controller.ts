@@ -8,6 +8,7 @@ import {CreateCategory} from "@meetqa/validators/src/categories/create.category"
 import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 import {IdStringValidator} from "@meetqa/validators/src/general/id.string.validator";
 import {DeleteCategory} from "@meetqa/validators/src/categories/delete.category";
+import {Revalidate} from "@meetqa/backend/src/services/revalidate";
 
 @Controller('/categories')
 export class CategoriesController {
@@ -16,6 +17,7 @@ export class CategoriesController {
   ) {
   }
 
+  @Revalidate()
   @Post('/order')
   @CheckPolicies([AuthorizationActions.Update, Sections.CATEGORY])
   orderCategories(
@@ -39,6 +41,7 @@ export class CategoriesController {
     return this._categoryService.getCategoriesFaqsByOrganizationId(user.organization.organizationId);
   }
 
+  @Revalidate()
   @Post('/')
   @CheckPolicies([AuthorizationActions.Create, Sections.CATEGORY])
   createCategory(
@@ -48,6 +51,7 @@ export class CategoriesController {
     return this._categoryService.createCategory(user, body);
   }
 
+  @Revalidate()
   @Put('/:id')
   @CheckPolicies([AuthorizationActions.Update, Sections.CATEGORY])
   updateCategory(
@@ -58,6 +62,7 @@ export class CategoriesController {
     return this._categoryService.updateCategoryById(user.organization.organizationId, id.id, body);
   }
 
+  @Revalidate()
   @Delete('/:id')
   @CheckPolicies([AuthorizationActions.Delete, Sections.CATEGORY])
   deleteCategory(

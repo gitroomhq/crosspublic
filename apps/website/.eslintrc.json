@@ -9,6 +9,7 @@
   "rules": {
     "@nx/enforce-module-boundaries": "off",
     "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "react/no-children-prop" : "off",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-var-requires": "off",
