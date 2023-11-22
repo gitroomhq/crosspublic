@@ -24,6 +24,11 @@ export async function middleware(request: NextRequest) {
   // The real host address
   const realHost = `${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host')!);
 
+  // if it's the dashboard, but it's on the root, redirect it to the dashboard
+  if (nextUrl.href.indexOf('/dashboard') == -1 && realHost.indexOf(process.env.FRONTEND_URL!) > -1) {
+    return NextResponse.redirect(new URL('/dashboard', nextUrl.href));
+  }
+
   // if it's not the dashboard, then it's the customer website
   if (nextUrl.href.indexOf('/dashboard') == -1) {
     const getCustomer = getOrg(realHost);
@@ -32,7 +37,7 @@ export async function middleware(request: NextRequest) {
 
   // if it's the dashboard, but the wrong domain, get a redirect
   if (realHost.indexOf(process.env.FRONTEND_URL!) == -1) {
-    return NextResponse.redirect(new URL('/', process.env.FRONTEND_URL!));
+    return NextResponse.redirect(new URL('/', nextUrl.href));
   }
 
   // if it's the dashboard, authenticate the user
