@@ -14,23 +14,30 @@ export const getOrg = (url: string) => {
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-  const protocol = request.nextUrl.protocol;
-  const searchParams = request.nextUrl.searchParams.toString();
-  const path = `${request.nextUrl.pathname}${
+  const nextUrl = request.nextUrl;
+  const protocol = nextUrl.protocol;
+  const searchParams = nextUrl.searchParams.toString();
+  const path = `${nextUrl.pathname}${
     searchParams.length > 0 ? `?${searchParams}` : ""
   }`;
 
-  if (request.nextUrl.href.indexOf('/dashboard') == -1) {
-    const getCustomer = getOrg(`${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host')!));
+  // The real host address
+  const realHost = `${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host')!);
+
+  // if it's not the dashboard, then it's the customer website
+  if (nextUrl.href.indexOf('/dashboard') == -1) {
+    const getCustomer = getOrg(realHost);
     return NextResponse.rewrite(new URL(`/customers/${getCustomer}${path === "/" ? "" : path}`, request.url));
   }
 
-  if (request.nextUrl.href.indexOf(process.env.MARKETING_WEBSITE_URL!) == -1) {
+  // if it's the dashboard, but the wrong domain, get a redirect
+  if (realHost.indexOf(process.env.MARKETING_WEBSITE_URL!) == -1) {
     return NextResponse.redirect(`${process.env.FRONTEND_URL}/dashboard`);
   }
 
+  // if it's the dashboard, authenticate the user
   const cookies = request.cookies.get('auth')?.value!;
-  const auth = request.nextUrl.searchParams.get('auth')!;
+  const auth = nextUrl.searchParams.get('auth')!;
   if (auth || cookies) {
     const fetch = await (await fetchBackend('/users/self', {
       headers: {
