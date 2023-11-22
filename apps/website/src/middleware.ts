@@ -24,6 +24,11 @@ export async function middleware(request: NextRequest) {
     const getCustomer = getOrg(`${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host')!));
     return NextResponse.rewrite(new URL(`/customers/${getCustomer}${path === "/" ? "" : path}`, request.url));
   }
+
+  if (request.nextUrl.href.indexOf(process.env.MARKETING_WEBSITE_URL!) == -1) {
+    return NextResponse.redirect(`${process.env.FRONTEND_URL}/dashboard`);
+  }
+
   const cookies = request.cookies.get('auth')?.value!;
   const auth = request.nextUrl.searchParams.get('auth')!;
   if (auth || cookies) {
