@@ -1,4 +1,4 @@
-import '../styles.css';
+import '../../../styles.css';
 import {Metadata} from "next";
 import { Inter } from 'next/font/google'
 
@@ -10,9 +10,9 @@ export const metadata: Metadata = {
     description: '',
 }
 
-export const dynamic = 'auto';
+export const dynamic = 'force-static';
 
-export default async function DashboardLayout({ children, params }: { children: React.ReactNode, params: any }) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
         <body className={inter.className}>
@@ -37,7 +37,7 @@ export default async function DashboardLayout({ children, params }: { children: 
             <div className="p-10 flex justify-center flex-1">
               <div className="w-full max-w-[800px] flex flex-1">
                 <div>Powered by</div>
-                <a href="https://meetqa.com" target="_blank" className="text-primary ml-1">MeetQA</a>
+                <a href="https://meetfaq.com" target="_blank" className="text-primary ml-1">MeetFAQ</a>
               </div>
             </div>
           </div>

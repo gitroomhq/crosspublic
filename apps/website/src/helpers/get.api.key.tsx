@@ -1,27 +1,21 @@
-import {headers} from "next/headers";
 import {customFetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 import * as process from "process";
 
-export const getOrg = (url: string) => {
-  const frontEndUrl = new URL(process.env.FRONTEND_URL!).host;
-  if (url.indexOf(frontEndUrl) > -1) {
-    const subDomain = url.match(/(?:http[s]*\:\/\/)*(.*?)\.(?=[^\/]*\..{2,5})/i);
-    if (subDomain) {
-      return {subdomain: subDomain[1]};
-    }
-    return {subdomain: 'testserver'};
-  }
+function isSubdomain(url: string) {
+  // Remove protocols, paths, queries, and fragments
+  const domain = url.replace(/(https?:\/\/)?(www\.)?/, '').split(/[/?#]/)[0];
 
-  return {domain: new URL(url).host.split(':')[0]};
+  // Split the domain by dots and check if there are at least 3 parts (e.g., sub.domain.com)
+  const parts = domain.split('.');
+  return parts.length > 2;
 }
 
-export const publicRequestFetch = async () => {
-  const url = headers().get('url');
-  const getDomainSubdomain = getOrg('https://' + (url as string));
+export const publicRequestFetch = async (domain: string) => {
+  const getDomainSubdomain = isSubdomain(domain) ? {subdomain: domain.split('.')[0].replace('www', '')} : {domain};
   const {data: {apiKey}} = await customFetchBackend().get(
-    `/public/organization?${new URLSearchParams(getDomainSubdomain as any).toString()}`,
-    {cache: 'force-cache', next: {tags: [getDomainSubdomain.domain || getDomainSubdomain.subdomain || '']}}
+    `/public/organization?${new URLSearchParams(getDomainSubdomain as never).toString()}`,
+    {cache: 'no-store'}
   );
 
-  return {request: customFetchBackend(undefined, {apikey: apiKey, serverkey: process.env.BACKEND_TOKEN_PROTECTOR}), tags: getDomainSubdomain.domain || getDomainSubdomain.subdomain || ''};
+  return {request: customFetchBackend(undefined, {apikey: apiKey, serverkey: process.env.BACKEND_TOKEN_PROTECTOR})};
 }

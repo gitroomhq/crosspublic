@@ -3,9 +3,9 @@ import {Category, Faq} from "@prisma/client";
 import {textToMarkdown} from "@meetqa/website/src/helpers/text.to.markdown";
 import {AfterHighlight} from "@meetqa/website/src/components/utils/after.highlight";
 import Link from "next/link";
-export default async function Page({params: {slug}}: {params: {slug: string}}) {
-  const {request, tags} = await publicRequestFetch();
-  const {data}: {data: Faq & {categories: [{category: Category & {slug: string}}]}} = await request.get(`/public/faq/${slug}`, {cache: 'force-cache', next: {tags: [tags]}});
+export default async function Page({params: {slug, customer}}: {params: {slug: string, customer: string}}) {
+  const {request} = await publicRequestFetch(customer);
+  const {data}: {data: Faq & {categories: [{category: Category & {slug: string}}]}} = await request.get(`/public/faq/${slug}`, {cache: 'force-cache'});
   return (
     <div className="flex flex-col gap-6">
       <div className="text-sm flex gap-2">

@@ -1,9 +1,9 @@
 import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
 import {Faq} from "@prisma/client";
 import Link from "next/link";
-export default async function Page({params: {slug}}: {params: {slug: string}}) {
-  const {request, tags} = await publicRequestFetch();
-  const {data} = await request.get(`/public/categories/${slug}/faqs`, {cache: 'force-cache', next: {tags: [tags]}});
+export default async function Page({params: {slug, customer}}: {params: {slug: string, customer: string}}) {
+  const {request} = await publicRequestFetch(customer);
+  const {data} = await request.get(`/public/categories/${slug}/faqs`, {cache: 'force-cache'});
   return (
     <div className="flex flex-col gap-6">
       <div className="text-sm flex gap-2">
