@@ -3,6 +3,7 @@ import {Metadata} from "next";
 import { Inter } from 'next/font/google'
 import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
 import {ClaimThisPageComponent} from "@meetqa/website/src/components/claim/claim.this.page.component";
+import {redirect} from "next/navigation";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ['latin'] })
@@ -15,9 +16,8 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static';
 
 export default async function DashboardLayout({ children, params }: { children: React.ReactNode, params: {customer: string} }) {
-  const {request} = await publicRequestFetch(params.customer);
+  const {redirect: redirectPath, request} = await publicRequestFetch(params.customer);
   if (!request) {
-
     return (
       <html lang="en">
       <body className={inter.className}>
@@ -26,6 +26,13 @@ export default async function DashboardLayout({ children, params }: { children: 
       </html>
     );
   }
+
+  if (redirectPath) {
+    redirect(redirectPath);
+    return <></>;
+  }
+
+  if (request)
   return (
       <html lang="en">
       <body className={inter.className}>

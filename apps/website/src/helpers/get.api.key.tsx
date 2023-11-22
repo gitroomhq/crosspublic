@@ -1,7 +1,7 @@
 import {customFetchBackend, CustomFetchBackendInterface} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
 import * as process from "process";
 
-export const publicRequestFetch = async (domain: string): Promise<{tags: string, request: CustomFetchBackendInterface}> => {
+export const publicRequestFetch = async (domain: string): Promise<{redirect?: false | string, tags: string, request: CustomFetchBackendInterface}> => {
   const getDomainSubdomain = domain.indexOf('.') ? {subdomain: domain.split('.')[0].replace('www', '')} : {domain};
   const {data: {apiKey}} = await customFetchBackend().get(
     `/public/organization?${new URLSearchParams(getDomainSubdomain as never).toString()}`,
@@ -12,5 +12,7 @@ export const publicRequestFetch = async (domain: string): Promise<{tags: string,
     return {tags: false, request: false} as any;
   }
 
-  return {tags: getDomainSubdomain?.domain || getDomainSubdomain?.subdomain || '', request: customFetchBackend(undefined, {apikey: apiKey, serverkey: process.env.BACKEND_TOKEN_PROTECTOR, tags: [getDomainSubdomain?.domain || getDomainSubdomain?.subdomain || '']})};
+  const redirect = apiKey.indexOf('http') > -1 ? apiKey : false;
+
+  return {redirect, tags: getDomainSubdomain?.domain || getDomainSubdomain?.subdomain || '', request: customFetchBackend(undefined, {apikey: apiKey, serverkey: process.env.BACKEND_TOKEN_PROTECTOR, tags: [getDomainSubdomain?.domain || getDomainSubdomain?.subdomain || '']})};
 }

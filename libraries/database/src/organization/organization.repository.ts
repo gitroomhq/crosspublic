@@ -57,11 +57,16 @@ export class OrganizationRepository {
         subDomain: body.subdomain
       },
       select: {
-        apiKey: true
+        apiKey: true,
+        domains: {
+          select: {
+            domain: true
+          }
+        }
       }
     });
 
-    return data?.apiKey || '';
+    return data?.domains?.[0]?.domain ? `https://${data?.domains?.[0]?.domain}` : data?.apiKey || '';
   }
 
   getOrganizationByApiKey(apiKey: string) {

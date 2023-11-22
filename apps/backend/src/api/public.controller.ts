@@ -1,4 +1,4 @@
-import {Controller, Get, Param, Post, Query} from "@nestjs/common";
+import {Controller, Get, Param, Query} from "@nestjs/common";
 import {DomainSubDomainOrganizationValidator} from "@meetqa/validators/src/public/domain.subDomain.organization.validator";
 import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
 import {GetOrganizationFromRequest, OrganizationFromRequest} from "@meetqa/helpers/src/user/organization.from.request";

@@ -1,6 +1,6 @@
 "use client";
 
-import {useCallback, useEffect, useState} from 'react'
+import {useCallback, useState} from 'react'
 import LoadingDots from './components/loading-dots'
 import DomainCard from './components/domain-card'
 import {Input} from "@meetqa/website/src/components/utils/input";
@@ -11,7 +11,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 export default function Domains({domains} : {domains: any[]}) {
     const fetchObject = useFetch();
     const [domainList, setDomainList] = useState<any[]>(domains);
-    const {handleSubmit, register, formState} = useForm({
+    const {handleSubmit, setValue, register, formState} = useForm({
         values: {
             domain: ''
         },
@@ -22,6 +22,7 @@ export default function Domains({domains} : {domains: any[]}) {
         try {
             const {data, status} = await fetchObject.post('/settings/domain', {domain: a.domain});
             if (status !== 200 && status !== 201) return;
+            setValue('domain', '');
             setDomainList([...domainList, data]);
         }
         catch (err) {}
