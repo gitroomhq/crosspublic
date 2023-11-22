@@ -36,7 +36,7 @@ export default function HeroSection() {
               <div className="-ml-6 md:-mr-72 lg:mr-0">
                 <Image
                   className="h-full object-cover object-left"
-                  src="/images/goodsupport.png"
+                  src="/images/supportman.png"
                   alt="app screenshot"
                   width="1628"
                   height="1233"
