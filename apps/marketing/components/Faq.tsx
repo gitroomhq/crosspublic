@@ -36,6 +36,7 @@ export default function Faq({question, id, children}: {question: string, id: str
         } else { // if the answer is closed, get all the children of the parent element in an array...
             let children: Element[] = [];
             if (parentElement.parentNode !== null) {
+                // @ts-ignore
                 children = [...parentElement.parentNode.children];
             }
 
