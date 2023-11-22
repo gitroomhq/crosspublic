@@ -15,7 +15,6 @@ export const getOrg = (url: string) => {
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-  console.log('catch!');
   const protocol = request.nextUrl.protocol;
   const host = `${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host'));
   const searchParams = request.nextUrl.searchParams.toString();
@@ -42,6 +41,10 @@ export async function middleware(request: NextRequest) {
       }
     })).json();
 
+    if (fetch?.message === 'Unauthorized') {
+      return NextResponse.redirect(`${process.env.FRONTEND_URL}/login`);
+    }
+
     const response = NextResponse.next({
       headers: {
         token:  auth || cookies,
@@ -60,7 +63,7 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  return NextResponse.redirect(`${process.env.FRONTEND_URL}/not-logged`);
+  return NextResponse.redirect(`${process.env.FRONTEND_URL}/login`);
 
   // return NextResponse.redirect(new URL('/home', request.url))
 }
