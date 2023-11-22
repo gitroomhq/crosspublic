@@ -2,11 +2,16 @@ import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
 import {Faq} from "@prisma/client";
 import Link from "next/link";
 import {Suspense} from "react";
+import {ClaimThisPageComponent} from "@meetqa/website/src/components/claim/claim.this.page.component";
 export const dynamic = 'force-static';
 
 export default async function Page({params: {slug, customer}}: {params: {slug: string, customer: string}}) {
   const {tags, request} = await publicRequestFetch(customer);
   const {data} = await request.get(`/public/categories/${slug}/faqs?c=${customer}`, {cache: 'force-cache', next: {tags: [tags]}});
+
+  if (!data) {
+    return <ClaimThisPageComponent />
+  }
   return (
     <Suspense>
       <div className="flex flex-col gap-6">

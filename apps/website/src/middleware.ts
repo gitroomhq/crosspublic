@@ -6,11 +6,8 @@ import process from "process";
 export const getOrg = (url: string) => {
   const frontEndUrl = new URL(process.env.FRONTEND_URL!).host;
   if (url.indexOf(frontEndUrl) > -1) {
-    const subDomain = url.match(/(?:http[s]*\:\/\/)*(.*?)\.(?=[^\/]*\..{2,5})/i);
-    if (subDomain) {
-      return subDomain[1];
-    }
-    return 'testserver';
+    const host = new URL(url).hostname;
+    return host?.split('.')?.[0] || 'testserver';
   }
 
   return new URL(url).host.split(':')[0];
@@ -18,14 +15,20 @@ export const getOrg = (url: string) => {
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
-  if (request.nextUrl.href.indexOf('/dashboard') == -1) {
-    const getCustomer = getOrg('https://' + (request.headers.get('x-forwarded-host') || request.headers.get('host')!));
-    const searchParams = request.nextUrl.searchParams.toString();
-    const path = `${request.nextUrl.pathname}${
-      searchParams.length > 0 ? `?${searchParams}` : ""
-    }`;
+  const protocol = request.nextUrl.protocol;
+  const host = `${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host'));
+  const searchParams = request.nextUrl.searchParams.toString();
+  const path = `${request.nextUrl.pathname}${
+    searchParams.length > 0 ? `?${searchParams}` : ""
+  }`;
 
-    return NextResponse.rewrite(new URL(`/c/${getCustomer}${path === "/" ? "" : path}`, request.url));
+  if (host === process.env.FRONTEND_URL && request.nextUrl.href.indexOf('/dashboard') == -1) {
+    return NextResponse.rewrite(new URL(`/website${path === "/" ? "" : path}`, request.url));
+  }
+
+  if (request.nextUrl.href.indexOf('/dashboard') == -1) {
+    const getCustomer = getOrg(`${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host')!));
+    return NextResponse.rewrite(new URL(`/customers/${getCustomer}${path === "/" ? "" : path}`, request.url));
   }
   const cookies = request.cookies.get('auth')?.value!;
   const auth = request.nextUrl.searchParams.get('auth')!;

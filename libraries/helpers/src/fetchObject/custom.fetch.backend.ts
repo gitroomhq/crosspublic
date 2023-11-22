@@ -11,7 +11,14 @@ const parseData = async (response: Response) => {
     }
 }
 
-export const customFetchBackend = (token?: UserInterface | string, defaultHeaders?: object) => {
+export interface CustomFetchBackendInterface {
+    get: (url: string, request?: RequestInit) => Promise<{data: any, status: number}>;
+    post: (url: string, body: object, request?: RequestInit) => Promise<{data: any, status: number}>;
+    put: (url: string, body: object, request?: RequestInit) => Promise<{data: any, status: number}>;
+    delete: (url: string, body: object, request?: RequestInit) => Promise<{data: any, status: number}>;
+}
+
+export const customFetchBackend = (token?: UserInterface | string, defaultHeaders?: object): CustomFetchBackendInterface => {
   return {
     get: async (url: string, request?: RequestInit) => {
       const load = await fetch(process?.env?.BACKEND_URL + url, {
