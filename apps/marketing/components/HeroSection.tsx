@@ -15,7 +15,7 @@ export default function HeroSection() {
         <div className="relative ml-auto pt-40 xl:pt-36">
           <div className="gap-12 md:flex md:items-center">
             <div className="text-center sm:px-12 md:w-2/3 md:px-0 md:text-left lg:w-1/2">
-              <h1 className="text-5xl font-black dark:text-white md:text-6xl xl:text-7xl balance">Support Channels to a Public FAQ</h1>
+              <h1 className="text-5xl font-black dark:text-white md:text-6xl xl:text-7xl balance">Support Channels into a Public FAQ</h1>
               <div className="">
                 <p className="mt-8 text-lg text-gray-700 dark:text-gray-100 balance mb-8">
                   Not all of your customers are on your support channels.<br />
