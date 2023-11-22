@@ -2,10 +2,12 @@ import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
 import {Category} from "@prisma/client";
 import {textToMarkdown} from "@meetqa/website/src/helpers/text.to.markdown";
 import Link from "next/link";
+import {Suspense} from "react";
 export default async function Page({params: {customer}} : {params: {customer: string}}) {
   const {request} = await publicRequestFetch(customer);
-  const {data} = await request.get('/public/categories', {cache: 'force-cache'});
+  const {data} = await request.get('/public/categories');
     return (
+      <Suspense>
         <div className="flex flex-col gap-6">
             {data.map((category: Category & {slug: string}) => (
               <Link href={`/categories/${category.slug}`}
@@ -18,5 +20,6 @@ export default async function Page({params: {customer}} : {params: {customer: st
               </Link>
             ))}
         </div>
+      </Suspense>
     )
 }
