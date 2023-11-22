@@ -1,5 +1,4 @@
 import {Block} from "@meetqa/website/src/components/utils/block";
-import {FC} from "react";
 import Domains from "@meetqa/website/src/components/settings/domains/domains";
 import {SubdomainComponent} from "@meetqa/website/src/components/settings/subdomain.component";
 import {Metadata} from "next";

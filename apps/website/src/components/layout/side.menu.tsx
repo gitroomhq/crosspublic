@@ -12,7 +12,7 @@ const SideMenuItem: FC<{svg: ReactNode, title: string, path: string}> = (props) 
   const {svg, title, path} = props;
   const pathname = usePathname();
   const selected = useMemo(() => {
-    return pathname.indexOf(props.path) > -1;
+    return pathname?.indexOf(props.path)! > -1;
   }, [pathname]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const SideMenuItem: FC<{svg: ReactNode, title: string, path: string}> = (props) 
   }, [selected, selectedState]);
 
   return (
-    <Link href={path} className={clsx("h-[80px] flex relative justify-center items-center font-[600] text-[11px] cursor-pointer transition-all", selectedState ? 'bg-menu text-white' : 'text-[#624A81]')} onMouseEnter={changeState} onMouseLeave={changeState}>
+    <Link href={path} prefetch={false} className={clsx("h-[80px] flex relative justify-center items-center font-[600] text-[11px] cursor-pointer transition-all", selectedState ? 'bg-menu text-white' : 'text-[#624A81]')} onMouseEnter={changeState} onMouseLeave={changeState}>
       <div className={clsx("absolute right-0 top-0 h-full w-[5px] bg-btn transition-opacity", !selectedState && "opacity-0")}  />
       <div className="flex flex-col items-center gap-[2px]">
         <div>{svg}</div>

@@ -35,13 +35,12 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
     const {handleSubmit} = useForm();
 
     const onSubmit: SubmitHandler<FieldValues> = useCallback(async (props) => {
-        const currentUrl = new URL(window.location.href).host;
-        const newUrl = currentUrl.replace(initialSubdomain, subDomainWatch);
         try {
-            await deleteDialog('Are you sure you want to change your subdomain? Other people would be able to claim this subdomain. Any previous SEO you have had will be lost', 'Yes, do it!');
+            const dialog = await deleteDialog('Are you sure you want to change your subdomain? Other people would be able to claim this subdomain. Any previous SEO you have had will be lost', 'Yes, do it!', 'Subdomain changed!');
             await fetchObject.post('/settings/subdomain', {subDomain: subDomainWatch});
             setInitialSubdomain(subDomainWatch);
-            router.replace(window.location.href.replace(currentUrl, newUrl));
+            router.refresh();
+            dialog()
         }
         catch (err) {}
     }, [subDomainWatch]);

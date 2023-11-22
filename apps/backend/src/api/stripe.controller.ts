@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, RawBodyRequest, Req} from "@nestjs/common";
+import {Controller, Post, RawBodyRequest, Req} from "@nestjs/common";
 import {StripeService} from "@meetqa/helpers/src/stripe/stripe.service";
 
 @Controller('/stripe')
