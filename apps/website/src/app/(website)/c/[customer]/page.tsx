@@ -3,6 +3,9 @@ import {Category} from "@prisma/client";
 import {textToMarkdown} from "@meetqa/website/src/helpers/text.to.markdown";
 import Link from "next/link";
 import {Suspense} from "react";
+
+export const dynamic = 'force-static';
+
 export default async function Page({params: {customer}} : {params: {customer: string}}) {
   const {request} = await publicRequestFetch(customer);
   const {data} = await request.get('/public/categories');

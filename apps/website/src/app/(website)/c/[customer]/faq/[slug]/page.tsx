@@ -4,6 +4,8 @@ import {textToMarkdown} from "@meetqa/website/src/helpers/text.to.markdown";
 import {AfterHighlight} from "@meetqa/website/src/components/utils/after.highlight";
 import Link from "next/link";
 import {Suspense} from "react";
+export const dynamic = 'force-static';
+
 export default async function Page({params: {slug, customer}}: {params: {slug: string, customer: string}}) {
   const {request} = await publicRequestFetch(customer);
   const {data}: {data: Faq & {categories: [{category: Category & {slug: string}}]}} = await request.get(`/public/faq/${slug}`, {cache: 'force-cache'});
