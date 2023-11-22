@@ -15,6 +15,7 @@ export const getOrg = (url: string) => {
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
+  console.log('catch!');
   const protocol = request.nextUrl.protocol;
   const host = `${protocol}//` + (request.headers.get('x-forwarded-host') || request.headers.get('host'));
   const searchParams = request.nextUrl.searchParams.toString();
@@ -66,6 +67,6 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/((?!api|_next/static|_next/image|favicon.ico|\\.jpg|\\.jpeg|\\.png|\\.gif|\\.bmp|\\.svg).*)/',
+  matcher: "/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)",
 }
 
