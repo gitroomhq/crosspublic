@@ -8,7 +8,7 @@ const links: { to: string, label: string}[] = [
     label: "Documentation",
   },
   {
-    to: "/blog",
+    to: "https://meetfaq.substack.com",
     label: "Blog",
   },
 ];

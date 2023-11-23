@@ -5,7 +5,7 @@ import React from "react";
 export default function Footer() {
     const links = [
         {
-            to: "/blog",
+            to: "https://meetfaq.substack.com",
             label: "Blog",
         },
         {
