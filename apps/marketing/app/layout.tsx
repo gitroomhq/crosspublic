@@ -1,6 +1,7 @@
 import './global.css';
 import HeaderSection from "@meetqa/marketing/components/HeaderSection";
 import {Inter} from "next/font/google";
+import Footer from "@meetqa/marketing/components/FooterSection";
 
 export const revalidate = 3600;
 
@@ -25,6 +26,7 @@ export default async function RootLayout({
         <main className="mb-40">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

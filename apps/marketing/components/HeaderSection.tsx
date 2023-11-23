@@ -1,5 +1,6 @@
 import Container from "./Container";
 import React from "react";
+import Image from "next/image.js";
 
 const links: { to: string, label: string}[] = [
   {
@@ -32,8 +33,9 @@ export default function HeaderSection({stars}: {stars: string}) {
                 className="flex items-center space-x-2"
               >
                 <div aria-hidden="true" className="flex space-x-1">
-                  <div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
-                  <div className="h-6 w-2 bg-primary"></div>
+                  <Image src="/logo.png" alt="MeetFAQ" width={32} height={32} />
+                  {/*<div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>*/}
+                  {/*<div className="h-6 w-2 bg-primary"></div>*/}
                 </div>
                 <span className="text-2xl font-bold text-gray-900 dark:text-white">
                   MeetFAQ
@@ -109,7 +111,7 @@ export default function HeaderSection({stars}: {stars: string}) {
               <div className="">
                 <a
                   target="_blank"
-                  href={`https://discord.com/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT}&permissions=8&scope=bot`}
+                  href={`https://discord.com/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT}&permissions=1084748200000&scope=bot`}
                   className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 lg:w-max"
                 >
                   <span className="relative text-sm font-semibold text-white">

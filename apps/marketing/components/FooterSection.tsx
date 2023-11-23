@@ -1,26 +1,16 @@
 import Container from "./Container";
+import Image from "next/image";
+import React from "react";
 
 export default function Footer() {
     const links = [
         {
-            to: "#home",
-            label: "Home",
+            to: "/blog",
+            label: "Blog",
         },
         {
-            to: "#features",
-            label: "Features",
-        },
-        {
-            to: "#solution",
-            label: "Solution",
-        },
-        {
-            to: "#reviews",
-            label: "Reviews",
-        },
-        {
-            to: "#pricing",
-            label: "Pricing",
+            to: "/docs",
+            label: "Documentation",
         },
     ];
 
@@ -29,10 +19,9 @@ export default function Footer() {
             <Container>
                 <a href="components#home" aria-label="logo" className="flex items-center justify-center space-x-2">
                     <div aria-hidden="true" className="flex flex-col space-y-0.5">
-                        <div className="h-0 w-0 border-l-[12px] border-r-[12px] border-b-[20px] border-transparent border-b-gray-900 dark:border-b-white"></div>
-                        <div className="mx-auto h-1 w-4 rounded-full bg-primary"></div>
+                      <Image src="/logo.png" alt="MeetFAQ" width={32} height={32} />
                     </div>
-                    <span className="text-2xl font-bold text-gray-900 dark:text-white">Astrolus</span>
+                    <span className="text-2xl font-bold text-gray-900 dark:text-white">MeetFAQ</span>
                 </a>
                 <ul role="list" className="mt-12 flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 dark:text-gray-400 sm:gap-8">
                     {
@@ -64,7 +53,7 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-12 text-center">
-                    <span className="text-sm tracking-wide text-gray-500">Copyright © tailus 2021 - Present | All rights reserved</span>
+                    <span className="text-sm tracking-wide text-gray-500">Copyright © MeetFAQ | All rights reserved</span>
                 </div>
             </Container>
         </footer>

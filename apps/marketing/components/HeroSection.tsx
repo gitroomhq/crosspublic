@@ -26,7 +26,7 @@ export default function HeroSection() {
                     Element="a"
                     emphasis="primary"
                     label="Start with Discord"
-                    to="/register"
+                    to={`https://discord.com/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT}&permissions=1084748200000&scope=bot`}
                     ui="max"
                   />
                 </div>
@@ -48,7 +48,7 @@ export default function HeroSection() {
 
           <div className="mt-8 text-center md:mt-32 lg:mt-20 xl:mt-16">
             <span className="text-sm font-semibold tracking-wider text-gray-800 dark:text-white">
-              TRUSTED BY YOUR FAVORED TOP TECHS COMPANIES
+              TRUSTED BY DEVELOPERS AT
             </span>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-6 brightness-75 contrast-200 grayscale dark:brightness-200 dark:contrast-0 sm:justify-between lg:gap-24">
               <Image

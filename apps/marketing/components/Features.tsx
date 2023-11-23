@@ -1,11 +1,10 @@
-import Feature from "./Feature";
 import Container from "./Container";
-import Image from "next/image.js";
 
 export default function Features() {
     return (
         <div className="relative pt-32 md:pt-44" id="features">
             <Container>
+              <div className="drop-shadow-2xl">
                 <div className="mx-auto md:w-3/5">
                     <h2 className="text-center text-3xl font-bold text-gray-900 dark:text-white md:text-4xl lg:text-5xl balance">
                       Never miss a client question again
@@ -17,9 +16,10 @@ export default function Features() {
 
                 <div className="mt-16 md:mt-20 flex justify-center">
                     <div className="relative rounded-3xl border border-gray-200 p-1 lg:grid-cols-2 flex bg-white overflow-hidden max-w-[800px]">
-                        <video src="/action.mp4" className="flex-1 bg-white rounded-3xl" autoPlay={true} loop={true} muted={true} />
+                        <video src="/action.mp4" className="flex-1 bg-white rounded-3xl clip-path" autoPlay={true} loop={true} muted={true} />
                     </div>
                 </div>
+              </div>
             </Container>
         </div>
     )

@@ -18,6 +18,9 @@ module.exports = {
         info: "#0C63E7",
         dark: "#0A101E",
         darker: "#090E1A",
+      },
+      clipPath: {
+        basic: 'inset(1px 1px)'
       }
     },
   },

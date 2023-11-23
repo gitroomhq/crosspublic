@@ -357,3 +357,6 @@ summary svg {
 .balance {
   text-wrap: balance;
 }
+.clip-path {
+  clip-path: inset(1px 1px);
+}
