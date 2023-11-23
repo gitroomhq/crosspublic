@@ -1,4 +1,4 @@
-import {Body, Controller, Delete, Get, Param, Post, Query} from "@nestjs/common";
+import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
 import {SettingsService} from "@meetqa/database/src/settings/settings.service";
 import {GetUserFromRequest} from "@meetqa/helpers/src/user/user.from.request";
 import {UserInterface} from "@meetqa/helpers/src/user/user.interface";

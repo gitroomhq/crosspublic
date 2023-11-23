@@ -1,5 +1,6 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
+import slugify from "slugify";
 
 @Injectable()
 export class SettingsRepository {
@@ -12,7 +13,7 @@ export class SettingsRepository {
   checkSubDomain(orgId: string, subDomain: string) {
     return this._org.model.organization.findFirst({
       where: {
-        subDomain,
+        subDomain: slugify(subDomain, {lower: true, strict: true, trim: true}),
         id: {
           not: orgId
         }
@@ -81,7 +82,7 @@ export class SettingsRepository {
     return this._domains.model.domains.create({
       data: {
         organizationId: orgId,
-        domain,
+        domain: slugify(domain, {lower: true, strict: true, trim: true}),
         state: 'ACTIVE'
       }
     });

@@ -4,6 +4,16 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneLight} from 'react-syntax-highlighter/dist/esm/styles/prism'
 import {Block} from "@meetqa/website/src/components/utils/block";
 
+function convertImageLinksToImgTags(text: string) {
+  // Regular expression to match image URLs (including those with query strings)
+  // This pattern will match most common image formats like .jpg, .png, .gif, etc., and allows for query strings
+  const imageUrlPattern = /https?:\/\/\S+\.(jpg|jpeg|png|gif)(\?\S*)?/gi;
+
+  // Replace the image URLs with <img> tags
+  return text.replace(imageUrlPattern, '![alt]($&)');
+}
+
+
 export const MessagesComponent: FC<{messagesList: any[], changeRow: (message: any) => () => void}> = (props) => {
     const {messagesList, changeRow} = props;
     return (
@@ -25,7 +35,7 @@ export const MessagesComponent: FC<{messagesList: any[], changeRow: (message: an
                             </div>
                             <div className="text-xs">
                                 <Markdown
-                                    children={message?.message! as string}
+                                    children={convertImageLinksToImgTags(message?.message! as string)}
                                     components={{
                                         code(props) {
                                             const {children, className, node, ...rest} = props

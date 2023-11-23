@@ -10,6 +10,33 @@ export class UserRepository {
   }
 
   async getOrCreateUser(orgId: string, body: OrganizationCreateValidator) {
+    const create = await this._prismaUser.model.user.findFirst({
+      where: {
+        internalId: body.internalId
+      },
+      include: {
+        organization: true
+      }
+    });
+
+    if (create && !create.organization.some(l => l.organizationId === orgId) && body.isOwner) {
+      await this._prismaUser.model.user.update({
+        where: {
+          id: create.id
+        },
+        data: {
+          organization: {
+            create: [
+              {
+                organizationId: orgId,
+                role: 'ADMIN'
+              }
+            ]
+          }
+        }
+      });
+    }
+
     const load = await this._prismaUser.model.user.findFirst({
       where: {
         internalId: body.internalId

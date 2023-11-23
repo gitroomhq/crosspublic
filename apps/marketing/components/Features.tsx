@@ -7,8 +7,12 @@ export default function Features() {
         <div className="relative pt-32 md:pt-44" id="features">
             <Container>
                 <div className="mx-auto md:w-3/5">
-                    <h2 className="text-center text-3xl font-bold text-gray-900 dark:text-white md:text-4xl lg:text-5xl">Shaped to meet your needs</h2>
-                    <p className="mt-4 text-center text-gray-600 dark:text-gray-300">apiente optio repellendus atque illum odio! Fugiat at expedita deserunt dolorum molestias.</p>
+                    <h2 className="text-center text-3xl font-bold text-gray-900 dark:text-white md:text-4xl lg:text-5xl balance">
+                      Never miss a client question again
+                    </h2>
+                    <p className="mt-4 text-center text-gray-600 dark:text-gray-300">
+                      Prevent clients from churning by providing them with a public FAQ.<br />
+                    </p>
                 </div>
 
                 <div className="mt-16 md:mt-20">

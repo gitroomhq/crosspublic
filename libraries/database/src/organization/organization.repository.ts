@@ -2,6 +2,7 @@ import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
 import {OrganizationCreateValidator} from "@meetqa/validators/src/organizations/organization.create.validator";
 import {DomainSubDomainOrganizationValidator} from "@meetqa/validators/src/public/domain.subDomain.organization.validator";
+import slugify from "slugify";
 
 @Injectable()
 export class OrganizationRepository {
@@ -92,7 +93,7 @@ export class OrganizationRepository {
       data: {
         stripeCustomerId: '',
         guildId,
-        subDomain: serverName
+        subDomain: slugify(serverName, {lower: true, strict: true, trim: true}),
       }
     });
   }

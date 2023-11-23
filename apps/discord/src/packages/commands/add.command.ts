@@ -46,9 +46,11 @@ export class AddCommand implements CommandsInterface {
       loadMessages
         .filter(p => !p.author.bot)
         .map(async p => {
+          const attachment = p.attachments.first()?.url || p.embeds[0]?.url || p.embeds[0]?.description || p.embeds[0]?.title || p.embeds[0]?.author?.name || p.embeds[0]?.fields?.map(f => f.name + ' ' + f.value).join(' ');
       return {
         name: p.author.globalName,
-        message: p.content,
+        internalId: p.author.id,
+        message: p.content + (attachment ? `${p.content ? '\n ' : ''}${attachment}` : ''),
         type: p.author.bot
       }
     }))).reverse();
@@ -56,24 +58,34 @@ export class AddCommand implements CommandsInterface {
     const messages = uniqBy([
       {
         message: name,
-        name: all[0].name
+        name: all[0].name,
+        internalId: all[0].internalId,
       },
       {
         message: firstMessage.content,
-        name: all[0].name
+        name: all[0].name,
+        internalId: all[0].internalId,
       },
       ...all
-    ], (o) => o.message)
+    ], (o) => o.message);
 
     const allAuthors = Array.from(new Set(messages.map(p => p.name))).reduce((all, current, index) => {
-      all[current] = "User " + (index + 1);
+      const internalId = messages.find(f => f.name === current)?.internalId;
+      all.internals[internalId] = "User " + (index + 1);
+      all.users[current] = "User " + (index + 1);
       return all;
-    }, {});
+    }, {internals: {}, users: {}});
 
     const mapper = messages.map(p => ({
       ...p,
-      name: allAuthors[p.name]
+      message: Object.keys(allAuthors.internals).reduce((all, current) => {
+        return all
+          .replace(new RegExp(`<@${current}>`, 'g'), '[' + allAuthors.internals[current] + ']')
+      }, p.message).replace(new RegExp(/<@\d+>/, 'g'), '[Unknown User]'),
+      name: allAuthors.users[p.name]
     }));
+
+    console.log(mapper);
 
     const {data} = await fetchObject.post('/faq/job', {
       reference,
