@@ -11,6 +11,7 @@ import {SubscriptionExceptionFilter} from "@meetqa/backend/src/services/authoriz
 import morgan from 'morgan';
 import {ResponseInterceptor} from "@meetqa/backend/src/services/response.interceptor";
 import * as process from "process";
+import {loadSwagger} from "@meetqa/helpers/src/swagger/load.swagger";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -28,6 +29,8 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new SubscriptionExceptionFilter());
   app.useGlobalInterceptors(new ResponseInterceptor());
+
+  loadSwagger(app);
 
   const port = process.env.PORT || 3000;
   await app.listen(port);

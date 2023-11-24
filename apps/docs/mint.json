@@ -2,25 +2,29 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Starter Kit",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#9333EA",
+    "light": "#9333EA",
+    "dark": "#9333EA",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#9333EA",
+      "to": "#9333EA"
     }
   },
+  "openapi": "https://api.meetfaq.com/openapi.json",
   "topbarLinks": [
     {
       "name": "Support",
       "url": "mailto:hi@mintlify.com"
     }
   ],
+  "modeToggle": {
+    "default": "light"
+  },
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
