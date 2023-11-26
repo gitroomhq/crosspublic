@@ -15,7 +15,7 @@
       "to": "#9333EA"
     }
   },
-  "openapi": "https://api.meetfaq.com/docs/openapi.json",
+  "openapi": "https://api.meetfaq.com/docs-json",
   "api": {
     "baseUrl": "https://api.meetfaq.com"
   },
@@ -85,23 +85,23 @@
       ]
     },
     {
-      "group": "Authentication",
+      "group": "Authentications",
       "pages": [
-        "api-reference/custom/authentication/authenticate-or-authorize-a-new-user"
+        "api-reference/custom/authentications/get-or-create-organization"
       ]
     },
     {
       "group": "Stripe",
       "pages": [
-        "api-reference/custom/stripe/stripe-webhook"
+        "api-reference/custom/stripe/post-stripe"
       ]
     },
     {
       "group": "Public",
       "pages": [
-        "public-api-reference/custom/public/get-categories",
-        "public-api-reference/custom/public/get-faq-by-category-slug",
-        "public-api-reference/custom/public/get-faq-by-slug"
+        "public-api-reference/custom/public/categories-list",
+        "public-api-reference/custom/public/faq-list",
+        "public-api-reference/custom/public/retrieve-faq"
       ]
     },
     {
@@ -113,18 +113,18 @@
       ]
     },
     {
-      "group": "Faqs",
+      "group": "Faq",
       "pages": [
-        "api-reference/custom/faqs/get-faq",
-        "api-reference/custom/faqs/put-faq",
-        "api-reference/custom/faqs/delete-faq",
-        "api-reference/custom/faqs/post-faqorder",
-        "api-reference/custom/faqs/put-faq-category",
-        "api-reference/custom/faqs/post-faq",
-        "api-reference/custom/faqs/post-faqjob",
-        "api-reference/custom/faqs/post-faqjobsquestions",
-        "api-reference/custom/faqs/post-faqanswers",
-        "api-reference/custom/faqs/get-faqjobs"
+        "api-reference/custom/faq/get-faq",
+        "api-reference/custom/faq/put-faq",
+        "api-reference/custom/faq/delete-faq",
+        "api-reference/custom/faq/post-faqorder",
+        "api-reference/custom/faq/put-faq-category",
+        "api-reference/custom/faq/post-faq",
+        "api-reference/custom/faq/post-faqjob",
+        "api-reference/custom/faq/post-faqjobsquestions",
+        "api-reference/custom/faq/post-faqanswers",
+        "api-reference/custom/faq/get-faqjobs"
       ]
     },
     {
@@ -151,13 +151,13 @@
       ]
     },
     {
-      "group": "Billing",
+      "group": "Billings",
       "pages": [
-        "api-reference/custom/billing/get-billingcheck",
-        "api-reference/custom/billing/post-billingsubscribe",
-        "api-reference/custom/billing/post-billingmodify",
-        "api-reference/custom/billing/get-billing",
-        "api-reference/custom/billing/post-billingcancel"
+        "api-reference/custom/billings/get-billingcheck",
+        "api-reference/custom/billings/subscribe-to-a-plan",
+        "api-reference/custom/billings/post-billingmodify",
+        "api-reference/custom/billings/get-billing",
+        "api-reference/custom/billings/post-billingcancel"
       ]
     }
   ],

@@ -15,7 +15,7 @@ exports.default = {
       "to": "#9333EA"
     }
   },
-  "openapi": "https://api.meetfaq.com/docs/openapi.json",
+  "openapi": "https://api.meetfaq.com/docs-json",
   "api": {
     "baseUrl": "https://api.meetfaq.com",
   },

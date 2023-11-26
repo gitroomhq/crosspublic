@@ -1,9 +1,9 @@
 import {Injectable} from "@nestjs/common";
 import {CategoryRepository} from "@meetqa/database/src/categories/category.repository";
-import {CreateCategory} from "@meetqa/validators/src/categories/create.category";
+import {CreateCategoryValidator} from "@meetqa/validators/src/categories/create.category.validator";
 import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
 import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
-import {DeleteCategory} from "@meetqa/validators/src/categories/delete.category";
+import {DeleteCategoryValidator} from "@meetqa/validators/src/categories/delete.category.validator";
 
 @Injectable()
 export class CategoryService {
@@ -23,11 +23,11 @@ export class CategoryService {
     return this._categoryRepository.getCategoryById(organizationId, id);
   }
 
-  deleteCategoryById(organizationId: string, id: string, body: DeleteCategory) {
+  deleteCategoryById(organizationId: string, id: string, body: DeleteCategoryValidator) {
     return this._categoryRepository.deleteCategoryById(organizationId, id, body);
   }
 
-  updateCategoryById(organizationId: string, id: string, body: CreateCategory) {
+  updateCategoryById(organizationId: string, id: string, body: CreateCategoryValidator) {
     return this._categoryRepository.updateCategoryById(organizationId, id, body);
   }
 
@@ -39,7 +39,7 @@ export class CategoryService {
     return this._categoryRepository.totalCategoriesByOrganizationId(organizationId);
   }
 
-  createCategory(user: UserInterface, body: CreateCategory) {
+  createCategory(user: UserInterface, body: CreateCategoryValidator) {
     return this._categoryRepository.createCategory(user.organization.organizationId, body.name, body.editor);
   }
 }

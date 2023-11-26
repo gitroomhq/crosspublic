@@ -1,7 +1,8 @@
 import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 import {INestApplication} from "@nestjs/common";
+// import load from '@meetqa/backend/src/metadata';
 
-export const loadSwagger = (app: INestApplication) => {
+export const loadSwagger = async (app: INestApplication) => {
   const config = new DocumentBuilder()
     .setTitle('MeetQA Swagger file')
     .setDescription('API description')
@@ -9,9 +10,5 @@ export const loadSwagger = (app: INestApplication) => {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  app.use('/docs/openapi.json', (req: any, res: any) => {
-    res.status(200).json(document);
-  });
-
   SwaggerModule.setup('docs', app, document);
 }

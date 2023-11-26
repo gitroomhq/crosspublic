@@ -1,6 +1,6 @@
 import {IsString, MinLength} from "class-validator";
 
-export class CreateCategory {
+export class CreateCategoryValidator {
   @IsString()
   @MinLength(3)
   name: string;

@@ -1,6 +1,8 @@
 import {IsString, MinLength} from "class-validator";
+import {ApiProperty} from "@nestjs/swagger";
 
-export class CreateFaq {
+export class CreateFaqValidator {
+  @ApiProperty()
   @IsString()
   @MinLength(3)
   question: string;

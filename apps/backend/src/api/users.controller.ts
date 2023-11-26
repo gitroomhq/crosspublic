@@ -3,10 +3,11 @@ import {GetUserFromRequest} from "@meetqa/helpers/src/user/user.from.request";
 import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
 import {AuthService} from "@meetqa/helpers/src/auth/auth.service";
 import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
-import axios from "axios";
 import * as process from "process";
 import {RevalidateService} from "@meetqa/helpers/src/revalidate/revalidate.service";
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags('Users')
 @Controller('/users')
 export class UsersController {
   constructor(

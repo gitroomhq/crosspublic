@@ -7,10 +7,18 @@ import {CategoriesController} from "@meetqa/backend/src/api/categories.controlle
 import {SettingsController} from "@meetqa/backend/src/api/settings.controller";
 import {StripeController} from "@meetqa/backend/src/api/stripe.controller";
 import {BillingController} from "@meetqa/backend/src/api/billing.controller";
-import {PublicController} from "@meetqa/backend/src/api/public.controller";
 import {PublicMiddleware} from "@meetqa/backend/src/services/public.middleware";
+import {PublicOrganizationController} from "@meetqa/backend/src/api/public/public.organization.controller";
+import {PublicFaqController} from "@meetqa/backend/src/api/public/public.faq.controller";
+import {PublicCategoriesController} from "@meetqa/backend/src/api/public/public.categories.controller";
 
-const authenticatedControllers = [UsersController, PublicController, FaqController, CategoriesController, SettingsController, BillingController];
+const publicControllers = [
+  PublicOrganizationController,
+  PublicCategoriesController,
+  PublicFaqController,
+];
+
+const authenticatedControllers = [...publicControllers, UsersController, FaqController, CategoriesController, SettingsController, BillingController];
 @Global()
 @Module({
   imports: [],

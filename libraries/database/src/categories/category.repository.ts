@@ -1,8 +1,8 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
 import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
-import {CreateCategory} from "@meetqa/validators/src/categories/create.category";
-import {DeleteCategory} from "@meetqa/validators/src/categories/delete.category";
+import {CreateCategoryValidator} from "@meetqa/validators/src/categories/create.category.validator";
+import {DeleteCategoryValidator} from "@meetqa/validators/src/categories/delete.category.validator";
 
 @Injectable()
 export class CategoryRepository {
@@ -106,7 +106,7 @@ export class CategoryRepository {
     });
   }
 
-  async deleteCategoryById(orgId: string, id: string, body: DeleteCategory) {
+  async deleteCategoryById(orgId: string, id: string, body: DeleteCategoryValidator) {
     const getCategory = await this._prisma.model.category.findUnique({
       where: {
         id,
@@ -180,7 +180,7 @@ export class CategoryRepository {
 
   }
 
-  async updateCategoryById(orgId: string, id: string, body: CreateCategory) {
+  async updateCategoryById(orgId: string, id: string, body: CreateCategoryValidator) {
     return this._prisma.model.category.update({
       where: {
         id,

@@ -1,6 +1,8 @@
 import {Controller, Post, RawBodyRequest, Req} from "@nestjs/common";
 import {StripeService} from "@meetqa/helpers/src/stripe/stripe.service";
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags('Stripe')
 @Controller('/stripe')
 export class StripeController {
   constructor(

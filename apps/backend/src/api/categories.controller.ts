@@ -4,12 +4,14 @@ import {GetUserFromRequest} from "@meetqa/helpers/src/user/user.from.request";
 import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
 import {CheckPolicies} from "@meetqa/backend/src/services/authorization/authorization.ability";
 import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/authorization/authorization.service";
-import {CreateCategory} from "@meetqa/validators/src/categories/create.category";
+import {CreateCategoryValidator} from "@meetqa/validators/src/categories/create.category.validator";
 import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 import {IdStringValidator} from "@meetqa/validators/src/general/id.string.validator";
-import {DeleteCategory} from "@meetqa/validators/src/categories/delete.category";
+import {DeleteCategoryValidator} from "@meetqa/validators/src/categories/delete.category.validator";
 import {Revalidate} from "@meetqa/backend/src/services/revalidate";
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags('Categories')
 @Controller('/categories')
 export class CategoriesController {
   constructor(
@@ -45,7 +47,7 @@ export class CategoriesController {
   @Post('/')
   @CheckPolicies([AuthorizationActions.Create, Sections.CATEGORY])
   createCategory(
-      @Body() body: CreateCategory,
+      @Body() body: CreateCategoryValidator,
       @GetUserFromRequest() user: UserInterface
   ) {
     return this._categoryService.createCategory(user, body);
@@ -56,7 +58,7 @@ export class CategoriesController {
   @CheckPolicies([AuthorizationActions.Update, Sections.CATEGORY])
   updateCategory(
     @Param() id: IdStringValidator,
-    @Body() body: CreateCategory,
+    @Body() body: CreateCategoryValidator,
     @GetUserFromRequest() user: UserInterface
   ) {
     return this._categoryService.updateCategoryById(user.organization.organizationId, id.id, body);
@@ -67,7 +69,7 @@ export class CategoriesController {
   @CheckPolicies([AuthorizationActions.Delete, Sections.CATEGORY])
   deleteCategory(
     @Param() id: IdStringValidator,
-    @Body() body: DeleteCategory,
+    @Body() body: DeleteCategoryValidator,
     @GetUserFromRequest() user: UserInterface
   ) {
     return this._categoryService.deleteCategoryById(user.organization.organizationId, id.id, body);

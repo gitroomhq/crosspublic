@@ -9,7 +9,7 @@ import {IdStringValidator} from "@meetqa/validators/src/general/id.string.valida
 import {GeneratorService} from "@meetqa/backend/src/services/generator.service";
 import {CheckPolicies} from "@meetqa/backend/src/services/authorization/authorization.ability";
 import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/authorization/authorization.service";
-import {CreateFaq} from "@meetqa/validators/src/faq/create.faq";
+import {CreateFaqValidator} from "@meetqa/validators/src/faq/create.faq.validator";
 import {FaqService} from "@meetqa/database/src/faq/faq.service";
 import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -17,7 +17,9 @@ import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 import extract from 'extract-json-from-string';
 import {CategoryStringValidator} from "@meetqa/validators/src/general/category.string.validator";
 import {Revalidate} from "@meetqa/backend/src/services/revalidate";
+import {ApiTags} from "@nestjs/swagger";
 
+@ApiTags('Faq')
 @Controller('/faq')
 export class FaqController {
   constructor(
@@ -71,7 +73,7 @@ export class FaqController {
   @Post('/')
   async createFaq(
     @GetUserFromRequest() user: UserInterface,
-    @Body() body: CreateFaq
+    @Body() body: CreateFaqValidator
   ) {
     return this._faqService.createFaq(user.organization.organizationId, body);
   }
@@ -81,7 +83,7 @@ export class FaqController {
   @Put('/:id')
   async updateFaq(
     @GetUserFromRequest() user: UserInterface,
-    @Body() body: CreateFaq,
+    @Body() body: CreateFaqValidator,
     @Param() params: IdStringValidator,
   ) {
     return this._faqService.updateFaq(user.organization.organizationId, params.id, body);

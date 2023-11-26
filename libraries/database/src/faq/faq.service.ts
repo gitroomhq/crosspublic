@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
 import {FaqRepository} from "@meetqa/database/src/faq/faq.repository";
-import {CreateFaq} from "@meetqa/validators/src/faq/create.faq";
+import {CreateFaqValidator} from "@meetqa/validators/src/faq/create.faq.validator";
 import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 
 @Injectable()
@@ -27,11 +27,11 @@ export class FaqService {
   totalFaqByOrganizationId(organizationId: string) {
     return this._faqRepository.totalFaqByOrganizationId(organizationId);
   }
-  createFaq(orgId: string, body: CreateFaq) {
+  createFaq(orgId: string, body: CreateFaqValidator) {
     return this._faqRepository.createFaq(orgId, body.categoryId, body.question, body.answer);
   }
 
-  updateFaq(orgId: string, id: string, body: CreateFaq) {
+  updateFaq(orgId: string, id: string, body: CreateFaqValidator) {
     return this._faqRepository.updateFaq(orgId, id, body.categoryId, body.question, body.answer);
   }
 

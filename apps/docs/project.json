@@ -4,8 +4,14 @@
   "sourceRoot": "apps/docs",
   "projectType": "application",
   "targets": {
-    "serve": {
+    "build": {
       "command": "node apps/docs/test.js",
+      "options": {
+        "type": "module"
+      }
+    },
+    "serve": {
+      "command": "cd apps/docs && npx mintlify dev",
       "options": {
         "type": "module"
       }

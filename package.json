@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:discord\" \"npm run dev:stripe\" \"npm run dev:marketing\"",
-    "docs": "npm run dev:metadata && concurrently \"npm run dev:backend\" \"npx wait-port localhost:3000 && npm run dev:docs\"",
-    "docs-run": "cd apps/docs && mintlify dev --port 3333",
+    "docs": "npm run dev:docs",
+    "generate-docs": "concurrently \"npm run dev:backend\" \"npx wait-port localhost:3000 && npm run build:docs\"",
     "scrape-docs": "cd apps/docs && npx @mintlify/scraping@latest openapi-file http://localhost:3000/docs/openapi.json -o api-reference",
     "dev:discord": "nx run-many --target=serve --projects=discord,backend,website --parallel",
     "dev:stripe": "nx run backend:stripe:development",
@@ -16,6 +16,7 @@
     "dev:marketing": "nx run marketing:serve",
     "dev:backend": "nx run backend:serve",
     "dev:docs": "nx run docs:serve",
+    "build:docs": "nx run docs:build",
     "generate-prisma": "cd libraries/database && npx prisma generate",
     "update-prisma": "cd libraries/database && npx prisma db push",
     "update-prisma-prod": "cd libraries/database && npx prisma db push --accept-data-loss"
@@ -67,7 +68,8 @@
     "tailwindcss": "^3.3.5",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "wait-port": "^1.1.0"
   },
   "dependencies": {
     "@blocknote/core": "^0.9.5",
