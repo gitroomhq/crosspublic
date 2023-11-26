@@ -22,7 +22,7 @@ exports.default = {
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:nevo@meetfaq.com"
     }
   ],
   "modeToggle": {
@@ -30,7 +30,7 @@ exports.default = {
   },
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://app.meetfaq.com"
   },
   "tabs": [
     {
@@ -46,17 +46,17 @@ exports.default = {
     {
       "name": "Documentation",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "url": "https://docs.meetfaq.com"
     },
     {
       "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "icon": "discord",
+      "url": "https://discord.gitroom.com"
     },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://meetfaq.substack.com"
     }
   ],
   "navigation": [
@@ -74,8 +74,8 @@ exports.default = {
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "twitter": "https://twitter.com/nevodavid",
+    "github": "https://github.com/github-20k/meetqa",
+    "linkedin": "https://www.linkedin.com/nevodavid"
   }
 };

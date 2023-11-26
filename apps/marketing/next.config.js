@@ -12,6 +12,16 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  redirects: async () => ([
+      {
+        permanent: true,
+        source: '/docs',
+        destination: process.env.DOCS_URL || '',
+      }
+  ]),
+  env: {
+    DOCS_URL: process.env.DOCS_URL || ''
+  }
 };
 
 const plugins = [

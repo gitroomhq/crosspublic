@@ -27,7 +27,7 @@ export class PublicCategoriesController {
     }
 
   @Get('/:slug/faqs')
-  @ApiOperation({summary: 'FAQ list', description: "Get all faqs from category slug \n\n **[WARNING]**: This endpoint requires the PRO package"})
+  @ApiOperation({summary: 'FAQ List', description: "Get all faqs from category slug \n\n **[WARNING]**: This endpoint requires the PRO package"})
   async allFaqsFromCategories(
     @Param('slug') slug: string,
     @GetOrganizationFromRequest() organization: OrganizationFromRequest
