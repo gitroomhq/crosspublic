@@ -1,86 +1,107 @@
 ---
 title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
 ---
 
-## Setup your development
+## Prerequisites
+To run the project you need to have multiple things:
+- Node.js
+- PostgresSQL
+- Discord client id and token
+- Vercel Blob Store (optional)
+- Vercel Project ID, Team ID and Token (if you want to have multi-tenancy)
+- Stripe account
+- OpenAI API key (optional)
 
-Learn how to update your docs locally and and deploy them to the public.
+### NodeJS
+A complete guide of how to install NodeJS can be found [here](https://nodejs.org/en/download/).
 
-### Edit and preview
+### PostgresSQL
+Make sure you have PostgreSQL installed on your machine.<br />
+If you don't, you can install [Docker](https://www.docker.com/products/docker-desktop) and run:
 
-<AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
-  </Accordion>
-</AccordionGroup>
+```bash
+docker run -e POSTGRES_USER=root -e POSTGRES_PASSWORD=your_password --name postgres -p 5432:5432 -d postgres
+```
 
-### Deploy your changes
+### Discord client id and token
+Head over to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.<br />
+After that, go to the bot tab and create a new bot.<br />
+Save the token and client id for later.
 
-<AccordionGroup>
+### Vercel Blob Store
+Head over to the [Vercel Blob Store](https://vercel.com/dashboard/stores) and create a new database.<br />
+Choose Blob (currently in beta) and save the token for later.
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+### Vercel Project ID, Team ID and Token
 
-</AccordionGroup>
+1. Create a new Vercel empty project.
+2. Head over to Vercel teams settings, scroll down to "Team ID" copy the id and save it for later.
+3. Head over to Vercel project settings, scroll down to "Project ID" copy the id and save it for later.
+4. Head over to Vercel account settings, scroll down to "Tokens" and create a new token, copy the token and save it for later.
 
-## Update your docs
+### Stripe account
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+1. Register a new account on [Stripe](https://stripe.com/).<br />
+2. Head over to the [Stripe API keys](https://dashboard.stripe.com/test/apikeys) and copy the Publishable and Secret key, save it for later.
+3. Head over to the [Stripe Webhooks](https://dashboard.stripe.com/test/webhooks) and create a new local webhook.<br />
+Copy the token and save it for later.
 
-<CardGroup>
+### OpenAI API key
+Create a new [OpenAI](https://platform.openai.com) account, head over to the [API keys](https://platform.openai.com/api-keys), copy the key, and save it for later.
 
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
+## Installation
 
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
+### Clone the repository
 
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
+```bash
+git clone https://github.com/github-20k/meetqa
+```
 
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
+### Copy environment variables
+Copy the `.env.example` file to `.env` and fill in the values
 
-</CardGroup>
+```bash
+DISCORD_CLIENT=<copied discord client key>
+DISCORD_TOKEN=<copied discord token key>
+DATABASE_URL=postgres://root:your_password@localhost:5432/meetfaq
+BACKEND_URL=http://localhost:3000
+NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
+BACKEND_TOKEN_PROTECTOR=<anything you want, better be long>
+OPENAI_API_KEY=<open_ai key>
+JWT_SECRET=<anything you want, better be long>
+FRONTEND_URL=http://localhost:4200
+BLOB_READ_WRITE_TOKEN=<copied blob store key>
+PROJECT_ID_VERCEL=<copied vercel project id>
+TEAM_ID_VERCEL=<copied vercel team id>
+PAYMENT_PUBLIC_KEY=<copied stripe publishable key>
+PAYMENT_SECRET_KEY=<copied stripe secret key>
+PAYMENT_SIGNING_SECRET=<copied stripe webhook token>
+MARKETING_WEBSITE_URL=http://localhost:4201
+```
+
+### Install the dependencies
+
+```bash
+npm install
+```
+
+### Generate the prisma client and run the migrations
+
+```bash
+npm run update-prisma
+```
+
+### Run the project
+
+```bash
+npm run dev
+```
+
+## Set up Discord server
+Go to Discord and create a new server.<br />
+Open the discord server link (replace client_id with your previously saved client id): <br />
+
+https://discord.com/oauth2/authorize?client_id=[client_id]&permissions=1084748200000&scope=bot
+
+Add the bot to your server.<br />
+Go to any channel and type `/signin` to enter the dashboard

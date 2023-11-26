@@ -1,71 +1,52 @@
 ---
 title: Introduction
-description: 'Welcome to the home of your new documentation'
+description: 'Welcome to MeetFAQ documentation'
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+<div className="w-full flex justify-center rounded-full">
+    <img
+      className="block dark:hidden"
+      src="/logo/light.png"
+      alt="Hero Light"
+    />
+    <img
+      className="hidden dark:block"
+      src="/logo/dark.png"
+      alt="Hero Dark"
+    />
+</div>
 
-## Setting up
+## What is MeetFAQ?
 
-The first step to world-class documentation is setting up your editing environnments.
+MeetFAQ is a tool to convert private communication into public knowledge.<br />
+Most of your users are not on your communication channels, and they are not aware of the questions that have already been asked and answered.<br />
+
+## Architecture
+MeetFAQ is an [NX monorepo](https://nx.dev) that contains the backend, control panel, discord bot, marketing website and the docs.<br /><br />
+Unlike other NX project, this project has one `.env` file that is shared between all the apps.<br />
+It makes it easier to develop and deploy the project.<br /><br />
+When deploying to websites like [Railway](https://railway.app) or [Heroku](https://heroku.com), you can use a shared environment variables for all the apps.<br />
+
+**It has three main components:**
+- `Website` - NextJS control panel to manage your FAQ, it also contains the public website of every user FAQ page.
+- `Backend` - NestJS that operate as the server for both the bots and the website.
+- `Discord` - Discord bot that listen to messages, and send them to the backend.
+
+In the future there will also be a bot of Slack, Intercom, Telegram, and more.
 
 <CardGroup cols={2}>
   <Card
-    title="Edit Your Docs"
+    title="Quick start"
     icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
+    href="/quickstart"
   >
-    Get your docs set up locally for easy development
+    Learn how to install the project and start using it
   </Card>
   <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
-  </Card>
-</CardGroup>
-
-## Make it yours
-
-Update your docs to your brand and add valuable content for the best user conversion.
-
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
+    title="How it works"
     icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
+    href="/howitworks"
   >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/showcase"
-  >
-    Check out our showcase of our favorite documentation
+    Learn the architecture of the project
   </Card>
 </CardGroup>

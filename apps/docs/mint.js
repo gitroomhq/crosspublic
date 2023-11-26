@@ -62,15 +62,15 @@ exports.default = {
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
-    },
-    {
-      "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "pages": ["introduction", "quickstart", "howitworks"]
     },
     {
       "group": "API Documentation",
       "pages": ["api-reference/introduction"]
+    },
+    {
+      "group": "Public api Documentation",
+      "pages": ["public-api-reference/introduction"]
     }
   ],
   "footerSocials": {

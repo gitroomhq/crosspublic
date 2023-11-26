@@ -1,33 +1,21 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+description: 'How to use the public API'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  The Public API is only available for the PRO plan and the self-hosted plan.
 </Note>
 
-## Welcome
+## Why public API
+if you want to build a custom implementation of the FAQ page, or you want to use it in different service, you can use the public API to get the data.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## How to use the public API
+There are two main options to use the Public API:
+1. For the **PRO plan**, go to [Settings](https://app.meetfaq.com/dashboard/settings) and copy the API key.<br />
+For every request to the `/public` API URL send a header called `apikey` with the value of the API key.
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+2. For the **self-hosted plan**, you can also pass `serverkey` to bypass package check.<br />
+The `serverkey` is the value of `BACKEND_TOKEN_PROTECTOR` in the `.env` file.
 
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+Check the endpoints on the left for API reference.

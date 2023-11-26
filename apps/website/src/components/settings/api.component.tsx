@@ -22,7 +22,7 @@ export const ApiComponent: FC<{apiKey: string}> = (props) => {
                 </div>
             </div>
             <div className="text-xs mt-2">
-                <a className="underline hover:font-bold" target="_blank" href="https://docs.meetqa.com">
+                <a className="underline hover:font-bold" target="_blank" href="https://docs.meetfaq.com/public-api-reference/introduction">
                     Read the docs
                 </a>
             </div>
