@@ -1,7 +1,7 @@
 import HeroSection from "@meetqa/marketing/components/HeroSection";
 import Features from "@meetqa/marketing/components/Features";
 // import Solution from "@meetqa/marketing/components/Solution";
-import Reviews from "@meetqa/marketing/components/Reviews";
+// import Reviews from "@meetqa/marketing/components/Reviews";
 // import Princing from "@meetqa/marketing/components/Princing";
 import {Metadata} from "next";
 
@@ -20,7 +20,7 @@ export default async function Index() {
       <HeroSection/>
       <Features />
       {/*<Solution />*/}
-      <Reviews />
+      {/*<Reviews />*/}
       {/*<Princing />*/}
     </>
   );

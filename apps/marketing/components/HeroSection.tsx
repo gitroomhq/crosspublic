@@ -50,47 +50,47 @@ export default function HeroSection() {
             <span className="text-sm font-semibold tracking-wider text-gray-800 dark:text-white">
               TRUSTED BY DEVELOPERS AT
             </span>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 brightness-75 contrast-200 grayscale dark:brightness-200 dark:contrast-0 sm:justify-between lg:gap-24">
-              <Image
-                className="h-8 w-auto lg:h-14"
-                src="images/clients/airbnb.svg"
-                loading="lazy"
-                alt="airbnb"
-                width="100"
-                height="100"
-              />
-              <Image
-                className="h-6 w-auto lg:h-10"
-                src="images/clients/google.svg"
-                loading="lazy"
-                alt="bissell"
-                width="100"
-                height="100"
-              />
-              <Image
-                className="h-6 w-auto lg:h-10"
-                src="images/clients/ge.svg"
-                loading="lazy"
-                alt="ge"
-                width="100"
-                height="100"
-              />
-              <Image
-                className="h-6 w-auto lg:h-10"
-                src="images/clients/netflix.svg"
-                loading="lazy"
-                alt="lilly"
-                width="100"
-                height="100"
-              />
-              <Image
-                className="h-8 w-auto lg:h-14"
-                src="images/clients/microsoft.svg"
-                loading="lazy"
-                alt="microsoft"
-                width="100"
-                height="100"
-              />
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-7 brightness-75 contrast-200 grayscale sm:justify-between">
+              <a href="https://www.llmonitor.com" target="_blank">
+                <Image
+                  className="h-8 w-auto lg:h-14"
+                  src="images/clients/llmonitor.svg"
+                  loading="lazy"
+                  alt="llmonitor"
+                  width="100"
+                  height="100"
+                />
+              </a>
+              <a href="https://flagsmith.com" target="_blank">
+                <Image
+                  className="h-6 w-auto lg:h-10"
+                  src="images/clients/flagsmith.svg"
+                  loading="lazy"
+                  alt="bissell"
+                  width="100"
+                  height="100"
+                />
+              </a>
+              <a href="https://firecamp.io" target="_blank">
+                <Image
+                  className="h-6 w-auto lg:h-10"
+                  src="images/clients/firecamp.svg"
+                  loading="lazy"
+                  alt="ge"
+                  width="100"
+                  height="100"
+                />
+              </a>
+              <a href="https://keephq.dev/" target="_blank">
+                <Image
+                  className="h-6 w-auto lg:h-10"
+                  src="/images/clients/keep.png"
+                  loading="lazy"
+                  alt="lilly"
+                  width="100"
+                  height="100"
+                />
+              </a>
             </div>
           </div>
         </div>

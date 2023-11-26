@@ -56,7 +56,7 @@ exports.default = {
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://meetfaq.substack.com"
+      "url": "https://gitroom.com/blog"
     }
   ],
   "navigation": [

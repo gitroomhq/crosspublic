@@ -8,7 +8,7 @@ const links: { to: string, label: string}[] = [
     label: "Documentation",
   },
   {
-    to: "https://meetfaq.substack.com",
+    to: "https://gitroom.com/blog",
     label: "Blog",
   },
 ];
@@ -28,7 +28,7 @@ export default function HeaderSection({stars}: {stars: string}) {
             />
             <div className="relative z-20 flex w-full justify-between md:px-0 lg:w-max">
               <a
-                href="components#home"
+                href="/"
                 aria-label="logo"
                 className="flex items-center space-x-2"
               >
@@ -38,7 +38,7 @@ export default function HeaderSection({stars}: {stars: string}) {
                   {/*<div className="h-6 w-2 bg-primary"></div>*/}
                 </div>
                 <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                  MeetFAQ
+                  MeetFAQ <span className="text-xs">(By Gitroom)</span>
                 </span>
               </a>
 
@@ -74,6 +74,7 @@ export default function HeaderSection({stars}: {stars: string}) {
                     <li key={index}>
                       <a
                         href={link.to}
+                        target="_blank"
                         className="block transition hover:text-primary dark:hover:text-white md:px-4"
                       >
                         <span>{link.label}</span>
