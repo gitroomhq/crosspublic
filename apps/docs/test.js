@@ -27,4 +27,6 @@ config();
   })));
 
   writeFileSync('./mint.json', JSON.stringify(prod, null, 2));
+  const text = await (await fetch(process.env.BACKEND_URL + '/docs-json')).text();
+  writeFileSync('./openapi.json', text);
 })();
