@@ -13,6 +13,7 @@ export default function Page() {
     if (headersList.get('auth')) {
         return redirect(process.env.FRONTEND_URL!);
     }
+
     return (
         <>
             <div className="flex-1 pt-40">
