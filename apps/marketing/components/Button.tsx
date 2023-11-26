@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default function Button(props: { Element: string; label: string; type?: string; emphasis: string; to?: string; ui: string }) {
+export default function Button(props: { Element: string; label: any; type?: string; emphasis: string; to?: string; ui: string }) {
   const { Element, label, type, emphasis, to, ui } = props;
 
   const spanElement = React.createElement("span", {

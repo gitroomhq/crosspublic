@@ -17,16 +17,17 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const {stargazers_count} = await (await fetch('https://api.github.com/repos/github-20k/meetqa')).json();
-
+  const {stargazers_count} = await (await fetch('https://api.github.com/repos/github-20k/meetqa', {cache: 'force-cache', next: {revalidate}})).json();
   return (
     <html lang="en">
       <body className={inter.className}>
         <HeaderSection stars={stargazers_count} />
-        <main className="mb-40">
-          {children}
-        </main>
-        <Footer />
+        <div className="min-h-screen flex flex-col gap-[40px]">
+          <main className="flex-1 flex flex-col">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

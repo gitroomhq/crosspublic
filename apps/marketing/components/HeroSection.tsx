@@ -25,8 +25,8 @@ export default function HeroSection() {
                   <Button
                     Element="a"
                     emphasis="primary"
-                    label="Start with Discord"
-                    to={`https://discord.com/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT}&permissions=1084748200000&scope=bot`}
+                    label="Get started"
+                    to="/login"
                     ui="max"
                   />
                 </div>
