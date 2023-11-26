@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import {fetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
+import {removeSubdomain} from "@meetqa/helpers/src/subdomain/subdomain.management";
 
 export const getOrg = (url: string) => {
   const frontEndUrl = new URL(process.env.MARKETING_WEBSITE_URL!).host;
@@ -68,7 +69,7 @@ export async function middleware(request: NextRequest) {
       sameSite: false,
       // secure: true,
       httpOnly: true,
-      domain: '.' + new URL(process.env.FRONTEND_URL!).hostname
+      domain: '.' + new URL(removeSubdomain(process.env.FRONTEND_URL!)).hostname
     });
 
     return response;
