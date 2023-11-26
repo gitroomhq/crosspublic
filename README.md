@@ -41,13 +41,10 @@ This is a monorepo built with NX
 - `discord` - NestJS project of the Discord bot.
 - `website` - NextJS project of the MeetFAQ dashboard and the customer website.
 - `marketing` - NextJS project of the marketing website.
+- `docs` - Mintlify documentation.
 
 ## ⚙️ Installation
-1. Clone the project
-2. Deploy a new Postgres database.
-3. Copy `.env.example` to `.env` and fill in the variable.
-4. Run `npm run update-prisma` to create the new schema.
-5. Run `npm run dev` to start the project.
+To install the project, check our [Quickstart guide](https://docs.meetfaq.com/quickstart).
 
 ## 🍾 Contact me
 
