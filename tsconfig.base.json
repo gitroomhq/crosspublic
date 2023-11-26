@@ -24,6 +24,7 @@
       "@meetqa/validators/*": ["libraries/validators/*"],
       "@meetqa/website/*": ["apps/website/*"],
       "@meetqa/marketing/*": ["apps/marketing/*"],
+      "@meetqa/docs/*": ["apps/docs/*"],
     },
     "resolveJsonModule": true
   },

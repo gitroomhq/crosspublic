@@ -15,7 +15,10 @@
       "to": "#9333EA"
     }
   },
-  "openapi": "https://api.meetfaq.com/openapi.json",
+  "openapi": "https://api.meetfaq.com/docs/openapi.json",
+  "api": {
+    "baseUrl": "https://api.meetfaq.com"
+  },
   "topbarLinks": [
     {
       "name": "Support",
@@ -31,7 +34,11 @@
   },
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "Public API Reference",
+      "url": "public-api-reference"
+    },
+    {
+      "name": "Internal API Reference (Self-Hosted)",
       "url": "api-reference"
     }
   ],
@@ -55,22 +62,102 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": [
+        "introduction",
+        "quickstart",
+        "development"
+      ]
     },
     {
       "group": "Essentials",
-      "pages": ["essentials/markdown", "essentials/code", "essentials/images", "essentials/settings", "essentials/navigation"]
+      "pages": [
+        "essentials/markdown",
+        "essentials/code",
+        "essentials/images",
+        "essentials/settings",
+        "essentials/navigation"
+      ]
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "pages": [
+        "api-reference/introduction"
+      ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Authentication",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/custom/authentication/authenticate-or-authorize-a-new-user"
+      ]
+    },
+    {
+      "group": "Stripe",
+      "pages": [
+        "api-reference/custom/stripe/stripe-webhook"
+      ]
+    },
+    {
+      "group": "Public",
+      "pages": [
+        "public-api-reference/custom/public/get-categories",
+        "public-api-reference/custom/public/get-faq-by-category-slug",
+        "public-api-reference/custom/public/get-faq-by-slug"
+      ]
+    },
+    {
+      "group": "Users",
+      "pages": [
+        "api-reference/custom/users/get-userssign-in",
+        "api-reference/custom/users/get-usersself",
+        "api-reference/custom/users/post-usersrevalidate"
+      ]
+    },
+    {
+      "group": "Faqs",
+      "pages": [
+        "api-reference/custom/faqs/get-faq",
+        "api-reference/custom/faqs/put-faq",
+        "api-reference/custom/faqs/delete-faq",
+        "api-reference/custom/faqs/post-faqorder",
+        "api-reference/custom/faqs/put-faq-category",
+        "api-reference/custom/faqs/post-faq",
+        "api-reference/custom/faqs/post-faqjob",
+        "api-reference/custom/faqs/post-faqjobsquestions",
+        "api-reference/custom/faqs/post-faqanswers",
+        "api-reference/custom/faqs/get-faqjobs"
+      ]
+    },
+    {
+      "group": "Categories",
+      "pages": [
+        "api-reference/custom/categories/post-categoriesorder",
+        "api-reference/custom/categories/get-categories",
+        "api-reference/custom/categories/post-categories",
+        "api-reference/custom/categories/get-categoriesfaq",
+        "api-reference/custom/categories/get-categories-1",
+        "api-reference/custom/categories/put-categories",
+        "api-reference/custom/categories/delete-categories"
+      ]
+    },
+    {
+      "group": "Settings",
+      "pages": [
+        "api-reference/custom/settings/get-settings",
+        "api-reference/custom/settings/post-settingscheck-subdomain",
+        "api-reference/custom/settings/get-settingscheck-domain",
+        "api-reference/custom/settings/delete-settingsdelete-domain",
+        "api-reference/custom/settings/post-settingsdomain",
+        "api-reference/custom/settings/post-settingssubdomain"
+      ]
+    },
+    {
+      "group": "Billing",
+      "pages": [
+        "api-reference/custom/billing/get-billingcheck",
+        "api-reference/custom/billing/post-billingsubscribe",
+        "api-reference/custom/billing/post-billingmodify",
+        "api-reference/custom/billing/get-billing",
+        "api-reference/custom/billing/post-billingcancel"
       ]
     }
   ],

@@ -1,0 +1,15 @@
+{
+  "name": "docs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/docs",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "command": "node apps/docs/test.js",
+      "options": {
+        "type": "module"
+      }
+    }
+  },
+  "tags": []
+}
