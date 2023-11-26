@@ -5,7 +5,7 @@ export const publicRequestFetch = async (domain: string): Promise<{redirect?: fa
   const getDomainSubdomain = domain.indexOf('.') ? {subdomain: domain.split('.')[0].replace('www', '')} : {domain};
   const {data: {apiKey}} = await customFetchBackend().get(
     `/public/organization?${new URLSearchParams(getDomainSubdomain as never).toString()}`,
-    {cache: 'force-cache', next: {tags: [domain]}}
+    {cache: 'force-cache', next: {tags: [domain]}, headers: {serverkey: process.env.BACKEND_TOKEN_PROTECTOR!}}
   );
 
   if (!apiKey) {

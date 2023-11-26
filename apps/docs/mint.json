@@ -5,7 +5,7 @@
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#9333EA",
     "light": "#9333EA",
@@ -29,8 +29,8 @@
     "default": "light"
   },
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://app.meetfaq.com"
+    "type": "github",
+    "url": "https://github.com/github-20k/meetqa"
   },
   "tabs": [
     {

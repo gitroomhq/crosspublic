@@ -1,4 +1,4 @@
-import {Body, Controller, Post} from "@nestjs/common";
+import {Body, Controller, Headers, Post} from "@nestjs/common";
 import {OrganizationCreateValidator} from "@meetqa/validators/src/organizations/organization.create.validator";
 import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
 import {UserService} from "@meetqa/database/src/users/user.service";
@@ -13,7 +13,13 @@ export class AuthController {
   }
   @ApiOperation({summary: 'Get or create organization', description: 'This will mostly be used by the different chat app to SSO without username and password'})
   @Post('/')
-  async getOrCreateOrg(@Body() body: OrganizationCreateValidator) {
+  async getOrCreateOrg(
+      @Body() body: OrganizationCreateValidator,
+      @Headers('serverkey') serverkey: string
+  ) {
+    if (serverkey !== process.env.BACKEND_TOKEN_PROTECTOR) {
+      return 401;
+    }
     const org= await this._organizationService.getOrCreateOrg(body);
     return this._userService.getOrCreateUser(org.id, body);
   }

@@ -1,5 +1,5 @@
 import {SubscriptionService} from "@meetqa/database/src/subscription/subscription.service";
-import {Ability, AbilityBuilder, AbilityClass, ExtractSubjectType} from "@casl/ability";
+import {Ability, AbilityBuilder, AbilityClass} from "@casl/ability";
 import {FaqService} from "@meetqa/database/src/faq/faq.service";
 import {CategoryService} from "@meetqa/database/src/categories/category.service";
 import {DomainService} from "@meetqa/database/src/domains/domain.service";

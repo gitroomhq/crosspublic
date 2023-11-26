@@ -9,10 +9,11 @@ import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 import {IdStringValidator} from "@meetqa/validators/src/general/id.string.validator";
 import {DeleteCategoryValidator} from "@meetqa/validators/src/categories/delete.category.validator";
 import {Revalidate} from "@meetqa/backend/src/services/revalidate";
-import {ApiTags} from "@nestjs/swagger";
+import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Categories')
 @Controller('/categories')
+@ApiHeaders([{name: 'apikey', required: true}])
 export class CategoriesController {
   constructor(
     private _categoryService: CategoryService

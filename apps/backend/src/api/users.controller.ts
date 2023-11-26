@@ -5,10 +5,11 @@ import {AuthService} from "@meetqa/helpers/src/auth/auth.service";
 import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
 import * as process from "process";
 import {RevalidateService} from "@meetqa/helpers/src/revalidate/revalidate.service";
-import {ApiTags} from "@nestjs/swagger";
+import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Users')
 @Controller('/users')
+@ApiHeaders([{name: 'apikey', required: true}])
 export class UsersController {
   constructor(
     private _organizationService: OrganizationService,

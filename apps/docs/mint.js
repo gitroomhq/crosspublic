@@ -5,7 +5,7 @@ exports.default = {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "colors": {
     "primary": "#9333EA",
     "light": "#9333EA",
@@ -29,8 +29,8 @@ exports.default = {
     "default": "light"
   },
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://app.meetfaq.com"
+    "type": "github",
+    "url": "https://github.com/github-20k/meetqa"
   },
   "tabs": [
     {

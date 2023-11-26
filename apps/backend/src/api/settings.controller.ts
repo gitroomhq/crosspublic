@@ -10,10 +10,11 @@ import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/autho
 import {Revalidate} from "@meetqa/backend/src/services/revalidate";
 import {RevalidateService} from "@meetqa/helpers/src/revalidate/revalidate.service";
 import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
-import {ApiTags} from "@nestjs/swagger";
+import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Settings')
 @Controller('/settings')
+@ApiHeaders([{name: 'apikey', required: true}])
 export class SettingsController {
   constructor(
     private readonly _settingsService: SettingsService,

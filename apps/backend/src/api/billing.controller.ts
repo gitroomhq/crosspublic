@@ -5,10 +5,11 @@ import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
 import {BillingSubscribeValidator} from "@meetqa/validators/src/billing/billing.subscribe.validator";
 import {StripeService} from "@meetqa/helpers/src/stripe/stripe.service";
 import {IdStringValidator} from "@meetqa/validators/src/general/id.string.validator";
-import {ApiOperation, ApiTags} from "@nestjs/swagger";
+import {ApiHeaders, ApiOperation, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Billings')
 @Controller('/billing')
+@ApiHeaders([{name: 'apikey', required: true}])
 export class BillingController {
   constructor(
     private _subscriptionService: SubscriptionService,

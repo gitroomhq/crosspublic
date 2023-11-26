@@ -17,10 +17,11 @@ import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
 import extract from 'extract-json-from-string';
 import {CategoryStringValidator} from "@meetqa/validators/src/general/category.string.validator";
 import {Revalidate} from "@meetqa/backend/src/services/revalidate";
-import {ApiTags} from "@nestjs/swagger";
+import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Faq')
 @Controller('/faq')
+@ApiHeaders([{name: 'apikey', required: true}])
 export class FaqController {
   constructor(
     private _jobsService: JobsService,

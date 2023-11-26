@@ -1,6 +1,5 @@
 ---
 title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
 ---
 
 <Note>
@@ -10,24 +9,10 @@ description: 'Example section for showcasing API endpoints'
 
 ## Welcome
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## How to use the API
+There are two main options to use the API:
+1. You can send an header called `auth` with the token you received when you logged in.
+2. You can send a cookie called `auth` with the token you received when you logged in.
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
-
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+The dashboard mainly uses the cookie method to authenticate requests.<br />
+But if you want to test the API with Swagger or Postman, you can use the `auth` header.

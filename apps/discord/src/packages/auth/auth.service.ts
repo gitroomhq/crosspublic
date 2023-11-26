@@ -10,6 +10,10 @@ export class AuthService {
       name: interaction.user.globalName,
       internalId: interaction.user.id,
       isOwner: interaction.user.id === (await interaction.guild.fetch()).ownerId
+    }, {
+      headers: {
+        serverkey: process.env.BACKEND_TOKEN_PROTECTOR
+      }
     })).data;
   }
 }
