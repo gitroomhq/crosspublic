@@ -3,8 +3,8 @@ import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
 import {UserContext} from "@meetqa/website/src/helpers/user.context";
 import Image from "next/image";
 import {FetchContext} from "@meetqa/website/src/helpers/fetch.context";
-import {SettingsIcon} from "@meetqa/website/src/components/icons/settings.icon";
-import {BellIcon} from "@meetqa/website/src/components/icons/bell.icon";
+// import {SettingsIcon} from "@meetqa/website/src/components/icons/settings.icon";
+// import {BellIcon} from "@meetqa/website/src/components/icons/bell.icon";
 import {UserComponent} from "@meetqa/website/src/components/user/user.component";
 import {SideMenu} from "@meetqa/website/src/components/layout/side.menu";
 import {clsx} from "clsx";
@@ -39,12 +39,12 @@ export const LayoutComponent: FC<{children: ReactNode, user: UserInterface, clas
                           <div className="text-secondary text-main font-main flex-1">
                             <Title />
                           </div>
-                          <div>
-                            <SettingsIcon />
-                          </div>
-                          <div>
-                            <BellIcon />
-                          </div>
+                          {/*<div>*/}
+                          {/*  <SettingsIcon />*/}
+                          {/*</div>*/}
+                          {/*<div>*/}
+                          {/*  <BellIcon />*/}
+                          {/*</div>*/}
                           <div className="w-[1px] bg-line h-[24px]" />
                           <div>
                             <UserComponent />
