@@ -2,7 +2,6 @@ import Button from "./Button";
 import Container from "./Container";
 import Image from "next/image.js";
 
-
 export default function HeroSection() {
   return (
     <div className="relative overflow-hidden dark:bg-darker lg:overflow-auto" id="home">
