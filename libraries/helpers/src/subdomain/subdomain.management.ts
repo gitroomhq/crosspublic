@@ -1,4 +1,4 @@
-import {allTwoLevelSubdomain} from "@meetqa/helpers/src/subdomain/all.two.level.subdomain";
+import {allTwoLevelSubdomain} from "./all.two.level.subdomain";
 
 export function removeSubdomain(domain: string) {
     // Split the domain into its parts
