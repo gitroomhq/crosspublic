@@ -12,10 +12,10 @@ export function removeSubdomain(domain: string) {
     if (parts.length > 2) {
         const lastTwo = parts.slice(-2).join('.');
         if (allTwoLevelSubdomain.includes(lastTwo)) {
-            return parts.slice(-3).join('.'); // Return the last three parts for known second-level domains
+            return 'https://' + parts.slice(-3).join('.'); // Return the last three parts for known second-level domains
         }
     }
 
     // Return the last two parts for standard domains
-    return parts.slice(-2).join('.');
+    return 'https://' + parts.slice(-2).join('.');
 }

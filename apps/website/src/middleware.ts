@@ -64,8 +64,6 @@ export async function middleware(request: NextRequest) {
       }
     });
 
-    console.log(removeSubdomain(process.env.FRONTEND_URL!));
-
     response.cookies.set('auth', auth || cookies, {
       path: '/',
       sameSite: false,
