@@ -75,7 +75,7 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  return NextResponse.redirect(`${process.env.FRONTEND_URL}/login`);
+  return NextResponse.redirect(`${process.env.MARKETING_WEBSITE_URL}/login`);
 }
 
 // See "Matching Paths" below to learn more
