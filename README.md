@@ -9,7 +9,7 @@
 
 <br/>
 
-<h1 align="center">Support Channels into a Public FAQ</h1>
+<h1 align="center">Support Channels into a Public FAQ with AI</h1>
 
 <div align="center">
 Not all of your customers are on your support channels.<br />
