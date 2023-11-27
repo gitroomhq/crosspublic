@@ -13,7 +13,7 @@
 
 <div align="center">
 Not all of your customers are on your support channels.<br />
-Extract your FAQ to make it available to everyone.
+Extract your customer's conversation into an FAQ to make it available to everyone.
 </div>
 
   <p align="center">
