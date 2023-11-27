@@ -20,7 +20,7 @@ Extract your FAQ to make it available to everyone.
     <br />
     <a href="https://meetfaq.com/docs"><strong>Explore the docs »</strong></a>
     <br/><br/>
-    <a href="https://discord.com/oauth2/authorize?client_id=1176420936233267251&permissions=1084748200000&scope=bot">Register to the cloud</a>
+    <a href="https://meetfaq.com/login">Register to the cloud</a>
     ·
     <a href="https://discord.gitroom.com">Join our Discord</a>
   </p>
