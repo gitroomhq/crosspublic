@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
-import {OrganizationRepository} from "@meetqa/database/src/organization/organization.repository";
-import {OrganizationCreateValidator} from "@meetqa/validators/src/organizations/organization.create.validator";
-import {DomainSubDomainOrganizationValidator} from "@meetqa/validators/src/public/domain.subDomain.organization.validator";
+import {OrganizationRepository} from "@meetfaq/database/src/organization/organization.repository";
+import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
+import {DomainSubDomainOrganizationValidator} from "@meetfaq/validators/src/public/domain.subDomain.organization.validator";
 
 @Injectable()
 export class OrganizationService {

@@ -4,8 +4,8 @@ import {createContext, ReactNode, useContext} from "react";
 import {HttpStatus} from "@nestjs/common";
 import Swal from 'sweetalert2'
 import withReactContent from "sweetalert2-react-content";
-import {Payment} from "@meetqa/website/src/components/payment/payment";
-import {revalidateDomain} from "@meetqa/website/src/helpers/revalidate.domain";
+import {Payment} from "@meetfaq/website/src/components/payment/payment";
+import {revalidateDomain} from "@meetfaq/website/src/helpers/revalidate.domain";
 const MySwal = withReactContent(Swal);
 
 export const customFetch = {

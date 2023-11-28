@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import {fetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
-import {removeSubdomain} from "@meetqa/helpers/src/subdomain/subdomain.management";
+import {fetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
+import {removeSubdomain} from "@meetfaq/helpers/src/subdomain/subdomain.management";
 
 export const getOrg = (url: string) => {
   const frontEndUrl = new URL(process.env.MARKETING_WEBSITE_URL!).host;
@@ -60,6 +60,7 @@ export async function middleware(request: NextRequest) {
     const response = NextResponse.next({
       headers: {
         token:  auth || cookies,
+        pricing: String(!!process.env.PAYMENT_PUBLIC_KEY),
         user: JSON.stringify(fetch)
       }
     });

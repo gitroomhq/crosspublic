@@ -1,26 +1,29 @@
 import {FC, ReactNode} from "react";
-import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
-import {UserContext} from "@meetqa/website/src/helpers/user.context";
+import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {UserContext} from "@meetfaq/website/src/helpers/user.context";
 import Image from "next/image";
-import {FetchContext} from "@meetqa/website/src/helpers/fetch.context";
-// import {SettingsIcon} from "@meetqa/website/src/components/icons/settings.icon";
-// import {BellIcon} from "@meetqa/website/src/components/icons/bell.icon";
-import {UserComponent} from "@meetqa/website/src/components/user/user.component";
-import {SideMenu} from "@meetqa/website/src/components/layout/side.menu";
+import {FetchContext} from "@meetfaq/website/src/helpers/fetch.context";
+// import {SettingsIcon} from "@meetfaq/website/src/components/icons/settings.icon";
+// import {BellIcon} from "@meetfaq/website/src/components/icons/bell.icon";
+import {UserComponent} from "@meetfaq/website/src/components/user/user.component";
+import {SideMenu} from "@meetfaq/website/src/components/layout/side.menu";
 import {clsx} from "clsx";
 import dynamic from "next/dynamic";
-import {Title, TitleProvider} from "@meetqa/website/src/helpers/title.helper";
-import {NiceModalProvider} from "@meetqa/website/src/components/utils/nice.modal.provider";
-import {Toaster} from "@meetqa/website/src/components/layout/toaster";
+import {Title, TitleProvider} from "@meetfaq/website/src/helpers/title.helper";
+import {NiceModalProvider} from "@meetfaq/website/src/components/utils/nice.modal.provider";
+import {Toaster} from "@meetfaq/website/src/components/layout/toaster";
+import {headers} from "next/dist/client/components/headers";
 
-const LayoutLoad = dynamic(() => import('@meetqa/website/src/components/layout/layout.load'), { ssr: false });
+const LayoutLoad = dynamic(() => import('@meetfaq/website/src/components/layout/layout.load'), { ssr: false });
 
 export const LayoutComponent: FC<{children: ReactNode, user: UserInterface, className: string, flex?: 'flex-col' | 'flex-row'}> = (props) => {
+  const pricing = Boolean(headers().get('pricing') === 'true');
+
   const {children, user, flex, className} = props;
   return (
       <html lang="en">
         <body>
-          <UserContext user={user}>
+          <UserContext user={user} pricing={pricing}>
             <FetchContext>
               <TitleProvider>
                 <NiceModalProvider>
@@ -31,7 +34,7 @@ export const LayoutComponent: FC<{children: ReactNode, user: UserInterface, clas
                       <div className="flex items-center flex-col w-full mt-[25px]">
                         <Image src="/logobot.png" alt="logo" width={40} height={40} />
                       </div>
-                      <SideMenu />
+                      <SideMenu pricing={pricing} />
                     </div>
                     <div className="min-h-full flex-1 px-[50px] flex justify-center">
                       <div className="max-w-[1530px] w-full flex flex-col">

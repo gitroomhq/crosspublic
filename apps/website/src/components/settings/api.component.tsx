@@ -2,7 +2,7 @@
 
 import { Input } from "../utils/input"
 import {FC, useCallback} from "react";
-import {Button} from "@meetqa/website/src/components/utils/button";
+import {Button} from "@meetfaq/website/src/components/utils/button";
 import {toast} from "react-toastify";
 
 export const ApiComponent: FC<{apiKey: string}> = (props) => {

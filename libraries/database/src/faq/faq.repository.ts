@@ -1,6 +1,6 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
+import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
 
 @Injectable()
 export class FaqRepository {

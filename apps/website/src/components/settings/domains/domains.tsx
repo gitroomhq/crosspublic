@@ -3,9 +3,9 @@
 import {useCallback, useState} from 'react'
 import LoadingDots from './components/loading-dots'
 import DomainCard from './components/domain-card'
-import {Input} from "@meetqa/website/src/components/utils/input";
-import {Button} from "@meetqa/website/src/components/utils/button";
-import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
+import {Input} from "@meetfaq/website/src/components/utils/input";
+import {Button} from "@meetfaq/website/src/components/utils/button";
+import {useFetch} from "@meetfaq/website/src/helpers/fetch.context";
 import {SubmitHandler, useForm} from "react-hook-form";
 
 export default function Domains({domains} : {domains: any[]}) {

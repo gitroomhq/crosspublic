@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {DomainRepository} from "@meetqa/database/src/domains/domain.repository";
+import {DomainRepository} from "@meetfaq/database/src/domains/domain.repository";
 
 @Injectable()
 export class DomainService {

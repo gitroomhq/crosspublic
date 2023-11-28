@@ -1,8 +1,8 @@
 import '../../styles.css';
 import {Metadata} from "next";
 import { Inter } from 'next/font/google'
-import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
-import {ClaimThisPageComponent} from "@meetqa/website/src/components/claim/claim.this.page.component";
+import {publicRequestFetch} from "@meetfaq/website/src/helpers/get.api.key";
+import {ClaimThisPageComponent} from "@meetfaq/website/src/components/claim/claim.this.page.component";
 import {redirect} from "next/navigation";
 
 // If loading a variable font, you don't need to specify the font weight

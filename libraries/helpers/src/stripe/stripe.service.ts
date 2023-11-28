@@ -1,10 +1,10 @@
 import Stripe from 'stripe';
 import {Injectable} from "@nestjs/common";
-import {SubscriptionService} from "@meetqa/database/src/subscription/subscription.service";
+import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
 import {Organization} from "@prisma/client";
-import {BillingSubscribeValidator} from "@meetqa/validators/src/billing/billing.subscribe.validator";
-import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
-import {makeId} from "@meetqa/helpers/src/makeid/make.id";
+import {BillingSubscribeValidator} from "@meetfaq/validators/src/billing/billing.subscribe.validator";
+import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {makeId} from "@meetfaq/helpers/src/makeid/make.id";
 
 const stripe = new Stripe(process.env.PAYMENT_SECRET_KEY!, {
   apiVersion: '2023-10-16'

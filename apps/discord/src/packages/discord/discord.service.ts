@@ -1,9 +1,9 @@
 import {Injectable} from "@nestjs/common";
 import {Client, GatewayIntentBits, Interaction, Partials, REST, Routes} from 'discord.js';
-import {CommandsInterface} from "@meetqa/discord/src/packages/commands/commands.interface";
-import {customFetchBackend} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
-import {AuthService} from "@meetqa/discord/src/packages/auth/auth.service";
-import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
+import {CommandsInterface} from "@meetfaq/discord/src/packages/commands/commands.interface";
+import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
+import {AuthService} from "@meetfaq/discord/src/packages/auth/auth.service";
+import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 

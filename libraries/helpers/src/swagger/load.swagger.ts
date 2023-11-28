@@ -1,8 +1,8 @@
 import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 import {INestApplication} from "@nestjs/common";
-// import load from '@meetqa/backend/src/metadata';
+// import load from '@meetfaq/backend/src/metadata';
 
-export const loadSwagger = async (app: INestApplication) => {
+export const loadSwagger = (app: INestApplication) => {
   const config = new DocumentBuilder()
     .setTitle('MeetQA Swagger file')
     .setDescription('API description')

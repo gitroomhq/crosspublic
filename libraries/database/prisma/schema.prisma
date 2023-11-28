@@ -21,7 +21,13 @@ model Organization {
   subscriptions    Subscription[]
   categories       Category[]
   domains          Domains[]
-  apiKey           String? @default(cuid()) @unique
+  apiKey           String?  @default(cuid()) @unique
+  primaryColor     String?  @default("#3B1C60")
+  secondaryColor   String?  @default("#FFFFFF")
+  topBarColor      String?  @default("#FFFFFF")
+  pageColor        String?  @default("#000000")
+  removeBranding   Boolean? @default(false)
+  brandingText     String?  @default("Powered by MeetFAQ")
 }
 
 enum Role {

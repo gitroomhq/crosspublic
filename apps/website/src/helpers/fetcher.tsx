@@ -1,4 +1,4 @@
-import {customFetch} from "@meetqa/website/src/helpers/fetch.context";
+import {customFetch} from "@meetfaq/website/src/helpers/fetch.context";
 
 const fetcher = async (...args: any[]) => {
     // @ts-ignore

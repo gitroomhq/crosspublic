@@ -1,7 +1,7 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {OrganizationCreateValidator} from "@meetqa/validators/src/organizations/organization.create.validator";
-import {DomainSubDomainOrganizationValidator} from "@meetqa/validators/src/public/domain.subDomain.organization.validator";
+import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
+import {DomainSubDomainOrganizationValidator} from "@meetfaq/validators/src/public/domain.subDomain.organization.validator";
 import slugify from "slugify";
 
 @Injectable()

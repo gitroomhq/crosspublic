@@ -1,22 +1,22 @@
 import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
-import {GetUserFromRequest} from "@meetqa/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
-import {AnsweredQuestion, MessagesListValidator, OnlyMessagesList} from "@meetqa/validators/src/messages/messages.list.validator";
-import {JobsService} from "@meetqa/database/src/jobs/jobs.service";
-import {AuthService} from "@meetqa/helpers/src/auth/auth.service";
-import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
-import {IdStringValidator} from "@meetqa/validators/src/general/id.string.validator";
-import {GeneratorService} from "@meetqa/backend/src/services/generator.service";
-import {CheckPolicies} from "@meetqa/backend/src/services/authorization/authorization.ability";
-import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/authorization/authorization.service";
-import {CreateFaqValidator} from "@meetqa/validators/src/faq/create.faq.validator";
-import {FaqService} from "@meetqa/database/src/faq/faq.service";
-import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
+import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
+import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {AnsweredQuestion, MessagesListValidator, OnlyMessagesList} from "@meetfaq/validators/src/messages/messages.list.validator";
+import {JobsService} from "@meetfaq/database/src/jobs/jobs.service";
+import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
+import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {IdStringValidator} from "@meetfaq/validators/src/general/id.string.validator";
+import {GeneratorService} from "@meetfaq/backend/src/services/generator.service";
+import {CheckPolicies} from "@meetfaq/backend/src/services/authorization/authorization.ability";
+import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
+import {CreateFaqValidator} from "@meetfaq/validators/src/faq/create.faq.validator";
+import {FaqService} from "@meetfaq/database/src/faq/faq.service";
+import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import extract from 'extract-json-from-string';
-import {CategoryStringValidator} from "@meetqa/validators/src/general/category.string.validator";
-import {Revalidate} from "@meetqa/backend/src/services/revalidate";
+import {CategoryStringValidator} from "@meetfaq/validators/src/general/category.string.validator";
+import {Revalidate} from "@meetfaq/backend/src/services/revalidate";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Faq')

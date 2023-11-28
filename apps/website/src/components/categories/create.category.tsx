@@ -1,10 +1,10 @@
 "use client";
 
-import {wrapModal} from "@meetqa/website/src/helpers/wrap.modal";
+import {wrapModal} from "@meetfaq/website/src/helpers/wrap.modal";
 import {useForm} from "react-hook-form";
-import {Editor} from "@meetqa/website/src/helpers/editor";
-import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
-import {Button} from "@meetqa/website/src/components/utils/button";
+import {Editor} from "@meetfaq/website/src/helpers/editor";
+import {useFetch} from "@meetfaq/website/src/helpers/fetch.context";
+import {Button} from "@meetfaq/website/src/components/utils/button";
 import {useCallback, useEffect, useState} from "react";
 
 export const CreateCategory = wrapModal<{cat?: string}>((props) => {

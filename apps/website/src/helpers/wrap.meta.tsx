@@ -1,6 +1,6 @@
 import {JSX, ComponentType} from "react";
 import {Metadata} from "next";
-import {ChangeTitle} from "@meetqa/website/src/helpers/title.helper";
+import {ChangeTitle} from "@meetfaq/website/src/helpers/title.helper";
 
 interface Title {
   metadata: Metadata;

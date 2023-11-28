@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { DiscordService } from "@meetqa/discord/src/packages/discord/discord.service";
-import {CommandsModule} from "@meetqa/discord/src/packages/commands/commands.module";
-import {AuthService} from "@meetqa/discord/src/packages/auth/auth.service";
+import { DiscordService } from "@meetfaq/discord/src/packages/discord/discord.service";
+import {CommandsModule} from "@meetfaq/discord/src/packages/commands/commands.module";
+import {AuthService} from "@meetfaq/discord/src/packages/auth/auth.service";
 
 @Module({
   imports: [CommandsModule],

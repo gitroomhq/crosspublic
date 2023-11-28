@@ -1,6 +1,6 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {OrganizationCreateValidator} from "@meetqa/validators/src/organizations/organization.create.validator";
+import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
 
 @Injectable()
 export class UserRepository {

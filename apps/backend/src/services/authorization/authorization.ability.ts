@@ -1,5 +1,5 @@
 import {SetMetadata} from "@nestjs/common";
-import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/authorization/authorization.service";
+import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
 
 export const CHECK_POLICIES_KEY = 'check_policy';
 export type AbilityPolicy = [AuthorizationActions, Sections];

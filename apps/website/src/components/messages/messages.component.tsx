@@ -2,7 +2,7 @@ import {FC} from "react";
 import Markdown from "react-markdown";
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneLight} from 'react-syntax-highlighter/dist/esm/styles/prism'
-import {Block} from "@meetqa/website/src/components/utils/block";
+import {Block} from "@meetfaq/website/src/components/utils/block";
 
 function convertImageLinksToImgTags(text: string) {
   // Regular expression to match image URLs (including those with query strings)

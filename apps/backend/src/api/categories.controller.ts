@@ -1,14 +1,14 @@
 import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
-import {CategoryService} from "@meetqa/database/src/categories/category.service";
-import {GetUserFromRequest} from "@meetqa/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
-import {CheckPolicies} from "@meetqa/backend/src/services/authorization/authorization.ability";
-import {AuthorizationActions, Sections} from "@meetqa/backend/src/services/authorization/authorization.service";
-import {CreateCategoryValidator} from "@meetqa/validators/src/categories/create.category.validator";
-import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
-import {IdStringValidator} from "@meetqa/validators/src/general/id.string.validator";
-import {DeleteCategoryValidator} from "@meetqa/validators/src/categories/delete.category.validator";
-import {Revalidate} from "@meetqa/backend/src/services/revalidate";
+import {CategoryService} from "@meetfaq/database/src/categories/category.service";
+import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
+import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {CheckPolicies} from "@meetfaq/backend/src/services/authorization/authorization.ability";
+import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
+import {CreateCategoryValidator} from "@meetfaq/validators/src/categories/create.category.validator";
+import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
+import {IdStringValidator} from "@meetfaq/validators/src/general/id.string.validator";
+import {DeleteCategoryValidator} from "@meetfaq/validators/src/categories/delete.category.validator";
+import {Revalidate} from "@meetfaq/backend/src/services/revalidate";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Categories')

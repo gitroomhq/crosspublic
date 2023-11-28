@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {SubscriptionRepository} from "@meetqa/database/src/subscription/subscription.repository";
+import {SubscriptionRepository} from "@meetfaq/database/src/subscription/subscription.repository";
 
 @Injectable()
 export class SubscriptionService {

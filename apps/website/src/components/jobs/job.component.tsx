@@ -1,10 +1,10 @@
 "use client";
 
 import {Jobs, Category} from '@prisma/client';
-import {MessagesComponent} from "@meetqa/website/src/components/messages/messages.component";
+import {MessagesComponent} from "@meetfaq/website/src/components/messages/messages.component";
 import {useCallback, useState} from "react";
-import {MessageWizard} from "@meetqa/website/src/components/messages/message.wizard";
-import {wrapMeta} from "@meetqa/website/src/helpers/wrap.meta";
+import {MessageWizard} from "@meetfaq/website/src/components/messages/message.wizard";
+import {wrapMeta} from "@meetfaq/website/src/helpers/wrap.meta";
 
 export const JobComponent = wrapMeta<{id: string, messages: Jobs, categories: Category[]}>(({messages, id, categories}) => {
     const [messagesContent, setMessagesContent] = useState(messages.messageContent as any[]);

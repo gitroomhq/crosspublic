@@ -2,9 +2,9 @@
 
 import {FC, ReactNode, useCallback, useEffect, useMemo, useState} from "react";
 import {clsx} from "clsx";
-import FaqIcon from "@meetqa/website/src/components/icons/faq.icon";
-import BillingIcon from "@meetqa/website/src/components/icons/billing.icon";
-import OrgSettingsIcon from "@meetqa/website/src/components/icons/org.settings";
+import FaqIcon from "@meetfaq/website/src/components/icons/faq.icon";
+import BillingIcon from "@meetfaq/website/src/components/icons/billing.icon";
+import OrgSettingsIcon from "@meetfaq/website/src/components/icons/org.settings";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 
@@ -38,12 +38,13 @@ const SideMenuItem: FC<{svg: ReactNode, title: string, path: string}> = (props) 
     </Link>
   )
 }
-export const SideMenu = () => {
+export const SideMenu: FC<{pricing: boolean}> = (props) => {
+  const {pricing} = props;
   return (
     <div>
       <SideMenuItem svg={<FaqIcon />} title="FAQs" path='/dashboard/faqs' />
       <SideMenuItem svg={<OrgSettingsIcon />} title="Settings" path='/dashboard/settings' />
-      <SideMenuItem svg={<BillingIcon />} title="Billing" path='/dashboard/billing' />
+      {pricing && <SideMenuItem svg={<BillingIcon />} title="Billing" path='/dashboard/billing' />}
     </div>
   )
 }

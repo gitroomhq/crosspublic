@@ -1,4 +1,4 @@
-import {customFetchBackend, CustomFetchBackendInterface} from "@meetqa/helpers/src/fetchObject/custom.fetch.backend";
+import {customFetchBackend, CustomFetchBackendInterface} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
 import * as process from "process";
 
 export const publicRequestFetch = async (domain: string): Promise<{redirect?: false | string, tags: string, request: CustomFetchBackendInterface}> => {

@@ -1,6 +1,6 @@
 import {Controller, Get, Headers, Query} from "@nestjs/common";
-import {DomainSubDomainOrganizationValidator} from "@meetqa/validators/src/public/domain.subDomain.organization.validator";
-import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
+import {DomainSubDomainOrganizationValidator} from "@meetfaq/validators/src/public/domain.subDomain.organization.validator";
+import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
 import {ApiExcludeEndpoint, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Public')

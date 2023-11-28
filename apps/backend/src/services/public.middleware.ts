@@ -1,7 +1,7 @@
 import {Injectable, NestMiddleware} from "@nestjs/common";
 import { Request, Response, NextFunction } from 'express';
-import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
-import {pricing} from "@meetqa/helpers/src/pricing/pricing";
+import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {pricing} from "@meetfaq/helpers/src/pricing/pricing";
 import * as process from "process";
 
 @Injectable()

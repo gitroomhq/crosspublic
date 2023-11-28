@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {JobsRepository} from "@meetqa/database/src/jobs/jobs.repository";
+import {JobsRepository} from "@meetfaq/database/src/jobs/jobs.repository";
 
 @Injectable()
 export class JobsService {

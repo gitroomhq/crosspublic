@@ -1,7 +1,7 @@
 import './global.css';
-import HeaderSection from "@meetqa/marketing/components/HeaderSection";
+import HeaderSection from "@meetfaq/marketing/components/HeaderSection";
 import {Inter} from "next/font/google";
-import Footer from "@meetqa/marketing/components/FooterSection";
+import Footer from "@meetfaq/marketing/components/FooterSection";
 
 export const revalidate = 3600;
 

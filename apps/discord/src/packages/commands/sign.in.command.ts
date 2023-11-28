@@ -1,7 +1,7 @@
-import {CommandsInterface} from "@meetqa/discord/src/packages/commands/commands.interface";
+import {CommandsInterface} from "@meetfaq/discord/src/packages/commands/commands.interface";
 import {ActionRowBuilder, ButtonBuilder, ChatInputCommandInteraction, ButtonStyle} from "discord.js";
 import {Injectable} from "@nestjs/common";
-import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
+import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
 
 @Injectable()
 export class SignInCommand implements CommandsInterface {

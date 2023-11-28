@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
-import {OrganizationRepository} from "@meetqa/database/src/organization/organization.repository";
+import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {OrganizationRepository} from "@meetfaq/database/src/organization/organization.repository";
 
 @Module({
   imports: [],

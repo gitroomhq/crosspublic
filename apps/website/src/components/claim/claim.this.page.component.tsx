@@ -1,5 +1,5 @@
 "use client";
-import {Button} from "@meetqa/website/src/components/utils/button";
+import {Button} from "@meetfaq/website/src/components/utils/button";
 import {useRouter} from "next/navigation";
 
 export const ClaimThisPageComponent = () => {

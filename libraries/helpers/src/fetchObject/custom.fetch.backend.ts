@@ -1,5 +1,5 @@
-import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
-import {AuthService} from "@meetqa/helpers/src/auth/auth.service";
+import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
 
 const parseData = async (response: Response) => {
     try {

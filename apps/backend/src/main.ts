@@ -5,13 +5,13 @@
 
 import {Logger, ValidationPipe} from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import {AppModule} from "@meetqa/backend/src/app.module";
+import {AppModule} from "@meetfaq/backend/src/app.module";
 import cookieParser from 'cookie-parser';
-import {SubscriptionExceptionFilter} from "@meetqa/backend/src/services/authorization/subscription.exception";
+import {SubscriptionExceptionFilter} from "@meetfaq/backend/src/services/authorization/subscription.exception";
 import morgan from 'morgan';
-import {ResponseInterceptor} from "@meetqa/backend/src/services/response.interceptor";
+import {ResponseInterceptor} from "@meetfaq/backend/src/services/response.interceptor";
 import * as process from "process";
-import {loadSwagger} from "@meetqa/helpers/src/swagger/load.swagger";
+import {loadSwagger} from "@meetfaq/helpers/src/swagger/load.swagger";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {

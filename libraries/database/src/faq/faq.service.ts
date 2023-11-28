@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
-import {FaqRepository} from "@meetqa/database/src/faq/faq.repository";
-import {CreateFaqValidator} from "@meetqa/validators/src/faq/create.faq.validator";
-import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
+import {FaqRepository} from "@meetfaq/database/src/faq/faq.repository";
+import {CreateFaqValidator} from "@meetfaq/validators/src/faq/create.faq.validator";
+import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
 
 @Injectable()
 export class FaqService {

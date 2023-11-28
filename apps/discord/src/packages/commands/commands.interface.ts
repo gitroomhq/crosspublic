@@ -1,5 +1,5 @@
 import {CacheType, Interaction} from "discord.js";
-import {UserInterface} from "@meetqa/helpers/src/user/user.interface";
+import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
 
 export interface CommandsInterface {
   name: string;

@@ -1,12 +1,12 @@
 import {useCallback, useEffect, useState} from "react";
 import { Oval } from 'react-loader-spinner'
-import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
-import {Editor} from "@meetqa/website/src/helpers/editor";
+import {useFetch} from "@meetfaq/website/src/helpers/fetch.context";
+import {Editor} from "@meetfaq/website/src/helpers/editor";
 import {Category} from "@prisma/client";
-import {CategoriesSelectComponent} from "@meetqa/website/src/components/categories/categories.select.component";
+import {CategoriesSelectComponent} from "@meetfaq/website/src/components/categories/categories.select.component";
 import Swal from "sweetalert2";
-import {Button} from "@meetqa/website/src/components/utils/button";
-import {Block} from "@meetqa/website/src/components/utils/block";
+import {Button} from "@meetfaq/website/src/components/utils/button";
+import {Block} from "@meetfaq/website/src/components/utils/block";
 
 export function Question (props: {question: string, addQuestion: (question: string) => void}) {
     const {question, addQuestion} = props;

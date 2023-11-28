@@ -1,6 +1,6 @@
-import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
+import {publicRequestFetch} from "@meetfaq/website/src/helpers/get.api.key";
 import {Category} from "@prisma/client";
-import {textToMarkdown} from "@meetqa/website/src/helpers/text.to.markdown";
+import {textToMarkdown} from "@meetfaq/website/src/helpers/text.to.markdown";
 import Link from "next/link";
 import {Suspense} from "react";
 

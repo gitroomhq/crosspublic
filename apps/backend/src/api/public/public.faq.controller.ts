@@ -1,7 +1,7 @@
 import {Controller, Get, Param} from "@nestjs/common";
-import {GetOrganizationFromRequest, OrganizationFromRequest} from "@meetqa/helpers/src/user/organization.from.request";
+import {GetOrganizationFromRequest, OrganizationFromRequest} from "@meetfaq/helpers/src/user/organization.from.request";
 import slugify from "slugify";
-import {FaqService} from "@meetqa/database/src/faq/faq.service";
+import {FaqService} from "@meetfaq/database/src/faq/faq.service";
 import {ApiHeaders, ApiOperation, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Public')

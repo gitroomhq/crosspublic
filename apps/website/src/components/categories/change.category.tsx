@@ -1,10 +1,10 @@
 "use client";
 
-import {Button} from "@meetqa/website/src/components/utils/button";
+import {Button} from "@meetfaq/website/src/components/utils/button";
 import {FC, useCallback, useState} from "react";
-import {ExtendedCategory} from "@meetqa/website/src/components/faqs/faq.component";
-import {deleteDialog} from "@meetqa/website/src/helpers/delete.dialog";
-import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
+import {ExtendedCategory} from "@meetfaq/website/src/components/faqs/faq.component";
+import {deleteDialog} from "@meetfaq/website/src/helpers/delete.dialog";
+import {useFetch} from "@meetfaq/website/src/helpers/fetch.context";
 
 export const ChangeCategory: FC<{categories: ExtendedCategory[], faq: string, changeCategory: (cat: string) => void}> = (props) =>  {
   const {categories, changeCategory} = props;

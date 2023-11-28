@@ -1,7 +1,7 @@
 import {Injectable} from "@nestjs/common";
-import {SettingsRepository} from "@meetqa/database/src/settings/settings.repository";
+import {SettingsRepository} from "@meetfaq/database/src/settings/settings.repository";
 import axios from "axios";
-import {OrganizationRepository} from "@meetqa/database/src/organization/organization.repository";
+import {OrganizationRepository} from "@meetfaq/database/src/organization/organization.repository";
 
 const vercelAxios = (version = 9, prefix = 'projects') => {
   const create = axios.create({

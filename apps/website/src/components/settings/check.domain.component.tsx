@@ -2,7 +2,7 @@
 
 import {FC, useEffect, useState} from "react";
 import { useDebouncedCallback } from 'use-debounce';
-import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
+import {useFetch} from "@meetfaq/website/src/helpers/fetch.context";
 import {Oval} from "react-loader-spinner";
 
 export const CheckDomainComponent: FC<{initialValue: string, newValue: string, setValidInvalid: (b: boolean) => void}> = (props) => {

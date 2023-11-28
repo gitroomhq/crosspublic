@@ -1,10 +1,10 @@
 "use client";
 
-import {wrapModal} from "@meetqa/website/src/helpers/wrap.modal";
-import {ExtendedCategory} from "@meetqa/website/src/components/faqs/faq.component";
+import {wrapModal} from "@meetfaq/website/src/helpers/wrap.modal";
+import {ExtendedCategory} from "@meetfaq/website/src/components/faqs/faq.component";
 import {FieldValues, useForm} from "react-hook-form";
 import {useCallback} from "react";
-import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
+import {useFetch} from "@meetfaq/website/src/helpers/fetch.context";
 
 export const DeleteCategory = wrapModal<{cat?: string, isFaq?: boolean, categories?: ExtendedCategory[]}>((props) => {
   const {modal, isFaq, categories} = props;

@@ -1,8 +1,8 @@
-import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
+import {publicRequestFetch} from "@meetfaq/website/src/helpers/get.api.key";
 import {Faq} from "@prisma/client";
 import Link from "next/link";
 import {Suspense} from "react";
-import {ClaimThisPageComponent} from "@meetqa/website/src/components/claim/claim.this.page.component";
+import {ClaimThisPageComponent} from "@meetfaq/website/src/components/claim/claim.this.page.component";
 export const dynamic = 'force-static';
 
 export default async function Page({params: {slug, customer}}: {params: {slug: string, customer: string}}) {

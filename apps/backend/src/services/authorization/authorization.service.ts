@@ -1,10 +1,10 @@
-import {SubscriptionService} from "@meetqa/database/src/subscription/subscription.service";
+import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
 import {Ability, AbilityBuilder, AbilityClass} from "@casl/ability";
-import {FaqService} from "@meetqa/database/src/faq/faq.service";
-import {CategoryService} from "@meetqa/database/src/categories/category.service";
-import {DomainService} from "@meetqa/database/src/domains/domain.service";
+import {FaqService} from "@meetfaq/database/src/faq/faq.service";
+import {CategoryService} from "@meetfaq/database/src/categories/category.service";
+import {DomainService} from "@meetfaq/database/src/domains/domain.service";
 import {Injectable} from "@nestjs/common";
-import {pricing} from "@meetqa/helpers/src/pricing/pricing";
+import {pricing} from "@meetfaq/helpers/src/pricing/pricing";
 
 export enum Sections {
     FAQ = 'faq',
@@ -34,13 +34,13 @@ export class AuthorizationService {
   }
     async getPackageOptions(orgId: string) {
         const subscription = await this._subscriptionService.getSubscriptionByOrganizationId(orgId);
-        return pricing[subscription?.subscriptionTier || 'FREE'];
+        return pricing[subscription?.subscriptionTier || !process.env.PAYMENT_PUBLIC_KEY ? 'PRO' : 'FREE'];
     }
 
     async check(orgId: string) {
       const { can, build } = new AbilityBuilder<Ability<[AuthorizationActions, Sections]>>(Ability as AbilityClass<AppAbility>);
 
-      const options = await this.getPackageOptions(orgId);
+      const options  = await this.getPackageOptions(orgId);
       const totalFaqs                   = await this._faqService.totalFaqByOrganizationId(orgId);
       const totalCategories             = await this._categoryService.totalCategoriesByOrganizationId(orgId);
       const totalDomains                = await this._domainService.totalDomainsByOrganizationId(orgId);
@@ -52,23 +52,23 @@ export class AuthorizationService {
       can(AuthorizationActions.Update, Sections.CATEGORY);
       can(AuthorizationActions.Delete, Sections.CATEGORY);
 
-      if (totalFaqs < options.faq) {
+      if (!process.env.PAYMENT_PUBLIC_KEY || totalFaqs < options.faq) {
         can(AuthorizationActions.Create, Sections.FAQ);
       }
 
-      if (totalCategories < options.categories) {
+      if (!process.env.PAYMENT_PUBLIC_KEY || totalCategories < options.categories) {
         can(AuthorizationActions.Create, Sections.CATEGORY);
       }
 
-      if (totalDomains < options.domains) {
+      if (!process.env.PAYMENT_PUBLIC_KEY || totalDomains < options.domains) {
         can(AuthorizationActions.Create, Sections.DOMAIN);
       }
 
-      if (options.api) {
+      if (!process.env.PAYMENT_PUBLIC_KEY || options.api) {
         can(AuthorizationActions.Read, Sections.API);
       }
 
-      if (options.embed) {
+      if (!process.env.PAYMENT_PUBLIC_KEY || options.embed) {
         can(AuthorizationActions.Read, Sections.EMBEDDING);
       }
 

@@ -1,8 +1,8 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {OrderValidator} from "@meetqa/validators/src/general/order.validator";
-import {CreateCategoryValidator} from "@meetqa/validators/src/categories/create.category.validator";
-import {DeleteCategoryValidator} from "@meetqa/validators/src/categories/delete.category.validator";
+import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
+import {CreateCategoryValidator} from "@meetfaq/validators/src/categories/create.category.validator";
+import {DeleteCategoryValidator} from "@meetfaq/validators/src/categories/delete.category.validator";
 
 @Injectable()
 export class CategoryRepository {

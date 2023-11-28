@@ -1,7 +1,7 @@
-import {publicRequestFetch} from "@meetqa/website/src/helpers/get.api.key";
+import {publicRequestFetch} from "@meetfaq/website/src/helpers/get.api.key";
 import {Category, Faq} from "@prisma/client";
-import {textToMarkdown} from "@meetqa/website/src/helpers/text.to.markdown";
-import {AfterHighlight} from "@meetqa/website/src/components/utils/after.highlight";
+import {textToMarkdown} from "@meetfaq/website/src/helpers/text.to.markdown";
+import {AfterHighlight} from "@meetfaq/website/src/components/utils/after.highlight";
 import Link from "next/link";
 import {Suspense} from "react";
 export const dynamic = 'force-static';

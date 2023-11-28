@@ -2,10 +2,10 @@ import ConfiguredSection from './configured-section'
 import useSWR, { mutate } from 'swr'
 import { useState } from 'react'
 import LoadingDots from './loading-dots'
-import fetcher from "@meetqa/website/src/helpers/fetcher";
-import {Button} from "@meetqa/website/src/components/utils/button";
-import {deleteDialog} from "@meetqa/website/src/helpers/delete.dialog";
-import {useFetch} from "@meetqa/website/src/helpers/fetch.context";
+import fetcher from "@meetfaq/website/src/helpers/fetcher";
+import {Button} from "@meetfaq/website/src/components/utils/button";
+import {deleteDialog} from "@meetfaq/website/src/helpers/delete.dialog";
+import {useFetch} from "@meetfaq/website/src/helpers/fetch.context";
 
 const DomainCard = ({ domain, id, deleteDomain }: any) => {
     const fetchObject = useFetch();

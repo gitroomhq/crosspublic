@@ -4,10 +4,10 @@ import { lowlight } from 'lowlight/lib/core'
 import {CodeBlockLowlight} from "@tiptap/extension-code-block-lowlight";
 
 import {ReactNodeViewRenderer} from "@tiptap/react";
-import CodeBlockComponent from "@meetqa/website/src/helpers/code.block.component";
+import CodeBlockComponent from "@meetfaq/website/src/helpers/code.block.component";
 import dynamic from "next/dynamic";
 import {FC} from "react";
-const LoadAllLanguages = dynamic(() => import("@meetqa/website/src/helpers/load.all"), { ssr: false });
+const LoadAllLanguages = dynamic(() => import("@meetfaq/website/src/helpers/load.all"), { ssr: false });
 
 const block = CodeBlockLowlight
   .extend({

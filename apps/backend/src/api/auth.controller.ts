@@ -1,7 +1,7 @@
 import {Body, Controller, Headers, Post} from "@nestjs/common";
-import {OrganizationCreateValidator} from "@meetqa/validators/src/organizations/organization.create.validator";
-import {OrganizationService} from "@meetqa/database/src/organization/organization.service";
-import {UserService} from "@meetqa/database/src/users/user.service";
+import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
+import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {UserService} from "@meetfaq/database/src/users/user.service";
 import {ApiOperation, ApiTags} from "@nestjs/swagger";
 @ApiTags('Authentications')
 @Controller('/auth')

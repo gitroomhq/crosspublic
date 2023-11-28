@@ -1,5 +1,5 @@
 import {Controller, Post, RawBodyRequest, Req} from "@nestjs/common";
-import {StripeService} from "@meetqa/helpers/src/stripe/stripe.service";
+import {StripeService} from "@meetfaq/helpers/src/stripe/stripe.service";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Stripe')
