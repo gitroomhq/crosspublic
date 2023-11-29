@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import { Oval } from 'react-loader-spinner'
 import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
-import {Editor} from "@meetfaq/panel/src/helpers/editor";
+import {Editor} from "@meetfaq/helpers/src/components/editor";
 import {Category} from "@prisma/client";
 import {CategoriesSelectComponent} from "@meetfaq/panel/src/components/categories/categories.select.component";
 import Swal from "sweetalert2";
