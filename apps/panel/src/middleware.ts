@@ -7,16 +7,19 @@ export async function middleware(request: NextRequest) {
   const nextUrl = request.nextUrl;
   const authCookie = request.cookies.get('auth');
 
+  // If the URL is logout, delete the cookie and redirect to login
   if (nextUrl.href.indexOf('/auth/logout') > -1) {
     const response = NextResponse.redirect(new URL('/auth/login', nextUrl.href));
     response.cookies.delete('auth');
     return response;
   }
 
+  // If the url is /auth and the cookie exists, redirect to /
   if (nextUrl.href.indexOf('/auth') > -1 && authCookie) {
     return NextResponse.redirect(new URL('/', nextUrl.href));
   }
 
+  // if there an auth searchParam, set the cookie
   const auth = nextUrl.searchParams.get('auth')!;
   if (auth) {
     const response = NextResponse.next({
@@ -37,7 +40,11 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  return NextResponse.next();
+  return NextResponse.next({
+    headers: {
+      pricing: String(!!process.env.PAYMENT_PUBLIC_KEY)
+    }
+  });
 }
 
 // See "Matching Paths" below to learn more

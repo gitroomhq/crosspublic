@@ -24,6 +24,7 @@ module.exports = {
         pink: '#AE4DDC'
       },
       backgroundImage: {
+        auth: 'url(/bg.svg)',
         menu: 'linear-gradient(270deg, rgba(174, 77, 220, 0.02) 0%, rgba(174, 77, 220, 0.05) 37.65%, rgba(174, 77, 220, 0.10) 100%)',
         btn: 'linear-gradient(225deg, #AE4DDC -5.28%, #B85AF2 -5.27%, #9142E0 72.52%)',
         btnHover: 'linear-gradient(225deg, #863ba9 -5.28%, #B85AF2 -5.27%, #7a39bc 72.52%)',

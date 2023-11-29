@@ -62,7 +62,7 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
                     <div className="text-sm mb-2">Subdomain:</div>
                     <div className="flex items-center">
                         <div className="flex flex-col flex-1">
-                            <div className="rounded-container bg-white border-gray border outline-none text-sm flex flex-1 overflow-hidden">
+                            <div className="rounded-container bg-[#FAFAFD] border-[#EBE8E8] border outline-none text-sm flex flex-1 overflow-hidden">
                                 <div className="flex-1">
                                     <Input maxLength={20} className="!border-0 w-full !rounded-none flex-1 py-[10px] px-[15px]" required={true} label="" placeholder="Subdomain" {...register('subDomain', {onChange: (value) => slugify(value, {lower: true, trim: true, strict: true}), required: {value: true, message: 'Sub domain name is required'}, pattern: {value: /^[a-zA-Z0-9][a-zA-Z0-9-]{0,62}$/, message: 'Invalid domain name'}, minLength: {value: 3, message: 'Sub domain must be at least 3 characters'}, maxLength: 20})} />
                                 </div>

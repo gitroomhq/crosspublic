@@ -6,6 +6,7 @@ export interface PricingInterface {
     },
     faq: number;
     user: number;
+    integrations: number;
     categories: number;
     domains: number;
     package: string;
@@ -21,6 +22,7 @@ export const pricing: PricingInterface = {
     },
     faq: 10,
     user: 1,
+    integrations: 1,
     categories: 5,
     domains: 0,
     package: 'free',
@@ -34,6 +36,7 @@ export const pricing: PricingInterface = {
     },
     faq: 20,
     user: 3,
+    integrations: 3,
     categories: 10,
     domains: 1,
     package: 'basic',
@@ -47,6 +50,7 @@ export const pricing: PricingInterface = {
     },
     user: 5,
     faq: 50,
+    integrations: 7,
     categories: 20,
     domains: 1,
     package: 'pro',

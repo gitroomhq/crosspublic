@@ -9,7 +9,7 @@ import {ApiHeaders, ApiOperation, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Billings')
 @Controller('/billing')
-@ApiHeaders([{name: 'apikey', required: true}])
+@ApiHeaders([{name: 'auth', required: true}])
 export class BillingController {
   constructor(
     private _subscriptionService: SubscriptionService,

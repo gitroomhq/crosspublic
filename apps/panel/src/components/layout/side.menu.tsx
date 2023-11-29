@@ -8,6 +8,7 @@ import OrgSettingsIcon from "@meetfaq/panel/src/components/icons/org.settings";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
 import StyleComponent from "@meetfaq/panel/src/components/icons/style.component";
+import IntegrationsIcon from "@meetfaq/panel/src/components/icons/integrations.icon";
 
 const SideMenuItem: FC<{svg: ReactNode, title: string, path: string}> = (props) => {
   const {svg, title, path} = props;
@@ -44,8 +45,9 @@ export const SideMenu: FC<{pricing: boolean}> = (props) => {
   return (
     <div>
       <SideMenuItem svg={<FaqIcon />} title="FAQs" path='/faqs' />
-      <SideMenuItem svg={<OrgSettingsIcon />} title="Settings" path='/settings' />
       <SideMenuItem svg={<StyleComponent />} title="Style" path='/style' />
+      <SideMenuItem svg={<IntegrationsIcon />} title="Integrations" path='/integrations' />
+      <SideMenuItem svg={<OrgSettingsIcon />} title="Settings" path='/settings' />
       {pricing && <SideMenuItem svg={<BillingIcon />} title="Billing" path='/billing' />}
     </div>
   )

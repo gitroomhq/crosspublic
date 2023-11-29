@@ -40,8 +40,6 @@ export class AddCommand implements CommandsInterface {
       cache: false,
     });
 
-    // await interactions.reply('Working on it');
-
     const all = (await Promise.all(
       loadMessages
         .filter(p => !p.author.bot)

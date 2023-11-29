@@ -13,7 +13,7 @@ import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Categories')
 @Controller('/categories')
-@ApiHeaders([{name: 'apikey', required: true}])
+@ApiHeaders([{name: 'auth', required: true}])
 export class CategoriesController {
   constructor(
     private _categoryService: CategoryService

@@ -20,6 +20,7 @@ model Organization {
   faqs             Faq[]
   jobs             Jobs[]
   subscriptions    Subscription[]
+  integrations     Integrations[]
   categories       Category[]
   domains          Domains[]
   apiKey           String?  @default(cuid()) @unique
@@ -39,8 +40,9 @@ enum Role {
 model User {
   id            String    @id @default(cuid())
   name          String
-  email         String?
+  email         String?   @unique
   internalId    String    @unique
+  password      String?
   organization  UserOrganization[]
 }
 
@@ -145,4 +147,30 @@ model Domains {
   deletedAt      DateTime?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+}
+
+enum IntegrationType {
+  DISCORD
+  SLACK
+}
+
+model Integrations {
+  id String @id @default(cuid())
+  type IntegrationType
+  token String
+  notes String
+  internalId String
+  organizationId String
+  organization Organization @relation(fields: [organizationId], references: [id])
+  users IntegrationsUsers[]
+  @@unique([internalId, organizationId])
+}
+
+model IntegrationsUsers {
+  id String @id @default(cuid())
+  integrationId String
+  integration Integrations @relation(fields: [integrationId], references: [id])
+  internalId String
+  owner Boolean @default(false)
+  @@unique([integrationId, internalId])
 }

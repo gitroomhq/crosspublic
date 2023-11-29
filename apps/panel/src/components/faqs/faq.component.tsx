@@ -18,6 +18,7 @@ import {useRouter} from "next/navigation";
 import {CreateFAQ} from "@meetfaq/panel/src/components/faqs/create.faq";
 import {ChangeCategory} from "@meetfaq/panel/src/components/categories/change.category";
 import {wrapMeta} from "@meetfaq/panel/src/helpers/wrap.meta";
+import {Block} from "@meetfaq/panel/src/components/utils/block";
 
 export const CategoriesContext = createContext<ExtendedCategory[]>([]);
 
@@ -76,8 +77,21 @@ const FaqComponent = wrapMeta<{categories: ExtendedCategory[]}>((props) => {
                callback: addToList,
                args: {title: 'Create a new category'}
             }}
-        >Create a new category</Button>
+        >Add Category</Button>
       </div>
+
+      {!items.length && (
+        <Block>
+          <div className="flex flex-col items-center justify-center">
+            <div className="text-2xl font-bold">
+              No categories found
+            </div>
+            <div className="text-gray-500">
+              Create a new category to get started
+            </div>
+          </div>
+        </Block>
+      )}
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}

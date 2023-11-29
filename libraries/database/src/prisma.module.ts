@@ -8,6 +8,7 @@ import {CategoryModule} from "@meetfaq/database/src/categories/category.module";
 import {FaqModule} from "@meetfaq/database/src/faq/faq.module";
 import {DomainModule} from "@meetfaq/database/src/domains/domain.module";
 import {SettingsModule} from "@meetfaq/database/src/settings/settings.module";
+import {IntegrationsModule} from "@meetfaq/database/src/integrations/integrations.module";
 
 @Global()
 @Module({
@@ -19,6 +20,7 @@ import {SettingsModule} from "@meetfaq/database/src/settings/settings.module";
     DomainModule,
     CategoryModule,
     SettingsModule,
+    IntegrationsModule,
     JobsModule
   ],
   controllers: [],

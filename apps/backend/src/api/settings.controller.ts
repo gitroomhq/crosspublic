@@ -14,7 +14,7 @@ import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Settings')
 @Controller('/settings')
-@ApiHeaders([{name: 'apikey', required: true}])
+@ApiHeaders([{name: 'auth', required: true}])
 export class SettingsController {
   constructor(
     private readonly _settingsService: SettingsService,

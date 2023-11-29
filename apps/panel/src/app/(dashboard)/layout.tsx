@@ -29,6 +29,7 @@ export default async function DashboardLayout({ children, params }: { children: 
         auth: cookieToken || headersToken
       },
       cache: 'force-cache',
+      tags: [cookieToken || headersToken],
       next: {
         revalidate: 3600
       }

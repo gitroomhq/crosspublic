@@ -11,7 +11,7 @@ export const Input: FC<DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, 
   return (
     <div className={topDivClass}>
       {!!label && <div className="text-sm mb-2">{label}{required && <span className="text-red-500">*</span>}</div>}
-      <input {...rest} ref={ref} className={clsx("rounded-container bg-white py-[10px] px-[15px] border-gray border outline-none text-sm", className)} />
+      <input {...rest} ref={ref} className={clsx("rounded-container bg-[#FAFAFD] py-[10px] px-[15px] border-[#EBE8E8] border outline-none text-sm", className)} />
       {!!error && <div className="text-red-500 text-xs mt-1">{error.message}</div>}
     </div>
   )

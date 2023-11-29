@@ -6,7 +6,7 @@ import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
 
 @ApiTags('Styles')
 @Controller('/styles')
-@ApiHeaders([{name: 'apikey', required: true}])
+@ApiHeaders([{name: 'auth', required: true}])
 export class StylesController {
   constructor(
     private readonly _organizationService: OrganizationService

@@ -3,8 +3,6 @@ import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
 import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
 import {AnsweredQuestion, MessagesListValidator, OnlyMessagesList} from "@meetfaq/validators/src/messages/messages.list.validator";
 import {JobsService} from "@meetfaq/database/src/jobs/jobs.service";
-import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
 import {IdStringValidator} from "@meetfaq/validators/src/general/id.string.validator";
 import {GeneratorService} from "@meetfaq/backend/src/services/generator.service";
 import {CheckPolicies} from "@meetfaq/backend/src/services/authorization/authorization.ability";
@@ -21,11 +19,10 @@ import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Faq')
 @Controller('/faq')
-@ApiHeaders([{name: 'apikey', required: true}])
+@ApiHeaders([{name: 'auth', required: true}])
 export class FaqController {
   constructor(
     private _jobsService: JobsService,
-    private _organizationService: OrganizationService,
     private _generatorService: GeneratorService,
     private _faqService: FaqService,
   ) {
@@ -96,7 +93,7 @@ export class FaqController {
     @Body() body: MessagesListValidator
   ) {
     const {id} = await this._jobsService.insertJob(user.organization.organizationId, body.reference, body.messagesList);
-    const url = process.env.FRONTEND_URL + `/job/${id}?auth=` + AuthService.signJWT(user);
+    const url = process.env.FRONTEND_URL + `/job/${id}`;
     return {url};
   }
 

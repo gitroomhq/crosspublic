@@ -5,10 +5,12 @@ import {CategoryService} from "@meetfaq/database/src/categories/category.service
 import {DomainService} from "@meetfaq/database/src/domains/domain.service";
 import {Injectable} from "@nestjs/common";
 import {pricing} from "@meetfaq/helpers/src/pricing/pricing";
+import {IntegrationsService} from "@meetfaq/database/src/integrations/integrations.service";
 
 export enum Sections {
     FAQ = 'faq',
     CATEGORY = 'category',
+    INTEGRATIONS = 'integrations',
     DOMAIN = 'domain',
     EMBEDDING = 'embedding',
     API = 'api'
@@ -30,6 +32,7 @@ export class AuthorizationService {
     private _faqService: FaqService,
     private _categoryService: CategoryService,
     private _domainService: DomainService,
+    private _integrationsService: IntegrationsService
   ) {
   }
     async getPackageOptions(orgId: string) {
@@ -44,9 +47,11 @@ export class AuthorizationService {
       const totalFaqs                   = await this._faqService.totalFaqByOrganizationId(orgId);
       const totalCategories             = await this._categoryService.totalCategoriesByOrganizationId(orgId);
       const totalDomains                = await this._domainService.totalDomainsByOrganizationId(orgId);
+      const totalIntegrations           = await this._integrationsService.totalIntegrationsByOrganizationId(orgId);
 
       can(AuthorizationActions.Update, Sections.FAQ);
       can(AuthorizationActions.Delete, Sections.FAQ);
+      can(AuthorizationActions.Delete, Sections.INTEGRATIONS);
       can(AuthorizationActions.Read, Sections.FAQ);
       can(AuthorizationActions.Read, Sections.CATEGORY);
       can(AuthorizationActions.Update, Sections.CATEGORY);
@@ -54,6 +59,10 @@ export class AuthorizationService {
 
       if (!process.env.PAYMENT_PUBLIC_KEY || totalFaqs < options.faq) {
         can(AuthorizationActions.Create, Sections.FAQ);
+      }
+
+      if (!process.env.PAYMENT_PUBLIC_KEY || totalIntegrations < options.integrations) {
+        can(AuthorizationActions.Create, Sections.INTEGRATIONS);
       }
 
       if (!process.env.PAYMENT_PUBLIC_KEY || totalCategories < options.categories) {

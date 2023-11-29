@@ -9,7 +9,7 @@ import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Users')
 @Controller('/users')
-@ApiHeaders([{name: 'apikey', required: true}])
+@ApiHeaders([{name: 'auth', required: true}])
 export class UsersController {
   constructor(
     private _organizationService: OrganizationService,
@@ -17,8 +17,8 @@ export class UsersController {
   ) {
   }
   @Get('/sign-in')
-  async signIn(@GetUserFromRequest() user: UserInterface) {
-    const url = process.env.FRONTEND_URL + '/?auth=' + AuthService.signJWT(user);
+  async signIn() {
+    const url = process.env.FRONTEND_URL;
     return {url};
   }
 

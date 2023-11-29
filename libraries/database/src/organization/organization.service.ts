@@ -1,15 +1,23 @@
-import {Injectable} from "@nestjs/common";
+import {HttpException, HttpStatus, Injectable} from "@nestjs/common";
 import {OrganizationRepository} from "@meetfaq/database/src/organization/organization.repository";
-import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
 import {DomainSubDomainOrganizationValidator} from "@meetfaq/validators/src/public/domain.subDomain.organization.validator";
+import {RegistrationValidator} from "@meetfaq/validators/src/auth/registration.validator";
+import {UserRepository} from "@meetfaq/database/src/users/user.repository";
 
 @Injectable()
 export class OrganizationService {
   constructor(
-    private readonly _organizationRepository: OrganizationRepository
+    private readonly _organizationRepository: OrganizationRepository,
+    private readonly _userRepository: UserRepository
   ) {}
-  getOrCreateOrg(body: OrganizationCreateValidator) {
-    return this._organizationRepository.getOrCreateOrg(body);
+
+  async register(body: RegistrationValidator) {
+    const emailExists = await this._userRepository.getUserByEmail(body.email.toLowerCase());
+    if (emailExists) {
+      throw new HttpException('Email already exists', HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    return this._userRepository.register(body);
   }
 
   getOrganizationByApiKey(apiKey: string) {

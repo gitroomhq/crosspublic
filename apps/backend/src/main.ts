@@ -26,7 +26,9 @@ async function bootstrap() {
 
   app.use(cookieParser());
   app.use(morgan(':method :url'));
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({
+    transform: true
+  }));
   app.useGlobalFilters(new SubscriptionExceptionFilter());
   app.useGlobalInterceptors(new ResponseInterceptor());
 

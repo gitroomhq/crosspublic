@@ -101,7 +101,7 @@ export class StripeService {
     if (!currentUserSubscription.data.length) {
       const {url} = await stripe.checkout.sessions.create({
         customer,
-        success_url: process.env['FRONTEND_URL'] + `/dashboard/billing?check=${id}`,
+        success_url: process.env['FRONTEND_URL'] + `/billing?check=${id}`,
         mode: 'subscription',
         subscription_data: {
           metadata: {

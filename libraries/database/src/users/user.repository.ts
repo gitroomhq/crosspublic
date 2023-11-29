@@ -1,6 +1,10 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
 import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
+import {RegistrationValidator} from "@meetfaq/validators/src/auth/registration.validator";
+import slugify from "slugify";
+import {makeId} from "@meetfaq/helpers/src/makeid/make.id";
+import {hashSync} from 'bcrypt';
 
 @Injectable()
 export class UserRepository {
@@ -9,73 +13,48 @@ export class UserRepository {
   ) {
   }
 
-  async getOrCreateUser(orgId: string, body: OrganizationCreateValidator) {
-    const create = await this._prismaUser.model.user.findFirst({
+  async getUserByEmail(email: string) {
+    return this._prismaUser.model.user.findFirst({
       where: {
-        internalId: body.internalId
+        email
       },
       include: {
         organization: true
       }
     });
+  }
 
-    if (create && !create.organization.some(l => l.organizationId === orgId) && body.isOwner) {
-      await this._prismaUser.model.user.update({
-        where: {
-          id: create.id
-        },
-        data: {
-          organization: {
-            create: [
-              {
-                organizationId: orgId,
-                role: 'ADMIN'
+  register(body: RegistrationValidator) {
+    return this._prismaUser.model.user.create({
+      data: {
+        email: body.email.toLowerCase(),
+        name: body.company,
+        password: hashSync(body.password, 16),
+        internalId: makeId(20),
+        organization: {
+          create: {
+            role: 'ADMIN',
+            organization: {
+              create: {
+                name: body.company,
+                guildId:  makeId(10),
+                subDomain: slugify(body.company, {
+                  lower: true,
+                  strict: true,
+                  trim: true
+                }) + '-' + makeId(3)
               }
-            ]
+            }
           }
         }
-      });
-    }
-
-    const load = await this._prismaUser.model.user.findFirst({
-      where: {
-        internalId: body.internalId
       },
       include: {
-        organization: true
-      }
-    }) || ((body.isOwner) ? await this._prismaUser.model.user.create(
-      {
-        data: {
-          internalId: body.internalId,
-          name: body.name,
-          organization: {
-            create: [
-              {
-                organizationId: orgId,
-                role: 'ADMIN',
-              }
-            ]
+        organization: {
+          include: {
+            organization: true
           }
-        },
-        include: {
-          organization: true
         }
       }
-    ) : false);
-
-    if (!load) {
-      return false;
-    }
-
-    const organization = load.organization.find(l => l.organizationId === orgId) || false;
-    if (!organization) {
-      return false;
-    }
-
-    return {
-      ...load,
-      organization
-    }
+    });
   }
 }
