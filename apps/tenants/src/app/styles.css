@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'DM Sans', sans-serif !important;
+    font-feature-settings: 'kern' !important;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.5px;
+    background: #f4f2fa;
+    color: black;
+  }
+}
+
+.swal2-confirm {
+  background: linear-gradient(225deg, #AE4DDC -5.28%, #B85AF2 -5.27%, #9142E0 72.52%) !important;
+}
+
+.swal2-icon-show, .swal2-icon-show > div {
+  border-color: #AE4DDC !important;
+  color: #AE4DDC !important;
+}
+
+div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+  background-color: #AE4DDC !important;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#slash-command > button:nth-child(1), #slash-command > button:nth-child(2) {
+  display: none;
+}
+
+[data-placeholder="Press '/' for commands, or '++' for AI autocomplete..."]:before {
+  content: "Press '/' for commands" !important;
+}
+
+.removeElement [draggable="true"] {
+  display: none !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#content ol {
+  list-style: decimal;
+  padding-left: 2rem;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}

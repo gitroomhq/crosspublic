@@ -15,6 +15,7 @@ model Organization {
   guildId          String    @unique
   subDomain        String?   @unique
   stripeCustomerId String?   @unique
+  name             String    @default("No Name")
   users            UserOrganization[]
   faqs             Faq[]
   jobs             Jobs[]

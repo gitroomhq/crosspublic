@@ -94,6 +94,7 @@ export class OrganizationRepository {
         stripeCustomerId: '',
         guildId,
         subDomain: slugify(serverName, {lower: true, strict: true, trim: true}),
+        name: serverName,
       }
     });
   }

@@ -11,6 +11,7 @@ import {PublicMiddleware} from "@meetfaq/backend/src/services/public.middleware"
 import {PublicOrganizationController} from "@meetfaq/backend/src/api/public/public.organization.controller";
 import {PublicFaqController} from "@meetfaq/backend/src/api/public/public.faq.controller";
 import {PublicCategoriesController} from "@meetfaq/backend/src/api/public/public.categories.controller";
+import {StylesController} from "@meetfaq/backend/src/api/styles.controller";
 
 const publicControllers = [
   PublicOrganizationController,
@@ -18,7 +19,15 @@ const publicControllers = [
   PublicFaqController,
 ];
 
-const authenticatedControllers = [...publicControllers, UsersController, FaqController, CategoriesController, SettingsController, BillingController];
+const authenticatedControllers = [
+  ...publicControllers,
+  UsersController,
+  FaqController,
+  CategoriesController,
+  SettingsController,
+  BillingController,
+  StylesController,
+];
 @Global()
 @Module({
   imports: [],
