@@ -18,7 +18,7 @@ export class UsersController {
   }
   @Get('/sign-in')
   async signIn(@GetUserFromRequest() user: UserInterface) {
-    const url = process.env.FRONTEND_URL + '/dashboard?auth=' + AuthService.signJWT(user);
+    const url = process.env.FRONTEND_URL + '/?auth=' + AuthService.signJWT(user);
     return {url};
   }
 

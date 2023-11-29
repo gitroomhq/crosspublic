@@ -1,40 +1,32 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import {fetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
 import {removeSubdomain} from "@meetfaq/helpers/src/subdomain/subdomain.management";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
   const nextUrl = request.nextUrl;
+  const authCookie = request.cookies.get('auth');
 
-  if (nextUrl.href.indexOf('/auth') > -1) {
-    return NextResponse.next();
+  if (nextUrl.href.indexOf('/auth/logout') > -1) {
+    const response = NextResponse.redirect(new URL('/auth/login', nextUrl.href));
+    response.cookies.delete('auth');
+    return response;
   }
 
-  const cookies = request.cookies.get('auth')?.value!;
+  if (nextUrl.href.indexOf('/auth') > -1 && authCookie) {
+    return NextResponse.redirect(new URL('/', nextUrl.href));
+  }
+
   const auth = nextUrl.searchParams.get('auth')!;
-  if (auth || cookies) {
-    const fetch = await (await fetchBackend('/users/self', {
-      headers: {
-        auth: auth || cookies,
-        ContentType: 'application/json',
-        Accept: 'application/json'
-      }
-    })).json();
-
-    if (fetch?.message === 'Unauthorized') {
-      return NextResponse.redirect(`${process.env.FRONTEND_URL}/login`);
-    }
-
+  if (auth) {
     const response = NextResponse.next({
       headers: {
-        token:  auth || cookies,
-        pricing: String(!!process.env.PAYMENT_PUBLIC_KEY),
-        user: JSON.stringify(fetch)
-      }
+        auth,
+        pricing: String(!!process.env.PAYMENT_PUBLIC_KEY)
+      },
     });
 
-    response.cookies.set('auth', auth || cookies, {
+    response.cookies.set('auth', auth, {
       path: '/',
       sameSite: false,
       // secure: true,
@@ -45,7 +37,7 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  return NextResponse.redirect(`${process.env.FRONTEND_URL}/login`);
+  return NextResponse.next();
 }
 
 // See "Matching Paths" below to learn more

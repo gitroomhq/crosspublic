@@ -22,7 +22,7 @@ export const MessagesComponent: FC<{messagesList: any[], changeRow: (message: an
                 <div>
                     <strong>Delete irrelevant messages:</strong>
                 </div>
-                {Array.from(messagesList as any[]).map((message: any) => (
+                {Array.from(messagesList as any[] || []).map((message: any) => (
                     <div className={`flex space-x-2`} key={message?.name}>
                         <div className="pt-1" onClick={changeRow(message)}>
                             <div className={`cursor-pointer w-4 h-4 bg-red-600 rounded-full text-sm text-white flex justify-center items-center pb-[2px] ${message.deleted ? 'bg-green-700' : ''}`}>

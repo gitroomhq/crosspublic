@@ -96,7 +96,7 @@ export class FaqController {
     @Body() body: MessagesListValidator
   ) {
     const {id} = await this._jobsService.insertJob(user.organization.organizationId, body.reference, body.messagesList);
-    const url = process.env.FRONTEND_URL + `/dashboard/job/${id}?auth=` + AuthService.signJWT(user);
+    const url = process.env.FRONTEND_URL + `/job/${id}?auth=` + AuthService.signJWT(user);
     return {url};
   }
 
