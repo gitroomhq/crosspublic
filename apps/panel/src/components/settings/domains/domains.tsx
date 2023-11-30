@@ -7,6 +7,7 @@ import {Input} from "@meetfaq/panel/src/components/utils/input";
 import {Button} from "@meetfaq/panel/src/components/utils/button";
 import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
 import {SubmitHandler, useForm} from "react-hook-form";
+import slugify from "slugify";
 
 export default function Domains({domains} : {domains: any[]}) {
     const fetchObject = useFetch();
@@ -28,6 +29,19 @@ export default function Domains({domains} : {domains: any[]}) {
         catch (err) {}
     }, []);
 
+    const {onChange, ...allParams} = register('domain', {required: {value: true, message: 'Domain name is required'}, pattern: {value: /^(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/, message: 'Invalid domain name'}});
+
+  const changeDomain = useCallback((event: any) => {
+    event.target.value = event.target.value.replace(/ /g, '-');
+    event.target.value = event.target.value.replace(/--/g, '-');
+    event.target.value = event.target.value.replace(/\./g, 'thisisadot');
+    if (event.target.value.charAt(event.target.value.length-1) !== '-') {
+      event.target.value = slugify(event.target.value, {lower: true, strict: true});
+    }
+    event.target.value = event.target.value.replace(/thisisadot/g, '.');
+    onChange(event);
+  }, [onChange]);
+
     return (
         <>
             {!domainList.length && (
@@ -42,7 +56,8 @@ export default function Domains({domains} : {domains: any[]}) {
                                 type="text"
                                 topDivClass="flex-1"
                                 className="w-full"
-                                {...register('domain', {required: {value: true, message: 'Domain name is required'}, pattern: {value: /^(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/, message: 'Invalid domain name'}})}
+                                {...allParams}
+                                onChange={changeDomain}
                                 placeholder="mydomain.com"
                                 error={formState?.errors.domain}
                             />

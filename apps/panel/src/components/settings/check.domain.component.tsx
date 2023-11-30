@@ -27,17 +27,18 @@ export const CheckDomainComponent: FC<{initialValue: string, newValue: string, s
   }, 500);
 
   useEffect(() => {
-    if (newValue === '') {
+    if (newValue === '' || newValue.charAt(newValue.length-1) === '-') {
       setCheck(0);
       setValidInvalid(false);
       return;
     }
     setCheck(0);
     if (initialValue !== newValue) {
+      setValidInvalid(false);
       checkDomain(newValue);
     }
     else {
-      setValidInvalid(true);
+      setValidInvalid(false);
     }
   }, [newValue]);
 

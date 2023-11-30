@@ -19,11 +19,11 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
     const {watch, register, formState} = useForm({
         defaultValues: {
             subDomain,
-            validInvalid: true
+            validInvalid: false
         },
         values: {
             subDomain,
-            validInvalid: true
+            validInvalid: false
         },
         mode: 'onChange',
     });
@@ -31,8 +31,7 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
         validate: (b: boolean) => {
             return b;
         }});
-    const subDomainWatch = watch('subDomain');
-
+    const subDomainWatch        = watch('subDomain');
     const {handleSubmit} = useForm();
 
     const removeSubdomain = useMemo(() => {
@@ -55,6 +54,18 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
         catch (err) {}
     }, [subDomainWatch]);
 
+    const {onChange, ...allParams} = register('subDomain', {required: {value: true, message: 'Sub domain name is required'}, pattern: {value: /^[a-zA-Z0-9][a-zA-Z0-9-]{0,62}$/, message: 'Invalid domain name'}, minLength: {value: 3, message: 'Sub domain must be at least 3 characters'}, maxLength: 20})
+
+    const changeSubDomain = useCallback((event: any) => {
+      event.target.value = event.target.value.replace(/ /g, '-');
+      event.target.value = event.target.value.replace(/--/g, '-');
+      if (event.target.value.charAt(event.target.value.length-1) !== '-') {
+        event.target.value = slugify(event.target.value, {lower: true, strict: true});
+      }
+
+      onChange(event);
+    }, [onChange]);
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex items-start w-[615px]">
@@ -64,11 +75,11 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
                         <div className="flex flex-col flex-1">
                             <div className="rounded-container bg-[#FAFAFD] border-[#EBE8E8] border outline-none text-sm flex flex-1 overflow-hidden">
                                 <div className="flex-1">
-                                    <Input maxLength={20} className="!border-0 w-full !rounded-none flex-1 py-[10px] px-[15px]" required={true} label="" placeholder="Subdomain" {...register('subDomain', {onChange: (value) => slugify(value, {lower: true, trim: true, strict: true}), required: {value: true, message: 'Sub domain name is required'}, pattern: {value: /^[a-zA-Z0-9][a-zA-Z0-9-]{0,62}$/, message: 'Invalid domain name'}, minLength: {value: 3, message: 'Sub domain must be at least 3 characters'}, maxLength: 20})} />
+                                    <Input maxLength={20} className="!border-0 w-full !rounded-none flex-1 py-[10px] px-[15px]" required={true} label="" placeholder="Subdomain" {...allParams} onChange={changeSubDomain} />
                                 </div>
                                 <div className="ml-[1px] flex items-center">.{removeSubdomain}</div>
                                 <div className="flex items-center pr-[15px] w-[47px]">
-                                    {formState.isValid && <CheckDomainComponent setValidInvalid={(b) => validInvalid.onChange({target: {name: 'validInvalid', value: b}})} initialValue={initialSubdomain} newValue={subDomainWatch} />}
+                                    <CheckDomainComponent setValidInvalid={(b) => validInvalid.onChange({target: {name: 'validInvalid', value: b}})} initialValue={initialSubdomain} newValue={subDomainWatch} />
                                 </div>
                             </div>
                             {!!formState.errors.subDomain && <div className="text-red-500 text-xs mt-1">{formState.errors.subDomain.message}</div>}
