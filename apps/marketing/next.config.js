@@ -13,11 +13,16 @@ const nextConfig = {
     svgr: false,
   },
   redirects: async () => ([
-      {
-        permanent: true,
-        source: '/docs',
-        destination: process.env.DOCS_URL || '',
-      }
+    {
+      permanent: true,
+      source: '/docs',
+      destination: process.env.DOCS_URL || '',
+    },
+    {
+      permanent: true,
+      source: '/login',
+      destination: process.env.FRONTEND_URL || '',
+    }
   ]),
   env: {
     DOCS_URL: process.env.DOCS_URL || ''
