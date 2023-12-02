@@ -4,6 +4,9 @@ import { fetchBackend } from "@meetfaq/helpers/src/fetchObject/custom.fetch.back
 
 export async function GET(request: NextRequest) {
   const auth = request.cookies.get('auth')?.value;
+  if (!auth) {
+    return Response.json({ok: true});
+  }
   const data = await (await fetchBackend('/settings', {
     headers: {
       auth,
