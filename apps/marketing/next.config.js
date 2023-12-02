@@ -20,7 +20,7 @@ const nextConfig = {
     },
     {
       permanent: true,
-      source: '/login',
+      source: '/register',
       destination: process.env.FRONTEND_URL || '',
     }
   ]),

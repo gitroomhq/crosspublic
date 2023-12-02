@@ -22,7 +22,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     const headersToken = headers().get('auth');
 
     if (!cookieToken && !headersToken) {
-      return redirect('/auth/login');
+      return redirect('/auth/register');
     }
 
     const response = await fetchBackend('/users/self', {

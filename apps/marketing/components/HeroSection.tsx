@@ -26,7 +26,7 @@ export default function HeroSection() {
                     Element="a"
                     emphasis="primary"
                     label="Get started"
-                    to="/login"
+                    to="/register"
                     ui="max"
                   />
                 </div>
@@ -85,6 +85,16 @@ export default function HeroSection() {
                 <Image
                   className="h-6 w-auto lg:h-10"
                   src="/images/clients/keep.png"
+                  loading="lazy"
+                  alt="lilly"
+                  width="100"
+                  height="100"
+                />
+              </a>
+              <a href="https://trigger.dev/" target="_blank">
+                <Image
+                  className="h-6 w-auto lg:h-10"
+                  src="/images/clients/trigger.svg"
                   loading="lazy"
                   alt="lilly"
                   width="100"

@@ -2,7 +2,7 @@
   <a href="https://meetfaq.com?utm_source=github" target="_blank">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://github.com/github-20k/meetqa/assets/100117126/b1627f46-ab23-4a84-8a1f-e3c56d6411b0">
-    <img alt="Novu Logo" src="https://github.com/github-20k/meetqa/assets/100117126/1f6c696c-d078-4e30-a8d6-bf503769059c" width="280"/>
+    <img alt="MeetFAQ" src="https://github.com/github-20k/meetqa/assets/100117126/1f6c696c-d078-4e30-a8d6-bf503769059c" width="280"/>
   </picture>
   </a>
 </div>
@@ -20,7 +20,7 @@ Extract your customer's conversation into an FAQ to make it available to everyon
     <br />
     <a href="https://meetfaq.com/docs"><strong>Explore the docs »</strong></a>
     <br/><br/>
-    <a href="https://meetfaq.com/login">Register to the cloud</a>
+    <a href="https://meetfaq.com/register">Register to the cloud</a>
     ·
     <a href="https://discord.gitroom.com">Join our Discord</a>
   </p>
