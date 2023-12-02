@@ -4,7 +4,26 @@ import {textToMarkdown} from "@meetfaq/tenants/src/helpers/text.to.markdown";
 import {AfterHighlight} from "@meetfaq/tenants/src/components/utils/after.highlight";
 import Link from "next/link";
 import {Suspense} from "react";
+import { Metadata, ResolvingMetadata } from "next";
 export const dynamic = 'force-static';
+
+type Props = {
+  params: { customer: string, slug: string }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const {customer, slug} = params;
+  const {name, request, tags} = await publicRequestFetch(customer);
+  const {data}: {data: Faq & {categories: [{category: Category & {slug: string}}]}} = await request.get(`/public/faq/${slug}?c=${customer}`, {cache: 'force-cache', next: {tags: [tags]}});
+
+  return {
+    title: name + ' FAQ - ' + data.title,
+  }
+}
 
 export default async function Page({params: {slug, customer}}: {params: {slug: string, customer: string}}) {
   const {tags, request} = await publicRequestFetch(customer);

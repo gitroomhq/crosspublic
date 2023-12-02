@@ -3,8 +3,26 @@ import {Category} from "@prisma/client";
 import {textToMarkdown} from "@meetfaq/tenants/src/helpers/text.to.markdown";
 import Link from "next/link";
 import {Suspense} from "react";
+import { Metadata, ResolvingMetadata } from "next";
 
 export const dynamic = 'force-static';
+
+type Props = {
+  params: { customer: string }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const {customer} = params;
+  const {name} = await publicRequestFetch(customer);
+
+  return {
+    title: name + ' FAQ'
+  }
+}
 
 export default async function Page({params: {customer}} : {params: {customer: string}}) {
   const {tags, request} = await publicRequestFetch(customer);

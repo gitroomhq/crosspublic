@@ -61,13 +61,14 @@ export class OrganizationRepository {
           organization: {
             select: {
               id: true,
-              apiKey: true
+              apiKey: true,
+              name: true,
             }
           }
         }
       });
 
-      return {apiKey: data?.organization?.apiKey || '', id: data?.organization?.id || ''}
+      return {apiKey: data?.organization?.apiKey || '', id: data?.organization?.id || '', name: data?.organization?.name || ''};
     }
 
     const data = await this._prisma.model.organization.findUnique({
@@ -77,6 +78,7 @@ export class OrganizationRepository {
       select: {
         apiKey: true,
         id: true,
+        name: true,
         domains: {
           select: {
             domain: true
@@ -87,7 +89,8 @@ export class OrganizationRepository {
 
     return {
       id: data?.id,
-      apiKey: data?.domains?.[0]?.domain ? `https://${data?.domains?.[0]?.domain}` : data?.apiKey || ''
+      apiKey: data?.domains?.[0]?.domain ? `https://${data?.domains?.[0]?.domain}` : data?.apiKey || '',
+      name: data?.name || ''
     };
   }
 
