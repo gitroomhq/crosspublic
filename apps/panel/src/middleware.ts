@@ -10,10 +10,8 @@ export async function middleware(request: NextRequest) {
   // If the URL is logout, delete the cookie and redirect to login
   if (nextUrl.href.indexOf('/auth/logout') > -1) {
     const response = NextResponse.redirect(new URL('/auth/login', nextUrl.href));
-    response.cookies.delete({
-      name: 'auth',
+    response.cookies.set('auth', '', {
       path: '/',
-      value: '',
       sameSite: false,
       httpOnly: true,
       domain: '.' + new URL(removeSubdomain(process.env.FRONTEND_URL!)).hostname
