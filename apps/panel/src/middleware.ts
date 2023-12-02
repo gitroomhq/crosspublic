@@ -14,6 +14,7 @@ export async function middleware(request: NextRequest) {
       path: '/',
       sameSite: false,
       httpOnly: true,
+      maxAge: -1,
       domain: '.' + new URL(removeSubdomain(process.env.FRONTEND_URL!)).hostname
     });
     return response;
