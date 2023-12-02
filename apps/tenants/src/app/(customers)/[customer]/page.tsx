@@ -16,7 +16,7 @@ export default async function Page({params: {customer}} : {params: {customer: st
           {data.map((category: Category & {slug: string}) => (
             <Link href={`/categories/${category.slug}`}
                  key={category.id}
-                 className="min-h-[126px] border border-gray rounded-container p-5 shadow-lg hover:shadow-xl transition-all">
+                 className="min-h-[126px] border border-gray rounded-container p-5 shadow-lg hover:shadow-xl transition-all secondaryColor">
                   <div className="font-bold mb-2">
                     {category.name}
                   </div>

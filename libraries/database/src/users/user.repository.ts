@@ -1,6 +1,5 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
 import {RegistrationValidator} from "@meetfaq/validators/src/auth/registration.validator";
 import slugify from "slugify";
 import {makeId} from "@meetfaq/helpers/src/makeid/make.id";
@@ -9,8 +8,21 @@ import {hashSync} from 'bcrypt';
 @Injectable()
 export class UserRepository {
   constructor(
-    private readonly _prismaUser: PrismaRepository<'user'>
+    private readonly _prismaUser: PrismaRepository<'user'>,
+    private readonly _integrationsUsers: PrismaRepository<'integrationsUsers'>,
   ) {
+  }
+
+  totalUsersByOrganizationId(orgId: string) {
+    return this._prismaUser.model.user.count({
+      where: {
+        organization: {
+          every: {
+            organizationId: orgId
+          }
+        }
+      }
+    });
   }
 
   async getUserByEmail(email: string) {
@@ -24,14 +36,23 @@ export class UserRepository {
     });
   }
 
-  register(body: RegistrationValidator) {
-    return this._prismaUser.model.user.create({
+  async register(body: RegistrationValidator, guildId?: string, internalId?: string, organizationId?: string) {
+    const createOrg = await this._prismaUser.model.user.create({
       data: {
         email: body.email.toLowerCase(),
         name: body.company,
         password: hashSync(body.password, 16),
         internalId: makeId(20),
-        organization: {
+        organization: guildId && organizationId ? {
+          create: {
+            role: 'USER',
+            organization: {
+              connect: {
+                id: organizationId
+              }
+            }
+          }
+        } : {
           create: {
             role: 'ADMIN',
             organization: {
@@ -56,5 +77,24 @@ export class UserRepository {
         }
       }
     });
+
+    if (guildId && internalId && organizationId) {
+      await this._integrationsUsers.model.integrationsUsers.create({
+        data: {
+          integration: {
+            connect: {
+              internalId_organizationId: {
+                internalId: guildId,
+                organizationId: organizationId
+              }
+            }
+          },
+          owner: false,
+          internalId,
+        }
+      })
+    }
+
+    return createOrg;
   }
 }

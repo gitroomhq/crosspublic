@@ -13,11 +13,14 @@ import {PublicFaqController} from "@meetfaq/backend/src/api/public/public.faq.co
 import {PublicCategoriesController} from "@meetfaq/backend/src/api/public/public.categories.controller";
 import {StylesController} from "@meetfaq/backend/src/api/styles.controller";
 import {IntegrationsController} from "@meetfaq/backend/src/api/integrations.controller";
+import {InviteController} from "@meetfaq/backend/src/api/invite.controller";
+import {PublicStyleController} from "@meetfaq/backend/src/api/public/public.style.controller";
 
 const publicControllers = [
   PublicOrganizationController,
   PublicCategoriesController,
   PublicFaqController,
+  PublicStyleController
 ];
 
 const authenticatedControllers = [
@@ -28,8 +31,10 @@ const authenticatedControllers = [
   SettingsController,
   BillingController,
   StylesController,
-  IntegrationsController
+  IntegrationsController,
+  InviteController
 ];
+
 @Global()
 @Module({
   imports: [],

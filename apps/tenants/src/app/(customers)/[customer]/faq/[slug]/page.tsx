@@ -20,7 +20,7 @@ export default async function Page({params: {slug, customer}}: {params: {slug: s
         <div>
           <h1 className="text-xl font-bold">{data.title}</h1>
         </div>
-          <div className="border border-gray rounded-container p-5 shadow-lg">
+          <div className="border border-gray rounded-container p-5 shadow-lg secondaryColor">
             <div id="content" className="gap-4 flex flex-col" dangerouslySetInnerHTML={{__html: textToMarkdown(data.content)}} />
             <AfterHighlight id="content" />
           </div>

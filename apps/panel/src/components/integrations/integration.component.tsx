@@ -34,7 +34,14 @@ export const IntegrationComponent = wrapMeta<{integrations: Array<Integrations &
       <Block>
         <div className="flex">
         {!integrations.length ? (
-          <div className="text-center text-gray-500">No integrations</div>
+          <div className="flex flex-col items-center justify-center flex-1">
+            <div className="text-2xl font-bold">
+              No integrations found
+            </div>
+            <div className="text-gray-500">
+              Create a new integration to get started
+            </div>
+          </div>
         ): integrations.map((integration) => (
           <div
             key={integration.id}

@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import {publicRequestFetch} from "@meetfaq/tenants/src/helpers/get.api.key";
 import {ClaimThisPageComponent} from "@meetfaq/tenants/src/components/claim/claim.this.page.component";
 import {redirect} from "next/navigation";
+import {SearchComponent} from "@meetfaq/tenants/src/components/search/search.component";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ['latin'] })
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
 export const dynamic = 'force-static';
 
 export default async function DashboardLayout({ children, params }: { children: React.ReactNode, params: {customer: string} }) {
-  const {redirect: redirectPath, request} = await publicRequestFetch(params.customer);
+  const {redirect: redirectPath, request, tags, id} = await publicRequestFetch(params.customer);
   if (!request) {
     return (
       <html lang="en">
@@ -32,32 +33,32 @@ export default async function DashboardLayout({ children, params }: { children: 
     return <></>;
   }
 
-  if (request)
+  const {data} = await request.get('/public/styles', {cache: 'force-cache', next: {tags: [tags]}});
   return (
       <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{backgroundColor: data.backgroundColor}}>
       <div className="min-h-screen flex flex-col">
-        <div className="w-full h-[300px] p-10 bg-primary flex flex-col items-center text-white">
+        <div className="w-full h-[300px] p-10 flex flex-col items-center" style={{backgroundColor: data.topBarColor, color: data.topBarTextColor}}>
             <div className="w-full max-w-[800px] flex flex-col flex-1 justify-between">
                 <div>
-                Logo
+                  {data.name}
                 </div>
-                <div className="text-4xl">Advice and answer from name team</div>
+                <div className="text-4xl">Advice and answer from the {data.name} team</div>
                 <div>
-                    <input placeholder="Search FAQ..." className="text-black rounded-container w-full h-[60px] bg-white/20 outline-none px-5 hover:bg-white/30 focus:bg-white transition-all" />
+                    <SearchComponent org={id} />
                 </div>
             </div>
         </div>
         <div className="p-10 flex justify-center flex-1">
             <div className="w-full max-w-[800px] flex flex-col flex-1">
+              <style>{`.secondaryColor { background-color: ${data.pageBlockColor} } .secondaryTextColor: {background-color: ${data.pageTextColor}`}</style>
                 {children}
             </div>
         </div>
         <div>
           <div className="p-10 flex justify-center flex-1">
             <div className="w-full max-w-[800px] flex flex-1">
-              <div>Powered by</div>
-              <a href="https://meetfaq.com" target="_blank" className="text-primary ml-1">MeetFAQ</a>
+              <div>{data.brandingText}</div>
             </div>
           </div>
         </div>

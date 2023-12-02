@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: '',
 }
 
-export default async function FAQs(props: any) {
+export default async function FAQs() {
   const {data} = await customFetchBackend(userToken()).get('/categories/faq');
   return (
       <FaqComponent metadata={metadata} categories={data} />

@@ -81,4 +81,23 @@ export class IntegrationsRepository {
       }
     });
   }
+
+  addUserToIntegration(organizationId: string, guild: string, internalId: string) {
+    return this._integrations.model.integrations.update({
+      where: {
+        internalId_organizationId: {
+          organizationId,
+          internalId: guild
+        }
+      },
+      data: {
+        users: {
+          create: {
+            internalId,
+            owner: false,
+          }
+        }
+      }
+    });
+  }
 }

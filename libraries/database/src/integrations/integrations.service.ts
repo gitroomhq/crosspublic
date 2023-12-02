@@ -70,4 +70,8 @@ export class IntegrationsService {
   createSlackIntegration(slack: Slack) {
     return slack;
   }
+
+  addUserToIntegration(organizationId: string, guild: string, internalId: string) {
+    return this._integrationsRepository.addUserToIntegration(organizationId, guild, internalId);
+  }
 }

@@ -10,4 +10,8 @@ export class UserService {
   getUserByEmail(email: string) {
     return this._userRepository.getUserByEmail(email);
   }
+
+  totalUsersByOrganizationId(orgId: string) {
+    return this._userRepository.totalUsersByOrganizationId(orgId);
+  }
 }

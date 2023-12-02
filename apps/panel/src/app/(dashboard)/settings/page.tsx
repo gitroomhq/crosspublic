@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: '',
 }
 
-export default async function Settings(props: any) {
+export default async function Settings() {
   const {data: settings} = await customFetchBackend(userToken()).get(`/settings`);
   /*
    * Replace the elements below with your own.

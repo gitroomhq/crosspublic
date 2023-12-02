@@ -1,4 +1,5 @@
 import '../styles.css';
+import 'react-tooltip/dist/react-tooltip.css';
 import 'react-toastify/dist/ReactToastify.css';
 import {LayoutComponent} from "@meetfaq/panel/src/components/layout/layout.component";
 import {Metadata} from "next";
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
     description: '',
 }
 
-export default async function DashboardLayout({ children, params }: { children: React.ReactNode, params: any }) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode, params: any }) {
     const cookiesList = cookies();
     const cookieToken = cookiesList.get('auth')?.value;
     const headersToken = headers().get('auth');

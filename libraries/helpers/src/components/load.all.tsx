@@ -1,4 +1,4 @@
-import {FC, ReactNode, useCallback, useEffect, useState} from "react";
+import {FC, ReactNode, useEffect, useState} from "react";
 import {lowlight} from "lowlight/lib/core";
 
 const LoadAllLanguages: FC<{children: ReactNode}> = (props) => {

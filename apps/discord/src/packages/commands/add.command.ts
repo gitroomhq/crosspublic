@@ -1,32 +1,13 @@
 import {CommandsInterface} from "@meetfaq/discord/src/packages/commands/commands.interface";
-import {ActionRowBuilder, ButtonBuilder, ButtonInteraction, ButtonStyle, ChatInputCommandInteraction} from "discord.js";
+import {ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction} from "discord.js";
 import {Injectable} from "@nestjs/common";
 import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
 import {uniqBy} from "lodash";
-import EventEmitter from 'events';
 
-const event = new EventEmitter();
-
-const total = () => {
-  const allEventNames = event.eventNames();
-  let totalListeners = 0;
-
-  for (const eventName of allEventNames) {
-    totalListeners += event.listeners(eventName).length;
-  }
-
-  console.log('total events', totalListeners);
-}
 @Injectable()
 export class AddCommand implements CommandsInterface {
   name = "add";
   description = "Add forum thread to the FAQ"
-  async runButton(fetchObject: any, user: UserInterface, interactions: ButtonInteraction) {
-    total();
-    const reply = await interactions.deferReply();
-    event.emit(interactions.customId);
-    await reply.delete();
-  }
   async run(fetchObject: any, user: UserInterface, interactions: ChatInputCommandInteraction) {
     if (!interactions.channel.isThread()) {
       await interactions.deleteReply('Not a thread');
@@ -82,8 +63,6 @@ export class AddCommand implements CommandsInterface {
       }, p.message).replace(new RegExp(/<@\d+>/, 'g'), '[Unknown User]'),
       name: allAuthors.users[p.name]
     }));
-
-    console.log(mapper);
 
     const {data} = await fetchObject.post('/faq/job', {
       reference,

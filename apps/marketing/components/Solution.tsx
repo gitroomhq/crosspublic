@@ -1,7 +1,7 @@
 import Container from "./Container"
-import Products from "./Products"
+// import Products from "./Products"
 import SolutionContent from "./SolutionContent"
-import Image from "next/image.js"
+// import Image from "next/image.js"
 
 export default function Solution() {
     return (

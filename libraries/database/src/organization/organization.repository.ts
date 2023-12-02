@@ -1,13 +1,31 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
 import {DomainSubDomainOrganizationValidator} from "@meetfaq/validators/src/public/domain.subDomain.organization.validator";
+import {UpdateStyleValidator} from "@meetfaq/validators/src/organizations/update.style.validator";
 
 @Injectable()
 export class OrganizationRepository {
   constructor(
     private readonly _prisma: PrismaRepository<'organization'>,
     private readonly _domains: PrismaRepository<'domains'>,
+    private readonly _integrations: PrismaRepository<'integrations'>,
   ) {
+  }
+  updateStyles(organizationId: string, canEditBranding: boolean, styles: UpdateStyleValidator) {
+    return this._prisma.model.organization.update({
+      where: {
+        id: organizationId
+      },
+      data: {
+        name: styles.name,
+        topBarColor: styles.topBarColor,
+        topBarTextColor: styles.topBarTextColor,
+        backgroundColor: styles.backgroundColor,
+        pageTextColor: styles.pageTextColor,
+        pageBlockColor: styles.pageBlockColor,
+        ...canEditBranding && styles.brandingText ? {brandingText: styles.brandingText} : {},
+      }
+    });
   }
   getOrgById(id: string) {
     return this._prisma.model.organization.findUnique({
@@ -42,13 +60,14 @@ export class OrganizationRepository {
         select: {
           organization: {
             select: {
+              id: true,
               apiKey: true
             }
           }
         }
       });
 
-      return data?.organization?.apiKey || '';
+      return {apiKey: data?.organization?.apiKey || '', id: data?.organization?.id || ''}
     }
 
     const data = await this._prisma.model.organization.findUnique({
@@ -57,6 +76,7 @@ export class OrganizationRepository {
       },
       select: {
         apiKey: true,
+        id: true,
         domains: {
           select: {
             domain: true
@@ -65,7 +85,10 @@ export class OrganizationRepository {
       }
     });
 
-    return data?.domains?.[0]?.domain ? `https://${data?.domains?.[0]?.domain}` : data?.apiKey || '';
+    return {
+      id: data?.id,
+      apiKey: data?.domains?.[0]?.domain ? `https://${data?.domains?.[0]?.domain}` : data?.apiKey || ''
+    };
   }
 
   getOrganizationByApiKey(apiKey: string) {

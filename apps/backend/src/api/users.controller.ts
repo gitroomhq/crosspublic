@@ -1,7 +1,6 @@
 import {Controller, Get, Post} from "@nestjs/common";
 import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
 import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
 import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
 import * as process from "process";
 import {RevalidateService} from "@meetfaq/helpers/src/revalidate/revalidate.service";

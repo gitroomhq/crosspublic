@@ -17,7 +17,7 @@ interface RegistrationInterface {
   checked: boolean;
 }
 
-export default function RegistrationComponent () {
+export default function RegistrationComponent ({token}: {token?: string}) {
   const router = useRouter();
   const {handleSubmit, setError, register, formState} = useForm<RegistrationInterface>({
     mode: 'onChange',
@@ -26,7 +26,7 @@ export default function RegistrationComponent () {
   const onSubmit: SubmitHandler<RegistrationInterface> = useCallback(async (values) => {
     const registration = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + '/auth/registration', {
       method: 'POST',
-      body: JSON.stringify(values),
+      body: JSON.stringify({...values, token}),
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
@@ -38,6 +38,10 @@ export default function RegistrationComponent () {
       return ;
     }
 
+    if (token) {
+      router.push('/success-add');
+      return ;
+    }
     router.push('/');
   }, []);
 
@@ -46,6 +50,7 @@ export default function RegistrationComponent () {
       <Block className="flex flex-col w-full">
         <form className="flex-1 flex-col w-full gap-[30px] flex" onSubmit={handleSubmit(onSubmit)}>
           <h1 className="text-2xl text-primary font-[800]">Registration</h1>
+          {!!token && <div className="text-center font-bold text-primary">Registering for an existing organization</div>}
           <div className="flex flex-col gap-3 w-full">
             <div className="flex flex-1 [&>div]:w-full [&>div]:flex [&>div]:flex-col">
               <Input label="Email" type="text" placeholder="nevo@meetfaq.com" error={formState.errors.email} {...register('email', {required: {value: true, message: 'Email is required'}, pattern: {

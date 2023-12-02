@@ -24,5 +24,3 @@ export const UserContext = (props: {children: ReactNode, user: UserInterface, pr
         </UserHigherContext.Provider>
     )
 }
-
-export const useUser = () => useContext(UserHigherContext);

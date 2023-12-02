@@ -19,6 +19,6 @@ export class PublicOrganizationController {
         if (serverkey !== process.env.BACKEND_TOKEN_PROTECTOR) {
             return 401;
         }
-        return {apiKey: await this._organizationService.getOrganizationByDomainSubDomain(query)};
+        return this._organizationService.getOrganizationByDomainSubDomain(query);
     }
 }

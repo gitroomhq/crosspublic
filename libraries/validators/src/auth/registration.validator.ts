@@ -1,4 +1,4 @@
-import {IsDefined, IsEmail, IsString, MinLength} from "class-validator";
+import {IsDefined, IsEmail, IsOptional, IsString, MinLength} from "class-validator";
 
 export class RegistrationValidator {
   @IsDefined()
@@ -14,4 +14,8 @@ export class RegistrationValidator {
   @IsString()
   @MinLength(3)
   company: string;
+
+  @IsOptional()
+  @IsString()
+  token?: string;
 }

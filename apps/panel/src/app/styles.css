@@ -77,3 +77,7 @@ button[disabled] {
   display: flex;
   flex-direction: column;
 }
+
+.react-tooltip {
+  z-index: 100 !important;
+}

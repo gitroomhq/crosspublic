@@ -1,6 +1,5 @@
 "use client";
 
-import {Button} from "@meetfaq/panel/src/components/utils/button";
 import {FC, useCallback, useState} from "react";
 import {ExtendedCategory} from "@meetfaq/panel/src/components/faqs/faq.component";
 import {deleteDialog} from "@meetfaq/panel/src/helpers/delete.dialog";

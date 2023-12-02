@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {Client, GatewayIntentBits, Interaction, Partials, REST, Routes} from 'discord.js';
+import {Client, GatewayIntentBits, Partials, REST, Routes, SlashCommandBuilder} from 'discord.js';
 import {CommandsInterface} from "@meetfaq/discord/src/packages/commands/commands.interface";
 import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
 import {AuthService} from "@meetfaq/discord/src/packages/auth/auth.service";
@@ -17,7 +17,15 @@ export class DiscordService {
     try {
       console.log('Started refreshing application (/) commands.');
 
-      const commandLoad = commands.map(p => ({name: p.name, description: p.description}));
+      const commandLoad = commands.map(p => {
+        const slash = new SlashCommandBuilder();
+        slash.setName(p.name);
+        slash.setDescription(p.description);
+        if (p.params) {
+          p.params(slash);
+        }
+        return slash;
+      });
       console.log('loaded command: ', commandLoad.map(p => `/${p.name}`))
       await rest.put(Routes.applicationCommands(process.env.DISCORD_CLIENT), { body: commandLoad });
 

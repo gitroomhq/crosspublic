@@ -77,3 +77,20 @@ button[disabled] {
   display: flex;
   flex-direction: column;
 }
+
+.ais-SearchBox-input {
+  position: absolute;
+  background: transparent;
+  left: 0;
+}
+
+.ais-SearchBox-input:hover {
+  background: rgba(255,255, 255, 0.3);
+}
+.ais-SearchBox-input:focus {
+  background: white;
+}
+
+.ais-SearchBox-input:not(:placeholder-shown) {
+  background: white !important;
+}

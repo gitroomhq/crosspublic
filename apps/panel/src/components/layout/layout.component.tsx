@@ -13,6 +13,7 @@ import {Title, TitleProvider} from "@meetfaq/panel/src/helpers/title.helper";
 import {NiceModalProvider} from "@meetfaq/panel/src/components/utils/nice.modal.provider";
 import {Toaster} from "@meetfaq/panel/src/components/layout/toaster";
 import {headers} from "next/dist/client/components/headers";
+import {TooltipWrapper} from "@meetfaq/panel/src/components/utils/tooltip.wrapper";
 
 const LayoutLoad = dynamic(() => import('@meetfaq/panel/src/components/layout/layout.load'), { ssr: false });
 
@@ -27,6 +28,7 @@ export const LayoutComponent: FC<{children: ReactNode, user: UserInterface, clas
             <FetchContext>
               <TitleProvider>
                 <NiceModalProvider>
+                  <TooltipWrapper />
                   <LayoutLoad />
                   <Toaster />
                   <div className={clsx("min-h-screen flex", className)}>

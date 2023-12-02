@@ -7,6 +7,7 @@ import {PublicMiddleware} from "@meetfaq/backend/src/services/public.middleware"
 import {ResponseInterceptor} from "@meetfaq/backend/src/services/response.interceptor";
 import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
 import {RevalidateService} from "@meetfaq/helpers/src/revalidate/revalidate.service";
+import {AlgoliaService} from "@meetfaq/helpers/src/algolia/algolia.service";
 
 @Global()
 @Module({
@@ -20,7 +21,8 @@ import {RevalidateService} from "@meetfaq/helpers/src/revalidate/revalidate.serv
     PoliciesGuard,
     StripeService,
     OrganizationService,
-    RevalidateService
+    RevalidateService,
+    AlgoliaService
   ],
   get exports() {
     return this.providers;

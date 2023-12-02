@@ -22,7 +22,7 @@ export default async function Page({params: {slug, customer}}: {params: {slug: s
         {data.faq.map((faq: Faq & {slug: string}) => (
           <Link href={`/faq/${faq.slug}`}
                 key={faq.id}
-                className="border border-gray rounded-container p-5 shadow-lg hover:shadow-xl transition-all">
+                className="border border-gray rounded-container p-5 shadow-lg hover:shadow-xl transition-all secondaryColor">
             <div className="font-bold">
               {faq.title}
             </div>

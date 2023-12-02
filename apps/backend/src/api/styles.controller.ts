@@ -1,14 +1,19 @@
-import {Controller, Get} from "@nestjs/common";
+import {Body, Controller, Get, Put} from "@nestjs/common";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
 import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
 import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
+import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {pricing} from "@meetfaq/helpers/src/pricing/pricing";
+import {Revalidate} from "@meetfaq/backend/src/services/revalidate";
+import {UpdateStyleValidator} from "@meetfaq/validators/src/organizations/update.style.validator";
 
 @ApiTags('Styles')
 @Controller('/styles')
 @ApiHeaders([{name: 'auth', required: true}])
 export class StylesController {
   constructor(
+    private readonly _subscriptionService: SubscriptionService,
     private readonly _organizationService: OrganizationService
   ) {
   }
@@ -17,15 +22,29 @@ export class StylesController {
   async getStyles(
     @GetUserFromRequest() user: UserInterface
   ) {
-    const {name, pageColor, primaryColor, removeBranding, secondaryColor, brandingText, topBarColor} = await this._organizationService.getOrgById(user.organization.organizationId);
+    const subscription = await this._subscriptionService.getSubscriptionByOrganizationId(user.organization.organizationId);
+    const canEditBranding = !subscription ? false : pricing[subscription.subscriptionTier].domains > 0;
+    const {name, brandingText, pageBlockColor, topBarColor, topBarTextColor, backgroundColor, pageTextColor} = await this._organizationService.getOrgById(user.organization.organizationId);
     return {
       name,
-      pageColor,
-      primaryColor,
-      removeBranding,
-      secondaryColor,
+      topBarTextColor,
+      backgroundColor,
+      pageTextColor,
+      topBarColor,
       brandingText,
-      topBarColor
+      pageBlockColor,
+      canEditBranding
     }
+  }
+
+  @Revalidate()
+  @Put('/')
+  async updateStyles(
+    @GetUserFromRequest() user: UserInterface,
+    @Body() styles: UpdateStyleValidator
+  ) {
+    const subscription = await this._subscriptionService.getSubscriptionByOrganizationId(user.organization.organizationId);
+    const canEditBranding = !subscription ? false : pricing[subscription.subscriptionTier].domains > 0;
+    return this._organizationService.updateStyles(user.organization.organizationId, canEditBranding, styles);
   }
 }

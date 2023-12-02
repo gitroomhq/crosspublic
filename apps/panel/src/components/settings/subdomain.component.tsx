@@ -43,7 +43,7 @@ export const SubdomainComponent: FC<{subDomain: string}> = (props) => {
       return frontend.split('.').slice(1).join('.');
     }, []);
 
-    const onSubmit: SubmitHandler<FieldValues> = useCallback(async (props) => {
+    const onSubmit: SubmitHandler<FieldValues> = useCallback(async () => {
         try {
             const dialog = await deleteDialog('Are you sure you want to change your subdomain? Other people would be able to claim this subdomain. Any previous SEO you have had will be lost', 'Yes, do it!', 'Subdomain changed!');
             await fetchObject.post('/settings/subdomain', {subDomain: subDomainWatch});

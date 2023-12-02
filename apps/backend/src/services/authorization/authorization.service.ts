@@ -6,6 +6,7 @@ import {DomainService} from "@meetfaq/database/src/domains/domain.service";
 import {Injectable} from "@nestjs/common";
 import {pricing} from "@meetfaq/helpers/src/pricing/pricing";
 import {IntegrationsService} from "@meetfaq/database/src/integrations/integrations.service";
+import {UserService} from "@meetfaq/database/src/users/user.service";
 
 export enum Sections {
     FAQ = 'faq',
@@ -13,6 +14,7 @@ export enum Sections {
     INTEGRATIONS = 'integrations',
     DOMAIN = 'domain',
     EMBEDDING = 'embedding',
+    USERS = 'users',
     API = 'api'
 }
 
@@ -32,7 +34,8 @@ export class AuthorizationService {
     private _faqService: FaqService,
     private _categoryService: CategoryService,
     private _domainService: DomainService,
-    private _integrationsService: IntegrationsService
+    private _integrationsService: IntegrationsService,
+    private _userService: UserService
   ) {
   }
     async getPackageOptions(orgId: string) {
@@ -48,6 +51,7 @@ export class AuthorizationService {
       const totalCategories             = await this._categoryService.totalCategoriesByOrganizationId(orgId);
       const totalDomains                = await this._domainService.totalDomainsByOrganizationId(orgId);
       const totalIntegrations           = await this._integrationsService.totalIntegrationsByOrganizationId(orgId);
+      const totalUsers                  = await this._userService.totalUsersByOrganizationId(orgId);
 
       can(AuthorizationActions.Update, Sections.FAQ);
       can(AuthorizationActions.Delete, Sections.FAQ);
@@ -56,6 +60,10 @@ export class AuthorizationService {
       can(AuthorizationActions.Read, Sections.CATEGORY);
       can(AuthorizationActions.Update, Sections.CATEGORY);
       can(AuthorizationActions.Delete, Sections.CATEGORY);
+
+      if (!process.env.PAYMENT_PUBLIC_KEY || totalUsers < options.user) {
+        can(AuthorizationActions.Create, Sections.USERS);
+      }
 
       if (!process.env.PAYMENT_PUBLIC_KEY || totalFaqs < options.faq) {
         can(AuthorizationActions.Create, Sections.FAQ);
