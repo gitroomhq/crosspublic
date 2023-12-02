@@ -59,11 +59,11 @@ export class UserRepository {
               create: {
                 name: body.company,
                 guildId:  makeId(10),
-                subDomain: slugify(body.company, {
+                subDomain: (slugify(body.company, {
                   lower: true,
                   strict: true,
                   trim: true
-                }) + '-' + makeId(3)
+                }) + '-' + makeId(3)).toLowerCase()
               }
             }
           }
