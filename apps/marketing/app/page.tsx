@@ -6,8 +6,8 @@ import Reviews from "@meetfaq/marketing/components/Reviews";
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
-  title: 'MeetFAQ',
-  description: 'MeetFAQ is a tool that helps you to create a FAQ page for your website.',
+  title: 'MeetFAQ - Support Channels into a Public FAQ with AI',
+  description: 'Not all of your customers are on your support channels. Extract your FAQ to make it available to everyone.',
 }
 export default async function Index() {
   /*
