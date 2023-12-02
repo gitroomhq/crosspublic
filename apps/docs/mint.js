@@ -5,7 +5,7 @@ exports.default = {
     "dark": "/logo/dark.png",
     "light": "/logo/light.png"
   },
-  "favicon": "/favicon.ico",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#9333EA",
     "light": "#9333EA",
@@ -23,6 +23,10 @@ exports.default = {
     {
       "name": "Support",
       "url": "mailto:nevo@meetfaq.com"
+    },
+    {
+      "name": "Cloud",
+      "url": "https://panel.meetfaq.com"
     }
   ],
   "modeToggle": {

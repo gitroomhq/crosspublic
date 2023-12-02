@@ -83,7 +83,9 @@
     {
       "group": "Authentications",
       "pages": [
-        "api-reference/custom/authentications/get-or-create-organization"
+        "api-reference/custom/authentications/check-org-and-user",
+        "api-reference/custom/authentications/register-to-meetfaq",
+        "api-reference/custom/authentications/login-to-meetfaq"
       ]
     },
     {
@@ -97,7 +99,8 @@
       "pages": [
         "public-api-reference/custom/public/categories-list",
         "public-api-reference/custom/public/faq-list",
-        "public-api-reference/custom/public/retrieve-faq"
+        "public-api-reference/custom/public/retrieve-faq",
+        "public-api-reference/custom/public/get-organization-style"
       ]
     },
     {
@@ -154,6 +157,29 @@
         "api-reference/custom/billings/post-billingmodify",
         "api-reference/custom/billings/get-billing",
         "api-reference/custom/billings/post-billingcancel"
+      ]
+    },
+    {
+      "group": "Styles",
+      "pages": [
+        "api-reference/custom/styles/get-styles",
+        "api-reference/custom/styles/put-styles"
+      ]
+    },
+    {
+      "group": "Integrations",
+      "pages": [
+        "api-reference/custom/integrations/get-integrations",
+        "api-reference/custom/integrations/post-integrations",
+        "api-reference/custom/integrations/get-integrations-add",
+        "api-reference/custom/integrations/delete-integrations"
+      ]
+    },
+    {
+      "group": "Invitations",
+      "pages": [
+        "api-reference/custom/invitations/post-invite",
+        "api-reference/custom/invitations/post-inviteadd"
       ]
     }
   ],
