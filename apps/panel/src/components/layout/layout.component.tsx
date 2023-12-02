@@ -53,7 +53,7 @@ export const LayoutComponent: FC<{children: ReactNode, user: UserInterface, clas
                           {/*<div>*/}
                           {/*  <BellIcon />*/}
                           {/*</div>*/}
-                          <Link href="/api/visit" target="_blank">
+                          <Link href="/visit" target="_blank" prefetch={false}>
                             <Button size="small">
                               <div className="flex gap-2">
                                 <ExitIcon /> Visit website
