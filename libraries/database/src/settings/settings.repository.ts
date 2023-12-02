@@ -82,7 +82,7 @@ export class SettingsRepository {
     return this._domains.model.domains.create({
       data: {
         organizationId: orgId,
-        domain: slugify(domain, {lower: true, strict: true, trim: true}),
+        domain: slugify(domain.replace(/\./g, 'veryveryverylongdot'), {lower: true, strict: true, trim: true}).replace(/veryveryverylongdot/g, '.'),
         state: 'ACTIVE'
       }
     });

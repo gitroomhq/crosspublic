@@ -17,7 +17,8 @@ export async function GET(request: NextRequest, context: {params: {type: string}
         ...information,
         __type: context.params.type
       }
-    })
+    }),
+    cache: 'no-cache'
   });
 
   return Response.redirect(new URL('/integrations', request.url));

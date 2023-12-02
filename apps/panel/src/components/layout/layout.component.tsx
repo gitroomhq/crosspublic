@@ -14,6 +14,9 @@ import {NiceModalProvider} from "@meetfaq/panel/src/components/utils/nice.modal.
 import {Toaster} from "@meetfaq/panel/src/components/layout/toaster";
 import {headers} from "next/dist/client/components/headers";
 import {TooltipWrapper} from "@meetfaq/panel/src/components/utils/tooltip.wrapper";
+import {Button} from "../utils/button";
+import ExitIcon from "@meetfaq/panel/src/components/icons/exit.icon";
+import Link from "next/link";
 
 const LayoutLoad = dynamic(() => import('@meetfaq/panel/src/components/layout/layout.load'), { ssr: false });
 
@@ -50,6 +53,13 @@ export const LayoutComponent: FC<{children: ReactNode, user: UserInterface, clas
                           {/*<div>*/}
                           {/*  <BellIcon />*/}
                           {/*</div>*/}
+                          <Link href="/api/visit" target="_blank">
+                            <Button size="small">
+                              <div className="flex gap-2">
+                                <ExitIcon /> Visit website
+                              </div>
+                            </Button>
+                          </Link>
                           <div className="w-[1px] bg-line h-[24px]" />
                           <div>
                             <UserComponent />
