@@ -20,6 +20,13 @@ export class StripeController {
       process.env.PAYMENT_SIGNING_SECRET
     );
 
+    // Maybe it comes from another stripe webhook
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    if (event?.data?.object?.metadata?.service !== 'meetfaq') {
+      return {ok: true};
+    }
+
     switch (event.type) {
       case 'customer.subscription.created':
         return this._stripeService.createSubscription(event);

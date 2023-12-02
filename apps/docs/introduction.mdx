@@ -27,8 +27,9 @@ Unlike other NX project, this project has one `.env` file that is shared between
 It makes it easier to develop and deploy the project.<br /><br />
 When deploying to websites like [Railway](https://railway.app) or [Heroku](https://heroku.com), you can use a shared environment variables for all the apps.<br />
 
-**It has three main components:**
-- `Website` - NextJS control panel to manage your FAQ, it also contains the public website of every user FAQ page.
+**It has four main components:**
+- `Panel` - NextJS control panel to manage your FAQ, it also contains the public website of every user FAQ page.
+- `Tenants` - NextJS website that contains the FAQ of every end-user.
 - `Backend` - NestJS that operate as the server for both the bots and the website.
 - `Discord` - Discord bot that listen to messages, and send them to the backend.
 

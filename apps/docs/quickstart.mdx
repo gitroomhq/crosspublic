@@ -9,8 +9,9 @@ To run the project you need to have multiple things:
 - Discord client id and token
 - Vercel Blob Store (optional)
 - Vercel Project ID, Team ID and Token (if you want to have multi-tenancy)
-- Stripe account
+- Stripe account (optional)
 - OpenAI API key (optional)
+- Algolia account (optional)
 
 ### NodeJS
 A complete guide of how to install NodeJS can be found [here](https://nodejs.org/en/download/).
@@ -41,6 +42,8 @@ Choose Blob (currently in beta) and save the token for later.
 
 ### Stripe account
 
+If you don't provide the Stripe `PAYMENT_PUBLIC_KEY`, you will be automatically granted all the features without limitations.
+
 1. Register a new account on [Stripe](https://stripe.com/).<br />
 2. Head over to the [Stripe API keys](https://dashboard.stripe.com/test/apikeys) and copy the Publishable and Secret key, save it for later.
 3. Head over to the [Stripe Webhooks](https://dashboard.stripe.com/test/webhooks) and create a new local webhook.<br />
@@ -48,6 +51,9 @@ Copy the token and save it for later.
 
 ### OpenAI API key
 Create a new [OpenAI](https://platform.openai.com) account, head over to the [API keys](https://platform.openai.com/api-keys), copy the key, and save it for later.
+
+### Algolia account
+Create a new [Algolia](https://www.algolia.com/) account, head over to the [API keys](https://www.algolia.com/api-keys), copy the APP ID, Search Key, and Admin API Key, and save it for later.
 
 ## Installation
 
@@ -77,6 +83,10 @@ PAYMENT_PUBLIC_KEY=<copied stripe publishable key>
 PAYMENT_SECRET_KEY=<copied stripe secret key>
 PAYMENT_SIGNING_SECRET=<copied stripe webhook token>
 MARKETING_WEBSITE_URL=http://localhost:4201
+DOCS_URL=https://localhost:3000
+NEXT_PUBLIC_ALGOLIA_APP_ID=<algolia id>
+NEXT_PUBLIC_ALGOLIA_SEARCH_KEY=<algolia search key>
+ALGOLIA_ADMIN_API_KEY=<algolia admin api>
 ```
 
 ### Install the dependencies
@@ -97,11 +107,3 @@ npm run update-prisma
 npm run dev
 ```
 
-## Set up Discord server
-Go to Discord and create a new server.<br />
-Open the discord server link (replace client_id with your previously saved client id): <br />
-
-https://discord.com/oauth2/authorize?client_id=[client_id]&permissions=1084748200000&scope=bot
-
-Add the bot to your server.<br />
-Go to any channel and type `/signin` to enter the dashboard

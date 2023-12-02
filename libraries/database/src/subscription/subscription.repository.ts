@@ -49,13 +49,26 @@ export class SubscriptionRepository {
     });
   }
 
-  async createOrUpdateSubscription(identifier: string, customerId: string, billing: 'BASIC' | 'PRO', period: 'MONTHLY' | 'YEARLY', cancelAt: number | null) {
-    const findOrg = (await this._organization.model.organization.findFirst({
+  async getSubscriptionByCustomerId(customerId: string) {
+    return this._subscription.model.subscription.findFirst({
+      where: {
+        organization: {
+          stripeCustomerId: customerId
+        }
+      }
+    });
+  }
+
+  async getOrganizationByCustomerId(customerId: string) {
+    return this._organization.model.organization.findFirst({
       where: {
         stripeCustomerId: customerId
       }
-    }))!;
+    });
+  }
 
+  async createOrUpdateSubscription(identifier: string, customerId: string, billing: 'BASIC' | 'PRO', period: 'MONTHLY' | 'YEARLY', cancelAt: number | null) {
+    const findOrg = (await this.getOrganizationByCustomerId(customerId))!;
     await this._subscription.model.subscription.upsert({
       where: {
         organizationId: findOrg.id,

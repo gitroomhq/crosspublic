@@ -35,6 +35,17 @@ export class OrganizationRepository {
     });
   }
 
+  changePowered(id: string) {
+    return this._prisma.model.organization.update({
+      where: {
+        id
+      },
+      data: {
+        brandingText: 'Powered by MeetFAQ'
+      }
+    });
+  }
+
   getOrganizationDomainSubdomainByOrgId(id: string) {
     return this._prisma.model.organization.findUnique({
       where: {

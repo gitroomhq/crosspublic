@@ -49,6 +49,15 @@ export class SettingsService {
     };
   }
 
+  async deleteDomainByOrg(orgId: string) {
+    const getDomain = await this._settingsRepository.getDomain(orgId);
+    if (!getDomain) {
+      return false;
+    }
+
+    return this.deleteDomain(orgId, getDomain.id);
+  }
+
   async checkDomain(orgId: string, domain: string) {
     const getDomain = await this._settingsRepository.getDomainById(orgId, domain);
     if (!getDomain) {

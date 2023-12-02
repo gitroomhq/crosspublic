@@ -59,6 +59,7 @@ export class StripeService {
     await stripe.subscriptions.update(currentUserSubscription.data[0].id, {
       cancel_at_period_end: !currentUserSubscription.data[0].cancel_at_period_end,
       metadata: {
+        service: 'meetfaq',
         id
       }
     });
@@ -105,6 +106,7 @@ export class StripeService {
         mode: 'subscription',
         subscription_data: {
           metadata: {
+            service: 'meetfaq',
             ...body,
             id
           }
@@ -122,7 +124,9 @@ export class StripeService {
     try {
       await stripe.subscriptions.update(currentUserSubscription.data[0].id, {
         metadata: {
-          ...body, id
+          service: 'meetfaq',
+          ...body,
+          id
         }, items: [{
           id: currentUserSubscription.data[0].items.data[0].id, price: findPrice!.id,
         }]

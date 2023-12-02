@@ -12,6 +12,32 @@ export class CategoryRepository {
   ) {
   }
 
+  async deleteCategories(organizationId: string, count: number) {
+    const getFaqs = await this._prisma.model.category.findMany({
+      where: {
+        organizationId,
+        deletedAt: null,
+      },
+      orderBy: {
+        order: 'asc',
+      },
+      take: count,
+    });
+
+    await this._prisma.model.category.updateMany({
+      where: {
+        NOT: {
+          id: {
+            in: getFaqs.map(faq => faq.id),
+          },
+        }
+      },
+      data: {
+        deletedAt: new Date(),
+      },
+    });
+  }
+
   async updateOrder(orgId: string, body: OrderValidator) {
     for (const order of body.order) {
       await this._prisma.model.category.update({

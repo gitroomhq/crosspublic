@@ -10,6 +10,65 @@ export class IntegrationsRepository {
   ) {
   }
 
+  async deleteIntegrations(organizationId: string, count: number) {
+    const integrations = await this._integrations.model.integrations.findMany({
+      where: {
+        organizationId
+      },
+      take: count,
+      select: {
+        id: true
+      }
+    });
+
+    await this._integrationsUsers.model.integrationsUsers.deleteMany({
+      where: {
+        integration: {
+          organizationId
+        },
+        NOT: {
+          integrationId: {
+            in: integrations.map(integration => integration.id)
+          }
+        }
+      }
+    });
+
+    await this._integrations.model.integrations.deleteMany({
+      where: {
+        NOT: {
+          id: {
+            in: integrations.map(integration => integration.id)
+          }
+        }
+      }
+    });
+  }
+
+  async deleteUsers(organizationId: string, count: number) {
+    const users = await this._integrationsUsers.model.integrationsUsers.findMany({
+      where: {
+        integration: {
+          organizationId
+        }
+      },
+      take: count,
+      select: {
+        id: true
+      }
+    });
+
+    await this._integrationsUsers.model.integrationsUsers.deleteMany({
+      where: {
+        NOT: {
+          id: {
+            in: users.map(user => user.id)
+          }
+        }
+      }
+    });
+  }
+
   findByGuildAndId(guildId: string, internalId: string) {
     return this._integrations.model.integrations.findFirst({
       where: {

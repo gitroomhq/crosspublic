@@ -19,6 +19,32 @@ export class FaqRepository {
     });
   }
 
+  async deleteFAQs(organizationId: string, count: number) {
+    const getFaqs = await this._prisma.model.faq.findMany({
+      where: {
+        organizationId,
+        deletedAt: null,
+      },
+      orderBy: {
+        order: 'asc',
+      },
+      take: count,
+    });
+
+    await this._prisma.model.faq.updateMany({
+      where: {
+        NOT: {
+          id: {
+            in: getFaqs.map(faq => faq.id),
+          },
+        }
+      },
+      data: {
+        deletedAt: new Date(),
+      },
+    });
+  }
+
   async getFaqById(orgId: string, id: string) {
     return this._prisma.model.faq.findFirst({
       where: {
