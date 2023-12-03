@@ -1,8 +1,8 @@
 import HeroSection from "@meetfaq/marketing/components/HeroSection";
 import Features from "@meetfaq/marketing/components/Features";
-// import Solution from "@meetfaq/marketing/components/Solution";
+import Solution from "@meetfaq/marketing/components/Solution";
 import Reviews from "@meetfaq/marketing/components/Reviews";
-// import Princing from "@meetfaq/marketing/components/Princing";
+import Princing from "@meetfaq/marketing/components/Princing";
 import {Metadata} from "next";
 
 export const metadata: Metadata = {
@@ -19,9 +19,9 @@ export default async function Index() {
     <>
       <HeroSection/>
       <Features />
-      {/*<Solution />*/}
+      <Solution />
       <Reviews />
-      {/*<Princing />*/}
+      <Princing />
     </>
   );
 }
