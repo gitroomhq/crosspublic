@@ -43,7 +43,8 @@ This is a monorepo built with NX
 
 - `backend` - NestJS project manging all the API.
 - `discord` - NestJS project of the Discord bot.
-- `website` - NextJS project of the MeetFAQ dashboard and the customer website.
+- `panel` - NextJS project of the MeetFAQ panel.
+- `tanants` - NextJS website that is being used by the customers.
 - `marketing` - NextJS project of the marketing website.
 - `docs` - Mintlify documentation.
 
