@@ -16,7 +16,7 @@ Fixes #(issue_number)
 ---
 # Checklist:
 - [ ] I have followed the contributing guidelines of this project as mentioned in [CONTRIBUTING.md](/CONTRIBUTING.md)
-- [ ] I have checked to ensure there aren't other open [Pull Requests](https://github.com/github-20k/meetqa/pulls) for the same update/change?
+- [ ] I have checked to ensure there aren't other open [Pull Requests](https://github.com/github-20k/meetfaq/pulls) for the same update/change?
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
 - [ ] I have made corresponding changes needed to the documentation

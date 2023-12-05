@@ -16,7 +16,7 @@ export default async function RootLayout({
 }) {
   const date = new Date();
   const dateAndHour = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getHours()}`;
-  const {stargazers_count} = await (await fetch(`https://api.github.com/repos/github-20k/meetqa?c=${dateAndHour}`)).json();
+  const {stargazers_count} = await (await fetch(`https://api.github.com/repos/github-20k/meetfaq?c=${dateAndHour}`)).json();
   return (
     <html lang="en">
       <body className={inter.className}>

@@ -22,7 +22,7 @@ export default function Princing() {
                                   Start with our free plan
                                 </p>
                                 <p className="text-lg text-gray-600 dark:text-gray-300 flex-1">
-                                  Or <a href="https://github.com/github-20k/meetqa" className="underline hover:font-bold">self-host the project</a>
+                                  Or <a href="https://github.com/github-20k/meetfaq" className="underline hover:font-bold">self-host the project</a>
                                 </p>
                                 <div className="flex justify-center">
                                     <Button Element="a" to="/register" label="Get started" emphasis="primary" ui={"max"}/>

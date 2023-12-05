@@ -20,7 +20,7 @@ export default function Faqs() {
                           <li className="text-gray-600 font-bold">Free subdomain</li>
                         </ul>
                         <p className="pb-6 text-base text-gray-600">
-                          Or <a href="https://github.com/github-20k/meetqa" className="underline hover:font-bold">self-host</a> the app and enjoy unlimited features
+                          Or <a href="https://github.com/github-20k/meetfaq" className="underline hover:font-bold">self-host</a> the app and enjoy unlimited features
                         </p>
                     </Faq>
                     <Faq id="faq-2" question="What communication methods are currently supported?">

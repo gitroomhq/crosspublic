@@ -34,7 +34,7 @@ exports.default = {
   },
   "topbarCtaButton": {
     "type": "github",
-    "url": "https://github.com/github-20k/meetqa"
+    "url": "https://github.com/github-20k/meetfaq"
   },
   "tabs": [
     {
@@ -79,7 +79,7 @@ exports.default = {
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/nevodavid",
-    "github": "https://github.com/github-20k/meetqa",
+    "github": "https://github.com/github-20k/meetfaq",
     "linkedin": "https://www.linkedin.com/nevodavid"
   }
 };

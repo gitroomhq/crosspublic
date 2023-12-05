@@ -88,7 +88,7 @@ export default function HeaderSection({stars}: {stars: string}) {
               <div className="flex justify-between mt-12 lg:mt-0 mb-4 lg:mb-0 pr-4">
                 <a
                   className="before:w-full before:h-full before:absolute before:left-0 before:top-0 before:border-[1px] before:border-dark/20 before:rounded-3xl before:duration-300 hover:before:scale-105 relative group flex cursor-pointer items-center gap-[10px] px-4 h-9 text-[15px] text-black transition-all max-lg:w-full max-lg:justify-center"
-                  href="https://github.com/github-20k/meetqa"
+                  href="https://github.com/github-20k/meetfaq"
                   target="_blank"
                 >
                   <svg
