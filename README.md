@@ -54,3 +54,17 @@ To install the project, check our [Quickstart guide](https://docs.meetfaq.com/qu
 ## 🍾 Contact me
 
 Nevo - [nevo@gitroom.com](mailto:nevo@gitroom.com)
+
+&nbsp;
+
+## Please help us out by starring this repository
+We are 100% self-funded. Our only growth is you (the community.)
+
+It would be a crazy amount of help if you could invest 5 seconds a press the star button ⭐️
+
+Thank you so much!
+
+![starit](https://user-images.githubusercontent.com/100117126/226560726-9e6b5b7d-b881-4a3c-90e5-a190c5433866.gif)
+
+(We don't have 29.9k stars 🤣)
+&nbsp;
