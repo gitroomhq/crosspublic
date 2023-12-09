@@ -1,8 +1,8 @@
 <div align="center">
   <a href="https://crosspublic.com?utm_source=github" target="_blank">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/github-20k/crosspublic/assets/100117126/b1627f46-ab23-4a84-8a1f-e3c56d6411b0">
-    <img alt="crosspublic" src="https://github.com/github-20k/crosspublic/assets/100117126/1f6c696c-d078-4e30-a8d6-bf503769059c" width="280"/>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/github-20k/crosspublic/assets/100117126/08f40c65-587b-43e4-8cca-912148722fda">
+    <img alt="crosspublic" src="https://github.com/github-20k/crosspublic/assets/100117126/a86153e1-4eb7-4847-afa1-e3dabf224639" width="280"/>
   </picture>
   </a>
 </div>
