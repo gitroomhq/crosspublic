@@ -45,3 +45,4 @@ export default async function Page({params: {customer}} : {params: {customer: st
     </Suspense>
   )
 }
+
