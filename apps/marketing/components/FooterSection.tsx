@@ -19,9 +19,9 @@ export default function Footer() {
             <Container>
                 <a href="/" aria-label="logo" className="flex items-center justify-center space-x-2">
                     <div aria-hidden="true" className="flex flex-col space-y-0.5">
-                      <Image src="/logo.png" alt="MeetFAQ" width={32} height={32} />
+                      <Image src="/logo.png" alt="crosspublic" width={32} height={32} />
                     </div>
-                    <span className="text-2xl font-bold text-gray-900 dark:text-white">MeetFAQ</span>
+                    <span className="text-2xl font-bold text-gray-900 dark:text-white">crosspublic</span>
                 </a>
                 <ul role="list" className="mt-12 flex flex-wrap items-center justify-center gap-4 py-4 text-gray-600 dark:text-gray-400 sm:gap-8">
                     {
@@ -53,7 +53,7 @@ export default function Footer() {
                 {/*</div>*/}
 
                 <div className="mt-12 text-center">
-                    <span className="text-sm tracking-wide text-gray-500">Copyright © MeetFAQ | All rights reserved</span>
+                    <span className="text-sm tracking-wide text-gray-500">Copyright © crosspublic | All rights reserved</span>
                 </div>
             </Container>
         </footer>

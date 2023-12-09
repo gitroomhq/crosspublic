@@ -1,9 +1,9 @@
 import {Controller, Get, Post} from "@nestjs/common";
-import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {GetUserFromRequest} from "@crosspublic/helpers/src/user/user.from.request";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {OrganizationService} from "@crosspublic/database/src/organization/organization.service";
 import * as process from "process";
-import {RevalidateService} from "@meetfaq/helpers/src/revalidate/revalidate.service";
+import {RevalidateService} from "@crosspublic/helpers/src/revalidate/revalidate.service";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Users')

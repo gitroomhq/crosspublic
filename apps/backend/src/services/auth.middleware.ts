@@ -1,6 +1,6 @@
 import {NestMiddleware} from "@nestjs/common";
 import { Request, Response, NextFunction } from 'express';
-import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
+import {AuthService} from "@crosspublic/helpers/src/auth/auth.service";
 
 export class AuthMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import {SettingsService} from "@meetfaq/database/src/settings/settings.service";
-import {SettingsRepository} from "@meetfaq/database/src/settings/settings.repository";
+import {SettingsService} from "@crosspublic/database/src/settings/settings.service";
+import {SettingsRepository} from "@crosspublic/database/src/settings/settings.repository";
 
 @Module({
   imports: [],

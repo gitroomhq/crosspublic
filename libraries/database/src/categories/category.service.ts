@@ -1,9 +1,9 @@
 import {Injectable} from "@nestjs/common";
-import {CategoryRepository} from "@meetfaq/database/src/categories/category.repository";
-import {CreateCategoryValidator} from "@meetfaq/validators/src/categories/create.category.validator";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
-import {DeleteCategoryValidator} from "@meetfaq/validators/src/categories/delete.category.validator";
+import {CategoryRepository} from "@crosspublic/database/src/categories/category.repository";
+import {CreateCategoryValidator} from "@crosspublic/validators/src/categories/create.category.validator";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {OrderValidator} from "@crosspublic/validators/src/general/order.validator";
+import {DeleteCategoryValidator} from "@crosspublic/validators/src/categories/delete.category.validator";
 
 @Injectable()
 export class CategoryService {

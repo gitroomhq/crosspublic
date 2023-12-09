@@ -1,10 +1,10 @@
 import Stripe from 'stripe';
 import {Injectable} from "@nestjs/common";
-import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
+import {SubscriptionService} from "@crosspublic/database/src/subscription/subscription.service";
 import {Organization} from "@prisma/client";
-import {BillingSubscribeValidator} from "@meetfaq/validators/src/billing/billing.subscribe.validator";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
-import {makeId} from "@meetfaq/helpers/src/makeid/make.id";
+import {BillingSubscribeValidator} from "@crosspublic/validators/src/billing/billing.subscribe.validator";
+import {OrganizationService} from "@crosspublic/database/src/organization/organization.service";
+import {makeId} from "@crosspublic/helpers/src/makeid/make.id";
 
 const stripe = new Stripe(process.env.PAYMENT_SECRET_KEY!, {
   apiVersion: '2023-10-16'
@@ -59,7 +59,7 @@ export class StripeService {
     await stripe.subscriptions.update(currentUserSubscription.data[0].id, {
       cancel_at_period_end: !currentUserSubscription.data[0].cancel_at_period_end,
       metadata: {
-        service: 'meetfaq',
+        service: 'crosspublic',
         id
       }
     });
@@ -106,7 +106,7 @@ export class StripeService {
         mode: 'subscription',
         subscription_data: {
           metadata: {
-            service: 'meetfaq',
+            service: 'crosspublic',
             ...body,
             id
           }
@@ -124,7 +124,7 @@ export class StripeService {
     try {
       await stripe.subscriptions.update(currentUserSubscription.data[0].id, {
         metadata: {
-          service: 'meetfaq',
+          service: 'crosspublic',
           ...body,
           id
         }, items: [{

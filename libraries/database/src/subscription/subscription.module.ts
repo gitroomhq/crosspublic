@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
-import {SubscriptionRepository} from "@meetfaq/database/src/subscription/subscription.repository";
+import {SubscriptionService} from "@crosspublic/database/src/subscription/subscription.service";
+import {SubscriptionRepository} from "@crosspublic/database/src/subscription/subscription.repository";
 
 @Module({
   imports: [],

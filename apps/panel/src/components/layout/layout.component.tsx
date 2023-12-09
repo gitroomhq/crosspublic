@@ -1,24 +1,24 @@
 import {FC, ReactNode} from "react";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {UserContext} from "@meetfaq/panel/src/helpers/user.context";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {UserContext} from "@crosspublic/panel/src/helpers/user.context";
 import Image from "next/image";
-import {FetchContext} from "@meetfaq/panel/src/helpers/fetch.context";
-// import {SettingsIcon} from "@meetfaq/panel/src/components/icons/settings.icon";
-// import {BellIcon} from "@meetfaq/panel/src/components/icons/bell.icon";
-import {UserComponent} from "@meetfaq/panel/src/components/user/user.component";
-import {SideMenu} from "@meetfaq/panel/src/components/layout/side.menu";
+import {FetchContext} from "@crosspublic/panel/src/helpers/fetch.context";
+// import {SettingsIcon} from "@crosspublic/panel/src/components/icons/settings.icon";
+// import {BellIcon} from "@crosspublic/panel/src/components/icons/bell.icon";
+import {UserComponent} from "@crosspublic/panel/src/components/user/user.component";
+import {SideMenu} from "@crosspublic/panel/src/components/layout/side.menu";
 import {clsx} from "clsx";
 import dynamic from "next/dynamic";
-import {Title, TitleProvider} from "@meetfaq/panel/src/helpers/title.helper";
-import {NiceModalProvider} from "@meetfaq/panel/src/components/utils/nice.modal.provider";
-import {Toaster} from "@meetfaq/panel/src/components/layout/toaster";
+import {Title, TitleProvider} from "@crosspublic/panel/src/helpers/title.helper";
+import {NiceModalProvider} from "@crosspublic/panel/src/components/utils/nice.modal.provider";
+import {Toaster} from "@crosspublic/panel/src/components/layout/toaster";
 import {headers} from "next/dist/client/components/headers";
-import {TooltipWrapper} from "@meetfaq/panel/src/components/utils/tooltip.wrapper";
+import {TooltipWrapper} from "@crosspublic/panel/src/components/utils/tooltip.wrapper";
 import {Button} from "../utils/button";
-import ExitIcon from "@meetfaq/panel/src/components/icons/exit.icon";
+import ExitIcon from "@crosspublic/panel/src/components/icons/exit.icon";
 import Link from "next/link";
 
-const LayoutLoad = dynamic(() => import('@meetfaq/panel/src/components/layout/layout.load'), { ssr: false });
+const LayoutLoad = dynamic(() => import('@crosspublic/panel/src/components/layout/layout.load'), { ssr: false });
 
 export const LayoutComponent: FC<{children: ReactNode, user: UserInterface, className: string, flex?: 'flex-col' | 'flex-row'}> = (props) => {
   const pricing = Boolean(headers().get('pricing') === 'true');

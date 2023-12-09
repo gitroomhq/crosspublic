@@ -2,12 +2,12 @@
 
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import {FC, useCallback, useMemo, useState} from "react";
-import {Input} from "@meetfaq/panel/src/components/utils/input";
-import {Button} from "@meetfaq/panel/src/components/utils/button";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
-import {CheckDomainComponent} from "@meetfaq/panel/src/components/settings/check.domain.component";
+import {Input} from "@crosspublic/panel/src/components/utils/input";
+import {Button} from "@crosspublic/panel/src/components/utils/button";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
+import {CheckDomainComponent} from "@crosspublic/panel/src/components/settings/check.domain.component";
 import {useRouter} from "next/navigation";
-import {deleteDialog} from "@meetfaq/panel/src/helpers/delete.dialog";
+import {deleteDialog} from "@crosspublic/panel/src/helpers/delete.dialog";
 import slugify from "slugify";
 
 export const SubdomainComponent: FC<{subDomain: string}> = (props) => {

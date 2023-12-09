@@ -1,10 +1,10 @@
 import {HttpException, HttpStatus, Injectable} from "@nestjs/common";
-import {OrganizationRepository} from "@meetfaq/database/src/organization/organization.repository";
-import {DomainSubDomainOrganizationValidator} from "@meetfaq/validators/src/public/domain.subDomain.organization.validator";
-import {RegistrationValidator} from "@meetfaq/validators/src/auth/registration.validator";
-import {UserRepository} from "@meetfaq/database/src/users/user.repository";
-import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
-import {UpdateStyleValidator} from "@meetfaq/validators/src/organizations/update.style.validator";
+import {OrganizationRepository} from "@crosspublic/database/src/organization/organization.repository";
+import {DomainSubDomainOrganizationValidator} from "@crosspublic/validators/src/public/domain.subDomain.organization.validator";
+import {RegistrationValidator} from "@crosspublic/validators/src/auth/registration.validator";
+import {UserRepository} from "@crosspublic/database/src/users/user.repository";
+import {AuthService} from "@crosspublic/helpers/src/auth/auth.service";
+import {UpdateStyleValidator} from "@crosspublic/validators/src/organizations/update.style.validator";
 
 @Injectable()
 export class OrganizationService {

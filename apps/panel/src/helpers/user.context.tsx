@@ -1,7 +1,7 @@
 "use client";
 
 import {createContext, ReactNode, useContext} from "react";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
 
 export const UserHigherContext = createContext<{user: UserInterface} & {pricing: boolean}>({
   pricing: false,

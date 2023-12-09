@@ -1,15 +1,16 @@
-import {Body, Controller, Headers, HttpStatus, Post, Res} from "@nestjs/common";
-import {OrganizationCreateValidator} from "@meetfaq/validators/src/organizations/organization.create.validator";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
-import {UserService} from "@meetfaq/database/src/users/user.service";
+import { Body, Controller, Headers, HttpStatus, Post, Res } from "@nestjs/common";
+import {OrganizationCreateValidator} from "@crosspublic/validators/src/organizations/organization.create.validator";
+import {OrganizationService} from "@crosspublic/database/src/organization/organization.service";
+import {UserService} from "@crosspublic/database/src/users/user.service";
 import {ApiOperation, ApiTags} from "@nestjs/swagger";
-import {RegistrationValidator} from "@meetfaq/validators/src/auth/registration.validator";
+import {RegistrationValidator} from "@crosspublic/validators/src/auth/registration.validator";
 import {Response} from "express";
-import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
-import {removeSubdomain} from "@meetfaq/helpers/src/subdomain/subdomain.management";
-import {LoginValidator} from "@meetfaq/validators/src/auth/login.validator";
+import {AuthService} from "@crosspublic/helpers/src/auth/auth.service";
+import {removeSubdomain} from "@crosspublic/helpers/src/subdomain/subdomain.management";
+import {LoginValidator} from "@crosspublic/validators/src/auth/login.validator";
 import {compareSync} from "bcrypt";
-import {IntegrationsService} from "@meetfaq/database/src/integrations/integrations.service";
+import {IntegrationsService} from "@crosspublic/database/src/integrations/integrations.service";
+import { AuthIntegrationValidator } from "@crosspublic/validators/src/auth/auth.integration.validator";
 @ApiTags('Authentications')
 @Controller('/auth')
 export class AuthController {
@@ -41,7 +42,20 @@ export class AuthController {
     }
   }
 
-  @ApiOperation({summary: 'Register to MeetFAQ', description: 'This will create an organization and a user'})
+  @ApiOperation({summary: 'Get integration auth object', description: 'Getting the object of a specific auth'})
+  @Post('/integration')
+  async getIntegrationAuthObject(
+    @Body() body: AuthIntegrationValidator,
+    @Headers('serverkey') serverkey: string
+  ) {
+    if (serverkey !== process.env.BACKEND_TOKEN_PROTECTOR) {
+      return 401;
+    }
+
+    return this._integrationService.getAuthObject(body);
+  }
+
+  @ApiOperation({summary: 'Register to crosspublic', description: 'This will create an organization and a user'})
   @Post('/registration')
   async register(
     @Body() body: RegistrationValidator,
@@ -66,7 +80,7 @@ export class AuthController {
     return res.status(HttpStatus.OK).json({created: true});
   }
 
-  @ApiOperation({summary: 'Login to MeetFAQ', description: 'This will login the user'})
+  @ApiOperation({summary: 'Login to crosspublic', description: 'This will login the user'})
   @Post('/login')
   async login(
     @Body() body: LoginValidator,

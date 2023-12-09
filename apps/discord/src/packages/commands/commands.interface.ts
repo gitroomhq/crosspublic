@@ -1,5 +1,5 @@
 import {CacheType, Interaction, SlashCommandBuilder} from "discord.js";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
 
 export interface CommandsInterface {
   name: string;

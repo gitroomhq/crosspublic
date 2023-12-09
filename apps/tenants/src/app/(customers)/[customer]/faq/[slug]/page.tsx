@@ -1,7 +1,7 @@
-import {publicRequestFetch} from "@meetfaq/tenants/src/helpers/get.api.key";
+import {publicRequestFetch} from "@crosspublic/tenants/src/helpers/get.api.key";
 import {Category, Faq} from "@prisma/client";
-import {textToMarkdown} from "@meetfaq/tenants/src/helpers/text.to.markdown";
-import {AfterHighlight} from "@meetfaq/tenants/src/components/utils/after.highlight";
+import {textToMarkdown} from "@crosspublic/tenants/src/helpers/text.to.markdown";
+import {AfterHighlight} from "@crosspublic/tenants/src/components/utils/after.highlight";
 import Link from "next/link";
 import {Suspense} from "react";
 import { Metadata, ResolvingMetadata } from "next";

@@ -1,6 +1,7 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {Integrations} from '@prisma/client';
+import { Integrations, IntegrationType } from "@prisma/client";
+import { AuthIntegrationValidator } from "@crosspublic/validators/src/auth/auth.integration.validator";
 
 @Injectable()
 export class IntegrationsRepository {
@@ -86,6 +87,22 @@ export class IntegrationsRepository {
     });
   }
 
+  getAuthObject(body: AuthIntegrationValidator) {
+    return this._integrations.model.integrations.findFirst({
+      where: {
+        internalId: body.guild,
+        users: {
+          every: {
+            internalId: body.user
+          }
+        }
+      },
+      select: {
+        users: true
+      }
+    });
+  }
+
   totalIntegrationsByOrganizationId(organizationId: string) {
     return this._integrations.model.integrations.count({
       where: {
@@ -127,12 +144,13 @@ export class IntegrationsRepository {
     });
   }
 
-  createIntegration(data: Omit<Integrations, 'id'>, internalId: string) {
+  createIntegration(data: Omit<Integrations, 'id'>, token: string, internalId: string) {
     return this._integrations.model.integrations.create({
       data: {
         ...data,
         users: {
           create: {
+            token,
             internalId,
             owner: true,
           }

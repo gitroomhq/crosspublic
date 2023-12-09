@@ -1,13 +1,13 @@
-import {CommandsInterface} from "@meetfaq/discord/src/packages/commands/commands.interface";
+import {CommandsInterface} from "@crosspublic/discord/src/packages/commands/commands.interface";
 import {ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, SlashCommandBuilder} from "discord.js";
 import {Injectable} from "@nestjs/common";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
 import {HttpStatusCode} from "axios";
 
 @Injectable()
 export class InviteCommand implements CommandsInterface {
   name = "invite";
-  description = "Invite a user to MeetFAQ"
+  description = "Invite a user to crosspublic"
   params = (command: SlashCommandBuilder) => {
     command.addUserOption(option => option.setName('user').setDescription('The user').setRequired(true));
     command.addStringOption(option => option.setName('role').setDescription('user role').setChoices(
@@ -64,7 +64,7 @@ export class InviteCommand implements CommandsInterface {
     const row = new ActionRowBuilder().addComponents(button);
 
     await (await userInput.createDM(true)).send({
-      content: `You have been invited to MeetFAQ please follow the link to continue`,
+      content: `You have been invited to crosspublic please follow the link to continue`,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       components: [row]

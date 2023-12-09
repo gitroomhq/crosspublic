@@ -1,20 +1,20 @@
 import {Body, Controller, Delete, Get, Param, Post, Put} from "@nestjs/common";
-import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {AnsweredQuestion, MessagesListValidator, OnlyMessagesList} from "@meetfaq/validators/src/messages/messages.list.validator";
-import {JobsService} from "@meetfaq/database/src/jobs/jobs.service";
-import {IdStringValidator} from "@meetfaq/validators/src/general/id.string.validator";
-import {GeneratorService} from "@meetfaq/backend/src/services/generator.service";
-import {CheckPolicies} from "@meetfaq/backend/src/services/authorization/authorization.ability";
-import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
-import {CreateFaqValidator} from "@meetfaq/validators/src/faq/create.faq.validator";
-import {FaqService} from "@meetfaq/database/src/faq/faq.service";
-import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
+import {GetUserFromRequest} from "@crosspublic/helpers/src/user/user.from.request";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {AnsweredQuestion, MessagesListValidator, OnlyMessagesList} from "@crosspublic/validators/src/messages/messages.list.validator";
+import {JobsService} from "@crosspublic/database/src/jobs/jobs.service";
+import {IdStringValidator} from "@crosspublic/validators/src/general/id.string.validator";
+import {GeneratorService} from "@crosspublic/backend/src/services/generator.service";
+import {CheckPolicies} from "@crosspublic/backend/src/services/authorization/authorization.ability";
+import {AuthorizationActions, Sections} from "@crosspublic/backend/src/services/authorization/authorization.service";
+import {CreateFaqValidator} from "@crosspublic/validators/src/faq/create.faq.validator";
+import {FaqService} from "@crosspublic/database/src/faq/faq.service";
+import {OrderValidator} from "@crosspublic/validators/src/general/order.validator";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import extract from 'extract-json-from-string';
-import {CategoryStringValidator} from "@meetfaq/validators/src/general/category.string.validator";
-import {Revalidate} from "@meetfaq/backend/src/services/revalidate";
+import {CategoryStringValidator} from "@crosspublic/validators/src/general/category.string.validator";
+import {Revalidate} from "@crosspublic/backend/src/services/revalidate";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Faq')

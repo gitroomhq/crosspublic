@@ -7,6 +7,8 @@
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "@nx/dependency-checks": "error",
+        "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+        "@typescript-eslint/no-explicit-any": "off",
         "@nx/enforce-module-boundaries": [
           "error",
           {

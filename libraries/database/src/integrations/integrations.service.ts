@@ -1,7 +1,9 @@
 import {Injectable} from "@nestjs/common";
-import {IntegrationsRepository} from "@meetfaq/database/src/integrations/integrations.repository";
-import {Discord, Slack} from "@meetfaq/validators/src/integrations/create.integration.validator";
+import {IntegrationsRepository} from "@crosspublic/database/src/integrations/integrations.repository";
+import {Discord, Slack} from "@crosspublic/validators/src/integrations/create.integration.validator";
 import {IntegrationType} from '@prisma/client';
+import { SlackService } from "@crosspublic/helpers/src/slack/slack.service";
+import { AuthIntegrationValidator } from "@crosspublic/validators/src/auth/auth.integration.validator";
 
 @Injectable()
 export class IntegrationsService {
@@ -14,6 +16,23 @@ export class IntegrationsService {
   }
   totalIntegrationsByOrganizationId(organizationId: string) {
     return this._integrationsRepository.totalIntegrationsByOrganizationId(organizationId);
+  }
+
+  async getAuthObject(body: AuthIntegrationValidator) {
+    const user = await this._integrationsRepository.getAuthObject(body);
+    if (!user) {
+      return false;
+    }
+
+    return {
+      user: {
+        id: body.user,
+        token: user.users[0].token,
+      },
+      team: {
+        id: body.guild,
+      }
+    }
   }
 
   getIntegrationByOrganizationId(organizationId: string) {
@@ -62,13 +81,19 @@ export class IntegrationsService {
       internalId: discord.guild_id,
       type: IntegrationType.DISCORD,
       organizationId: orgId,
-      token: data.access_token,
       notes: findGuild.name,
-    }, myUser.id);
+    }, data.access_token, myUser.id);
   }
 
-  createSlackIntegration(slack: Slack) {
-    return slack;
+  async createSlackIntegration(orgId: string, slack: Slack) {
+    const slackInfo = await SlackService.load(slack.code);
+
+    return this._integrationsRepository.createIntegration({
+      internalId: slackInfo.team.id,
+      type: IntegrationType.SLACK,
+      organizationId: orgId,
+      notes: slackInfo.team.name,
+    }, JSON.stringify(slackInfo.bot), slackInfo.user.id);
   }
 
   addUserToIntegration(organizationId: string, guild: string, internalId: string) {

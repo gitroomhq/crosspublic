@@ -1,10 +1,10 @@
 import {Body, Controller, Get, Param, Post} from "@nestjs/common";
-import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
-import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {BillingSubscribeValidator} from "@meetfaq/validators/src/billing/billing.subscribe.validator";
-import {StripeService} from "@meetfaq/helpers/src/stripe/stripe.service";
-import {IdStringValidator} from "@meetfaq/validators/src/general/id.string.validator";
+import {SubscriptionService} from "@crosspublic/database/src/subscription/subscription.service";
+import {GetUserFromRequest} from "@crosspublic/helpers/src/user/user.from.request";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {BillingSubscribeValidator} from "@crosspublic/validators/src/billing/billing.subscribe.validator";
+import {StripeService} from "@crosspublic/helpers/src/stripe/stripe.service";
+import {IdStringValidator} from "@crosspublic/validators/src/general/id.string.validator";
 import {ApiHeaders, ApiOperation, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Billings')

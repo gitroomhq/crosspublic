@@ -2,14 +2,14 @@
 
 import {FC, ReactNode, useCallback, useEffect, useMemo, useState} from "react";
 import {clsx} from "clsx";
-import FaqIcon from "@meetfaq/panel/src/components/icons/faq.icon";
-import BillingIcon from "@meetfaq/panel/src/components/icons/billing.icon";
-import OrgSettingsIcon from "@meetfaq/panel/src/components/icons/org.settings";
+import FaqIcon from "@crosspublic/panel/src/components/icons/faq.icon";
+import BillingIcon from "@crosspublic/panel/src/components/icons/billing.icon";
+import OrgSettingsIcon from "@crosspublic/panel/src/components/icons/org.settings";
 import {usePathname} from "next/navigation";
 import Link from "next/link";
-import StyleComponent from "@meetfaq/panel/src/components/icons/style.component";
-import IntegrationsIcon from "@meetfaq/panel/src/components/icons/integrations.icon";
-import LogoutIcon from "@meetfaq/panel/src/components/icons/logout.icon";
+import StyleComponent from "@crosspublic/panel/src/components/icons/style.component";
+import IntegrationsIcon from "@crosspublic/panel/src/components/icons/integrations.icon";
+import LogoutIcon from "@crosspublic/panel/src/components/icons/logout.icon";
 
 const SideMenuItem: FC<{svg: ReactNode, title: string, path: string, disableReload?: boolean}> = (props) => {
   const {svg, title, path, disableReload} = props;

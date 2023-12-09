@@ -1,6 +1,6 @@
 // import { revalidatePath } from 'next/cache';
 import { NextRequest } from 'next/server'
-import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
+import {customFetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
 
 export async function GET(request: NextRequest, context: {params: {token: string}}) {
   const cookie = request.cookies.get('auth')?.value;

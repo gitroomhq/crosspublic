@@ -1,14 +1,14 @@
 "use client";
 
-import {wrapMeta} from "@meetfaq/panel/src/helpers/wrap.meta";
-import {Block} from "@meetfaq/panel/src/components/utils/block";
+import {wrapMeta} from "@crosspublic/panel/src/helpers/wrap.meta";
+import {Block} from "@crosspublic/panel/src/components/utils/block";
 import {SubmitHandler, useForm} from "react-hook-form";
 import { Input } from "../utils/input";
 import {SketchPicker} from "react-color";
 import {FC, forwardRef, ReactNode, useCallback, useEffect, useRef, useState} from "react";
-import WarningIcon from "@meetfaq/panel/src/components/icons/warning.icon";
+import WarningIcon from "@crosspublic/panel/src/components/icons/warning.icon";
 import { Button } from "../utils/button";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
 import {useRouter} from "next/navigation";
 import Swal from "sweetalert2";
 

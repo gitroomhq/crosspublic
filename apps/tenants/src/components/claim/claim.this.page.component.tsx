@@ -1,6 +1,6 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { Button } from '@meetfaq/tenants/src/components/utils/button';
+import { Button } from '@crosspublic/tenants/src/components/utils/button';
 
 export const ClaimThisPageComponent = () => {
   const router = useRouter();

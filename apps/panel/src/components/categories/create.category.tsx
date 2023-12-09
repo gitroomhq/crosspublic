@@ -1,10 +1,10 @@
 "use client";
 
-import {wrapModal} from "@meetfaq/panel/src/helpers/wrap.modal";
+import {wrapModal} from "@crosspublic/panel/src/helpers/wrap.modal";
 import {useForm} from "react-hook-form";
-import {Editor} from "@meetfaq/helpers/src/components/editor";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
-import {Button} from "@meetfaq/panel/src/components/utils/button";
+import {Editor} from "@crosspublic/helpers/src/components/editor";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
+import {Button} from "@crosspublic/panel/src/components/utils/button";
 import {useCallback, useEffect, useState} from "react";
 
 export const CreateCategory = wrapModal<{cat?: string}>((props) => {

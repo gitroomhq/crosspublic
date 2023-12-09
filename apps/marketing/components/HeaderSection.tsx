@@ -34,12 +34,12 @@ export default function HeaderSection({stars}: {stars: string}) {
                 className="flex items-center space-x-2"
               >
                 <div aria-hidden="true" className="flex space-x-1">
-                  <Image src="/logo.png" alt="MeetFAQ" width={32} height={32} />
+                  <Image src="/logo.png" alt="crosspublic" width={32} height={32} />
                   {/*<div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>*/}
                   {/*<div className="h-6 w-2 bg-primary"></div>*/}
                 </div>
                 <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                  MeetFAQ <span className="text-xs">(By Gitroom)</span>
+                  crosspublic <span className="text-xs">(By Gitroom)</span>
                 </span>
               </a>
 
@@ -88,7 +88,7 @@ export default function HeaderSection({stars}: {stars: string}) {
               <div className="flex justify-between mt-12 lg:mt-0 mb-4 lg:mb-0 pr-4">
                 <a
                   className="before:w-full before:h-full before:absolute before:left-0 before:top-0 before:border-[1px] before:border-dark/20 before:rounded-3xl before:duration-300 hover:before:scale-105 relative group flex cursor-pointer items-center gap-[10px] px-4 h-9 text-[15px] text-black transition-all max-lg:w-full max-lg:justify-center"
-                  href="https://github.com/github-20k/meetfaq"
+                  href="https://github.com/github-20k/crosspublic"
                   target="_blank"
                 >
                   <svg

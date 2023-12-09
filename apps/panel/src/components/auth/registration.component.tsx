@@ -1,9 +1,9 @@
 "use client";
 
 import {SubmitHandler, useForm} from "react-hook-form";
-import {Block} from "@meetfaq/panel/src/components/utils/block";
-import {Input} from "@meetfaq/panel/src/components/utils/input";
-import {Button} from "@meetfaq/panel/src/components/utils/button";
+import {Block} from "@crosspublic/panel/src/components/utils/block";
+import {Input} from "@crosspublic/panel/src/components/utils/input";
+import {Button} from "@crosspublic/panel/src/components/utils/button";
 import {useCallback} from "react";
 import * as process from "process";
 import {HttpStatus} from "@nestjs/common";
@@ -53,7 +53,7 @@ export default function RegistrationComponent ({token}: {token?: string}) {
           {!!token && <div className="text-center font-bold text-primary">Registering for an existing organization</div>}
           <div className="flex flex-col gap-3 w-full">
             <div className="flex flex-1 [&>div]:w-full [&>div]:flex [&>div]:flex-col">
-              <Input label="Email" type="text" placeholder="nevo@meetfaq.com" error={formState.errors.email} {...register('email', {required: {value: true, message: 'Email is required'}, pattern: {
+              <Input label="Email" type="text" placeholder="nevo@crosspublic.com" error={formState.errors.email} {...register('email', {required: {value: true, message: 'Email is required'}, pattern: {
                   value: /\S+@\S+\.\S+/,
                   message: "Entered value does not match email format",
                }})} />

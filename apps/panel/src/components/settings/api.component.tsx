@@ -2,7 +2,7 @@
 
 import { Input } from "../utils/input"
 import {FC, useCallback} from "react";
-import {Button} from "@meetfaq/panel/src/components/utils/button";
+import {Button} from "@crosspublic/panel/src/components/utils/button";
 import {toast} from "react-toastify";
 
 export const ApiComponent: FC<{apiKey: string}> = (props) => {
@@ -22,7 +22,7 @@ export const ApiComponent: FC<{apiKey: string}> = (props) => {
                 </div>
             </div>
             <div className="text-xs mt-2">
-                <a className="underline hover:font-bold" target="_blank" href="https://docs.meetfaq.com/public-api-reference/introduction">
+                <a className="underline hover:font-bold" target="_blank" href="https://docs.crosspublic.com/public-api-reference/introduction">
                     Read the docs
                 </a>
             </div>

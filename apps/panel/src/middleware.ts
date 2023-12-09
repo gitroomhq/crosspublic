@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import {removeSubdomain} from "@meetfaq/helpers/src/subdomain/subdomain.management";
+import {removeSubdomain} from "@crosspublic/helpers/src/subdomain/subdomain.management";
 
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {

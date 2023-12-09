@@ -1,7 +1,7 @@
 import {Metadata} from "next";
-import {StyleComponent} from "@meetfaq/panel/src/components/style/style.component";
-import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
-import {userToken} from "@meetfaq/panel/src/components/utils/user.token";
+import {StyleComponent} from "@crosspublic/panel/src/components/style/style.component";
+import {customFetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
+import {userToken} from "@crosspublic/panel/src/components/utils/user.token";
 
 export const metadata: Metadata = {
   title: 'Style',

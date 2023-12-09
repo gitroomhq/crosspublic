@@ -1,12 +1,12 @@
 import {Body, Controller, Get, Put} from "@nestjs/common";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
-import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
-import {pricing} from "@meetfaq/helpers/src/pricing/pricing";
-import {Revalidate} from "@meetfaq/backend/src/services/revalidate";
-import {UpdateStyleValidator} from "@meetfaq/validators/src/organizations/update.style.validator";
+import {GetUserFromRequest} from "@crosspublic/helpers/src/user/user.from.request";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {SubscriptionService} from "@crosspublic/database/src/subscription/subscription.service";
+import {OrganizationService} from "@crosspublic/database/src/organization/organization.service";
+import {pricing} from "@crosspublic/helpers/src/pricing/pricing";
+import {Revalidate} from "@crosspublic/backend/src/services/revalidate";
+import {UpdateStyleValidator} from "@crosspublic/validators/src/organizations/update.style.validator";
 
 @ApiTags('Styles')
 @Controller('/styles')

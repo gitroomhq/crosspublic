@@ -15,14 +15,14 @@
       "to": "#9333EA"
     }
   },
-  "openapi": "https://api.meetfaq.com/docs-json",
+  "openapi": "https://api.crosspublic.com/docs-json",
   "api": {
-    "baseUrl": "https://api.meetfaq.com"
+    "baseUrl": "https://api.crosspublic.com"
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:nevo@meetfaq.com"
+      "url": "mailto:nevo@crosspublic.com"
     }
   ],
   "modeToggle": {
@@ -30,7 +30,7 @@
   },
   "topbarCtaButton": {
     "type": "github",
-    "url": "https://github.com/github-20k/meetqa"
+    "url": "https://github.com/github-20k/crosspublic"
   },
   "tabs": [
     {
@@ -46,7 +46,7 @@
     {
       "name": "Documentation",
       "icon": "book-open-cover",
-      "url": "https://docs.meetfaq.com"
+      "url": "https://docs.crosspublic.com"
     },
     {
       "name": "Community",
@@ -84,8 +84,8 @@
       "group": "Authentications",
       "pages": [
         "api-reference/custom/authentications/check-org-and-user",
-        "api-reference/custom/authentications/register-to-meetfaq",
-        "api-reference/custom/authentications/login-to-meetfaq"
+        "api-reference/custom/authentications/register-to-crosspublic",
+        "api-reference/custom/authentications/login-to-crosspublic"
       ]
     },
     {
@@ -185,7 +185,7 @@
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/nevodavid",
-    "github": "https://github.com/github-20k/meetqa",
+    "github": "https://github.com/github-20k/crosspublic",
     "linkedin": "https://www.linkedin.com/nevodavid"
   }
 }

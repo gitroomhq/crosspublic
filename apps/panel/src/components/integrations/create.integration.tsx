@@ -1,8 +1,8 @@
 "use client";
 
-import {wrapModal} from "@meetfaq/panel/src/helpers/wrap.modal";
+import {wrapModal} from "@crosspublic/panel/src/helpers/wrap.modal";
 import {useCallback} from "react";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
 import {useRouter} from "next/navigation";
 
 export const CreateIntegration = wrapModal(() => {
@@ -22,7 +22,7 @@ export const CreateIntegration = wrapModal(() => {
   return (
     <div className="w-[500px]">
       <h2 className="text-center text-2xl mb-3">Select an integration to add</h2>
-      <div className="flex justify-center">
+      <div className="flex justify-center gap-3">
         <div
           onClick={addIntegration({type: 'discord'})}
           className="pointer hover:before:absolute hover:before:rounded-2xl hover:before:bg-pink/20 hover:before:left-0 hover:before:top-0 hover:before:h-full hover:before:w-full relative flex flex-col items-center border-gray border p-2 rounded-2xl gap-3"
@@ -33,6 +33,18 @@ export const CreateIntegration = wrapModal(() => {
             className="w-[100px] h-[100px] rounded-2xl"
           />
           <div className="font-bold">Discord</div>
+        </div>
+
+        <div
+          onClick={addIntegration({type: 'slack'})}
+          className="pointer hover:before:absolute hover:before:rounded-2xl hover:before:bg-pink/20 hover:before:left-0 hover:before:top-0 hover:before:h-full hover:before:w-full relative flex flex-col items-center border-gray border p-2 rounded-2xl gap-3"
+        >
+          <img
+            src="/integrations/slack.png"
+            alt="Slack"
+            className="w-[100px] h-[100px] rounded-2xl"
+          />
+          <div className="font-bold">Slack</div>
         </div>
       </div>
     </div>

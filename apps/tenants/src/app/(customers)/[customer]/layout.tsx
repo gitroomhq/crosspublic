@@ -1,10 +1,10 @@
 import '../../styles.css';
 import {Metadata} from "next";
 import { Inter } from 'next/font/google'
-import {publicRequestFetch} from "@meetfaq/tenants/src/helpers/get.api.key";
-import {ClaimThisPageComponent} from "@meetfaq/tenants/src/components/claim/claim.this.page.component";
+import {publicRequestFetch} from "@crosspublic/tenants/src/helpers/get.api.key";
+import {ClaimThisPageComponent} from "@crosspublic/tenants/src/components/claim/claim.this.page.component";
 import {redirect} from "next/navigation";
-import {SearchComponent} from "@meetfaq/tenants/src/components/search/search.component";
+import {SearchComponent} from "@crosspublic/tenants/src/components/search/search.component";
 
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ['latin'] })

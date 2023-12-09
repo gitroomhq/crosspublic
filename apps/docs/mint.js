@@ -15,18 +15,18 @@ exports.default = {
       "to": "#9333EA"
     }
   },
-  "openapi": "https://api.meetfaq.com/docs-json",
+  "openapi": "https://api.crosspublic.com/docs-json",
   "api": {
-    "baseUrl": "https://api.meetfaq.com",
+    "baseUrl": "https://api.crosspublic.com",
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:nevo@meetfaq.com"
+      "url": "mailto:nevo@crosspublic.com"
     },
     {
       "name": "Cloud",
-      "url": "https://panel.meetfaq.com"
+      "url": "https://panel.crosspublic.com"
     }
   ],
   "modeToggle": {
@@ -34,7 +34,7 @@ exports.default = {
   },
   "topbarCtaButton": {
     "type": "github",
-    "url": "https://github.com/github-20k/meetfaq"
+    "url": "https://github.com/github-20k/crosspublic"
   },
   "tabs": [
     {
@@ -50,7 +50,7 @@ exports.default = {
     {
       "name": "Documentation",
       "icon": "book-open-cover",
-      "url": "https://docs.meetfaq.com"
+      "url": "https://docs.crosspublic.com"
     },
     {
       "name": "Community",
@@ -79,7 +79,7 @@ exports.default = {
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/nevodavid",
-    "github": "https://github.com/github-20k/meetfaq",
+    "github": "https://github.com/github-20k/crosspublic",
     "linkedin": "https://www.linkedin.com/nevodavid"
   }
 };

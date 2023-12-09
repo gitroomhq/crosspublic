@@ -1,11 +1,11 @@
 import {Injectable} from "@nestjs/common";
-import {SubscriptionRepository} from "@meetfaq/database/src/subscription/subscription.repository";
-import { pricing } from "@meetfaq/helpers/src/pricing/pricing";
-import { FaqRepository } from "@meetfaq/database/src/faq/faq.repository";
-import { CategoryRepository } from "@meetfaq/database/src/categories/category.repository";
-import { IntegrationsRepository } from "@meetfaq/database/src/integrations/integrations.repository";
-import { OrganizationRepository } from "@meetfaq/database/src/organization/organization.repository";
-import { SettingsService } from "@meetfaq/database/src/settings/settings.service";
+import {SubscriptionRepository} from "@crosspublic/database/src/subscription/subscription.repository";
+import { pricing } from "@crosspublic/helpers/src/pricing/pricing";
+import { FaqRepository } from "@crosspublic/database/src/faq/faq.repository";
+import { CategoryRepository } from "@crosspublic/database/src/categories/category.repository";
+import { IntegrationsRepository } from "@crosspublic/database/src/integrations/integrations.repository";
+import { OrganizationRepository } from "@crosspublic/database/src/organization/organization.repository";
+import { SettingsService } from "@crosspublic/database/src/settings/settings.service";
 
 @Injectable()
 export class SubscriptionService {

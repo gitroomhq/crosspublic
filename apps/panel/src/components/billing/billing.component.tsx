@@ -1,16 +1,16 @@
 "use client";
 
-import {wrapMeta} from "@meetfaq/panel/src/helpers/wrap.meta";
-import {Block} from "@meetfaq/panel/src/components/utils/block";
+import {wrapMeta} from "@crosspublic/panel/src/helpers/wrap.meta";
+import {Block} from "@crosspublic/panel/src/components/utils/block";
 import {Subscription} from "@prisma/client";
-import {Button} from "@meetfaq/panel/src/components/utils/button";
-import {pricing, PricingInterface} from "@meetfaq/helpers/src/pricing/pricing";
+import {Button} from "@crosspublic/panel/src/components/utils/button";
+import {pricing, PricingInterface} from "@crosspublic/helpers/src/pricing/pricing";
 import {capitalize} from "lodash";
 import {FC, useCallback, useEffect, useState} from "react";
 import {clsx} from "clsx";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
 import {useRouter} from "next/navigation";
-import {deleteDialog} from "@meetfaq/panel/src/helpers/delete.dialog";
+import {deleteDialog} from "@crosspublic/panel/src/helpers/delete.dialog";
 import {Oval} from "react-loader-spinner";
 
 const Check = () => (
@@ -120,7 +120,7 @@ export const PricingComponent: FC<{period: 'MONTHLY' | 'YEARLY', pricing: Pricin
             <div className="mr-1">
               {pricing?.[p]?.domains ? <Check /> : <Not />}
             </div>
-            <div>Remove MeetFAQ branding</div>
+            <div>Remove crosspublic branding</div>
           </li>
           <li className="flex">
             <div className="mr-1">

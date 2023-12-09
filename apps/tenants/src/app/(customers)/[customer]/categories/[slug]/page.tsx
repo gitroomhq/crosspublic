@@ -1,8 +1,8 @@
-import {publicRequestFetch} from "@meetfaq/tenants/src/helpers/get.api.key";
+import {publicRequestFetch} from "@crosspublic/tenants/src/helpers/get.api.key";
 import {Faq} from "@prisma/client";
 import Link from "next/link";
 import {Suspense} from "react";
-import {ClaimThisPageComponent} from "@meetfaq/tenants/src/components/claim/claim.this.page.component";
+import {ClaimThisPageComponent} from "@crosspublic/tenants/src/components/claim/claim.this.page.component";
 import { Metadata, ResolvingMetadata } from "next";
 export const dynamic = 'force-static';
 

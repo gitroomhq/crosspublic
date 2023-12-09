@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import {CategoryService} from "@meetfaq/database/src/categories/category.service";
-import {CategoryRepository} from "@meetfaq/database/src/categories/category.repository";
+import {CategoryService} from "@crosspublic/database/src/categories/category.service";
+import {CategoryRepository} from "@crosspublic/database/src/categories/category.repository";
 
 @Module({
   imports: [],

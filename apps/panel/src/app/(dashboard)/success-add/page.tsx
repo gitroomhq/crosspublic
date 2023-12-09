@@ -1,6 +1,6 @@
 import {Metadata} from "next";
-import {Block} from "@meetfaq/panel/src/components/utils/block";
-import {wrapMeta} from "@meetfaq/panel/src/helpers/wrap.meta";
+import {Block} from "@crosspublic/panel/src/components/utils/block";
+import {wrapMeta} from "@crosspublic/panel/src/helpers/wrap.meta";
 
 export const metadata: Metadata = {
   title: 'You are in',

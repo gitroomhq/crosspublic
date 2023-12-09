@@ -1,12 +1,12 @@
 import {Body, Controller, Post} from "@nestjs/common";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
-import {CheckPolicies} from "@meetfaq/backend/src/services/authorization/authorization.ability";
-import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
-import {Discord, InvitationsValidator} from "@meetfaq/validators/src/invitations/create.invitations.validator";
-import {AuthService} from "@meetfaq/helpers/src/auth/auth.service";
-import {IntegrationsService} from "@meetfaq/database/src/integrations/integrations.service";
-import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {CheckPolicies} from "@crosspublic/backend/src/services/authorization/authorization.ability";
+import {AuthorizationActions, Sections} from "@crosspublic/backend/src/services/authorization/authorization.service";
+import {Discord, InvitationsValidator} from "@crosspublic/validators/src/invitations/create.invitations.validator";
+import {AuthService} from "@crosspublic/helpers/src/auth/auth.service";
+import {IntegrationsService} from "@crosspublic/database/src/integrations/integrations.service";
+import {GetUserFromRequest} from "@crosspublic/helpers/src/user/user.from.request";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
 
 @ApiTags('Invitations')
 @Controller('/invite')

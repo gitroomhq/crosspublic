@@ -1,7 +1,7 @@
 import {Controller, Get} from "@nestjs/common";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {OrganizationService} from "@crosspublic/database/src/organization/organization.service";
 import {ApiHeaders, ApiOperation, ApiTags} from "@nestjs/swagger";
-import {GetOrganizationFromRequest, OrganizationFromRequest} from "@meetfaq/helpers/src/user/organization.from.request";
+import {GetOrganizationFromRequest, OrganizationFromRequest} from "@crosspublic/helpers/src/user/organization.from.request";
 
 @ApiTags('Public')
 @Controller('/public/styles')

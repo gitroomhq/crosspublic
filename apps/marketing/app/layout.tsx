@@ -1,10 +1,10 @@
 import './global.css';
-import HeaderSection from "@meetfaq/marketing/components/HeaderSection";
+import HeaderSection from "@crosspublic/marketing/components/HeaderSection";
 import {Inter} from "next/font/google";
-import Footer from "@meetfaq/marketing/components/FooterSection";
+import Footer from "@crosspublic/marketing/components/FooterSection";
 
 export const metadata = {
-  title: 'MeetFAQ - The place to meet and ask questions',
+  title: 'crosspublic - The place to meet and ask questions',
   description: '',
 };
 
@@ -16,7 +16,7 @@ export default async function RootLayout({
 }) {
   const date = new Date();
   const dateAndHour = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}-${date.getHours()}`;
-  const {stargazers_count} = await (await fetch(`https://api.github.com/repos/github-20k/meetfaq?c=${dateAndHour}`)).json();
+  const {stargazers_count} = await (await fetch(`https://api.github.com/repos/github-20k/crosspublic?c=${dateAndHour}`)).json();
   return (
     <html lang="en">
       <body className={inter.className}>

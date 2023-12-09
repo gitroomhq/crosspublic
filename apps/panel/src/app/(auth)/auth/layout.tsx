@@ -19,7 +19,7 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
           <div className="flex flex-1 items-center p-10 flex-col gap-4">
             <div className="flex items-center gap-2 justify-center w-full max-w-[840px]">
               <img src="/logobot.png" className="max-w-[30px]" />
-              <div>MeetFAQ</div>
+              <div>crosspublic</div>
             </div>
             <div className="w-full max-w-[840px]">
               {children}

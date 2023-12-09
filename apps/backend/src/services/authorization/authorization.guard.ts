@@ -1,10 +1,10 @@
 import {CanActivate, ExecutionContext, Injectable} from "@nestjs/common";
 import {Reflector} from "@nestjs/core";
-import {AbilityPolicy, CHECK_POLICIES_KEY} from "@meetfaq/backend/src/services/authorization/authorization.ability";
-import {AppAbility, AuthorizationService} from "@meetfaq/backend/src/services/authorization/authorization.service";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {SubscriptionException} from "@meetfaq/backend/src/services/authorization/subscription.exception";
-import {Revalidate} from "@meetfaq/backend/src/services/revalidate";
+import {AbilityPolicy, CHECK_POLICIES_KEY} from "@crosspublic/backend/src/services/authorization/authorization.ability";
+import {AppAbility, AuthorizationService} from "@crosspublic/backend/src/services/authorization/authorization.service";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {SubscriptionException} from "@crosspublic/backend/src/services/authorization/subscription.exception";
+import {Revalidate} from "@crosspublic/backend/src/services/revalidate";
 
 
 @Injectable()

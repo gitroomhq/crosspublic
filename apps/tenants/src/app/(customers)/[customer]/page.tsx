@@ -1,6 +1,6 @@
-import {publicRequestFetch} from "@meetfaq/tenants/src/helpers/get.api.key";
+import {publicRequestFetch} from "@crosspublic/tenants/src/helpers/get.api.key";
 import {Category} from "@prisma/client";
-import {textToMarkdown} from "@meetfaq/tenants/src/helpers/text.to.markdown";
+import {textToMarkdown} from "@crosspublic/tenants/src/helpers/text.to.markdown";
 import Link from "next/link";
 import {Suspense} from "react";
 import { Metadata, ResolvingMetadata } from "next";

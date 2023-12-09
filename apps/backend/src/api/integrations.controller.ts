@@ -1,13 +1,19 @@
 import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
-import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {IntegrationsService} from "@meetfaq/database/src/integrations/integrations.service";
-import {IntegrationsTypeValidator} from "@meetfaq/validators/src/integrations/integrations.type.validator";
-import {CheckPolicies} from "@meetfaq/backend/src/services/authorization/authorization.ability";
-import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
-import {CreateIntegrationValidator, Discord, Slack} from "@meetfaq/validators/src/integrations/create.integration.validator";
-import {IdStringValidator} from "@meetfaq/validators/src/general/id.string.validator";
+import {GetUserFromRequest} from "@crosspublic/helpers/src/user/user.from.request";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {IntegrationsService} from "@crosspublic/database/src/integrations/integrations.service";
+import {IntegrationsTypeValidator} from "@crosspublic/validators/src/integrations/integrations.type.validator";
+import {CheckPolicies} from "@crosspublic/backend/src/services/authorization/authorization.ability";
+import {AuthorizationActions, Sections} from "@crosspublic/backend/src/services/authorization/authorization.service";
+import {CreateIntegrationValidator, Discord, Slack} from "@crosspublic/validators/src/integrations/create.integration.validator";
+import {IdStringValidator} from "@crosspublic/validators/src/general/id.string.validator";
+import { InstallProvider } from "@slack/oauth";
+import { slackProps } from "@crosspublic/helpers/src/slack/slack.props";
+
+const installProvider = new InstallProvider({
+  ...slackProps
+});
 
 @ApiTags('Integrations')
 @Controller('/integrations')
@@ -35,8 +41,17 @@ export class IntegrationsController {
         url: `https://discord.com/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT}&response_type=code&permissions=17179880448&scope=identify%20email%20guilds%20bot&redirect_uri=${encodeURIComponent(`${process.env.FRONTEND_URL}/api/integrations/discord`)}`
       }
     }
-  }
 
+    if (type.type === 'slack') {
+      const url = await installProvider.generateInstallUrl({
+        scopes: slackProps.scopes
+      });
+
+      return {
+        url
+      }
+    }
+  }
   @Post('/')
   @CheckPolicies([AuthorizationActions.Create, Sections.INTEGRATIONS])
   async create(
@@ -47,7 +62,7 @@ export class IntegrationsController {
       return this._integrationsService.createDiscordIntegration(user.organization.organizationId, body.information);
     }
     if (body.information instanceof Slack) {
-      return this._integrationsService.createSlackIntegration(body.information);
+      return this._integrationsService.createSlackIntegration(user.organization.organizationId, body.information);
     }
   }
 

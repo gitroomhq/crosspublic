@@ -1,5 +1,5 @@
 import {Controller, Post, RawBodyRequest, Req} from "@nestjs/common";
-import {StripeService} from "@meetfaq/helpers/src/stripe/stripe.service";
+import {StripeService} from "@crosspublic/helpers/src/stripe/stripe.service";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Stripe')
@@ -23,7 +23,7 @@ export class StripeController {
     // Maybe it comes from another stripe webhook
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    if (event?.data?.object?.metadata?.service !== 'meetfaq') {
+    if (event?.data?.object?.metadata?.service !== 'crosspublic') {
       return {ok: true};
     }
 

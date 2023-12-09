@@ -1,8 +1,8 @@
-import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
+import {customFetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
 import dynamic from "next/dynamic";
-import {userToken} from "@meetfaq/panel/src/components/utils/user.token";
+import {userToken} from "@crosspublic/panel/src/components/utils/user.token";
 import {Metadata} from "next";
-const FaqComponent = dynamic(() => import('@meetfaq/panel/src/components/faqs/faq.component'), {ssr: false});
+const FaqComponent = dynamic(() => import('@crosspublic/panel/src/components/faqs/faq.component'), {ssr: false});
 
 export const metadata: Metadata = {
   title: 'FAQ',

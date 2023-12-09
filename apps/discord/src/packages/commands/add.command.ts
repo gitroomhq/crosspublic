@@ -1,7 +1,7 @@
-import {CommandsInterface} from "@meetfaq/discord/src/packages/commands/commands.interface";
+import {CommandsInterface} from "@crosspublic/discord/src/packages/commands/commands.interface";
 import {ActionRowBuilder, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction} from "discord.js";
 import {Injectable} from "@nestjs/common";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
 import {uniqBy} from "lodash";
 
 @Injectable()

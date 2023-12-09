@@ -4,10 +4,10 @@
  */
 
 import { NestFactory } from '@nestjs/core';
-import {AppModule} from "@meetfaq/discord/src/app.module";
-import {DiscordModule} from "@meetfaq/discord/src/packages/discord/discord.module";
-import {DiscordService} from "@meetfaq/discord/src/packages/discord/discord.service";
-import {commands, CommandsModule} from "@meetfaq/discord/src/packages/commands/commands.module";
+import {AppModule} from "@crosspublic/discord/src/app.module";
+import {DiscordModule} from "@crosspublic/discord/src/packages/discord/discord.module";
+import {DiscordService} from "@crosspublic/discord/src/packages/discord/discord.service";
+import {commands, CommandsModule} from "@crosspublic/discord/src/packages/commands/commands.module";
 
 async function bootstrap() {
   const app     = await NestFactory.createApplicationContext(AppModule);

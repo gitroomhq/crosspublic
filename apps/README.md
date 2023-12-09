@@ -1,8 +1,8 @@
 <div align="center">
-  <a href="https://meetfaq.com?utm_source=github" target="_blank">
+  <a href="https://crosspublic.com?utm_source=github" target="_blank">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/github-20k/meetqa/assets/100117126/b1627f46-ab23-4a84-8a1f-e3c56d6411b0">
-    <img alt="Novu" src="https://github.com/github-20k/meetqa/assets/100117126/1f6c696c-d078-4e30-a8d6-bf503769059c" width="280"/>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/github-20k/crosspublic/assets/100117126/b1627f46-ab23-4a84-8a1f-e3c56d6411b0">
+    <img alt="Novu" src="https://github.com/github-20k/crosspublic/assets/100117126/1f6c696c-d078-4e30-a8d6-bf503769059c" width="280"/>
   </picture>
   </a>
 </div>
@@ -18,9 +18,9 @@ Extract your customer's conversation into an FAQ to make it available to everyon
 
   <p align="center">
     <br />
-    <a href="https://meetfaq.com/docs"><strong>Explore the docs »</strong></a>
+    <a href="https://crosspublic.com/docs"><strong>Explore the docs »</strong></a>
     <br/><br/>
-    <a href="https://meetfaq.com/register">Register to the cloud</a>
+    <a href="https://crosspublic.com/register">Register to the cloud</a>
     ·
     <a href="https://discord.gitroom.com">Join our Discord</a>
   </p>
@@ -30,7 +30,7 @@ Extract your customer's conversation into an FAQ to make it available to everyon
 The /apps folder contains all the projects of the monorepo.
 
 You can read more about it here:
-https://docs.meetfaq.com/howitworks
+https://docs.crosspublic.com/howitworks
 
 - `backend` - This it the backend that is being used by all the services.
 - `discord` - This is the Discord bot that is being used to extract the conversations.

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import {IntegrationsService} from "@meetfaq/database/src/integrations/integrations.service";
-import {IntegrationsRepository} from "@meetfaq/database/src/integrations/integrations.repository";
+import {IntegrationsService} from "@crosspublic/database/src/integrations/integrations.service";
+import {IntegrationsRepository} from "@crosspublic/database/src/integrations/integrations.repository";
 
 @Module({
   imports: [],

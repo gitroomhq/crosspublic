@@ -1,7 +1,7 @@
-import {BillingComponent} from "@meetfaq/panel/src/components/billing/billing.component";
+import {BillingComponent} from "@crosspublic/panel/src/components/billing/billing.component";
 import {Metadata} from "next";
-import {userToken} from "@meetfaq/panel/src/components/utils/user.token";
-import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
+import {userToken} from "@crosspublic/panel/src/components/utils/user.token";
+import {customFetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
 import {headers} from "next/dist/client/components/headers";
 import {redirect} from "next/navigation";
 

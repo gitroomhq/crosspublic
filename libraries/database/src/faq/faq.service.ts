@@ -1,8 +1,8 @@
 import {Injectable} from "@nestjs/common";
-import {FaqRepository} from "@meetfaq/database/src/faq/faq.repository";
-import {CreateFaqValidator} from "@meetfaq/validators/src/faq/create.faq.validator";
-import {OrderValidator} from "@meetfaq/validators/src/general/order.validator";
-import {AlgoliaService} from "@meetfaq/helpers/src/algolia/algolia.service";
+import {FaqRepository} from "@crosspublic/database/src/faq/faq.repository";
+import {CreateFaqValidator} from "@crosspublic/validators/src/faq/create.faq.validator";
+import {OrderValidator} from "@crosspublic/validators/src/general/order.validator";
+import {AlgoliaService} from "@crosspublic/helpers/src/algolia/algolia.service";
 import slugify from "slugify";
 
 @Injectable()

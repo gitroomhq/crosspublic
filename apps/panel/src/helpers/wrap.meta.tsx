@@ -1,6 +1,6 @@
 import {JSX, ComponentType} from "react";
 import {Metadata} from "next";
-import {ChangeTitle} from "@meetfaq/panel/src/helpers/title.helper";
+import {ChangeTitle} from "@crosspublic/panel/src/helpers/title.helper";
 
 interface Title {
   metadata: Metadata;

@@ -1,7 +1,7 @@
 import {Category} from "@prisma/client";
 import {ChangeEvent, useCallback, useMemo} from "react";
 import NiceModal from "@ebay/nice-modal-react";
-import {CreateCategory} from "@meetfaq/panel/src/components/categories/create.category";
+import {CreateCategory} from "@crosspublic/panel/src/components/categories/create.category";
 
 export const CategoriesSelectComponent = (props: {current: Category|undefined, categories: Category[], addToList: (categories: Category) => void, setCategory: (categories: Category|undefined) => void}) => {
   const value = useMemo(() => {

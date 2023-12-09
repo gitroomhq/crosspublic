@@ -29,7 +29,7 @@ model Organization {
   backgroundColor  String  @default("#FFFFFF")
   pageTextColor    String  @default("#000000")
   pageBlockColor   String  @default("#FFFFFF")
-  brandingText     String  @default("Powered by MeetFAQ")
+  brandingText     String  @default("Powered by crosspublic")
 }
 
 enum Role {
@@ -157,7 +157,6 @@ enum IntegrationType {
 model Integrations {
   id String @id @default(cuid())
   type IntegrationType
-  token String
   notes String
   internalId String
   organizationId String
@@ -171,6 +170,7 @@ model IntegrationsUsers {
   integrationId String
   integration Integrations @relation(fields: [integrationId], references: [id])
   internalId String
+  token String?
   owner Boolean @default(false)
   @@unique([integrationId, internalId])
 }

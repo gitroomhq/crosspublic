@@ -1,5 +1,5 @@
 import {Injectable} from "@nestjs/common";
-import {UserRepository} from "@meetfaq/database/src/users/user.repository";
+import {UserRepository} from "@crosspublic/database/src/users/user.repository";
 
 @Injectable()
 export class UserService {

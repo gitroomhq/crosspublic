@@ -1,14 +1,14 @@
 import {Global, Module} from '@nestjs/common';
-import {OrganizationModule} from "@meetfaq/database/src/organization/organization.module";
-import {PrismaRepository, PrismaService} from "@meetfaq/database/src/prisma.service";
-import {UserModule} from "@meetfaq/database/src/users/user.module";
-import {JobsModule} from "@meetfaq/database/src/jobs/jobs.module";
-import {SubscriptionModule} from "@meetfaq/database/src/subscription/subscription.module";
-import {CategoryModule} from "@meetfaq/database/src/categories/category.module";
-import {FaqModule} from "@meetfaq/database/src/faq/faq.module";
-import {DomainModule} from "@meetfaq/database/src/domains/domain.module";
-import {SettingsModule} from "@meetfaq/database/src/settings/settings.module";
-import {IntegrationsModule} from "@meetfaq/database/src/integrations/integrations.module";
+import {OrganizationModule} from "@crosspublic/database/src/organization/organization.module";
+import {PrismaRepository, PrismaService} from "@crosspublic/database/src/prisma.service";
+import {UserModule} from "@crosspublic/database/src/users/user.module";
+import {JobsModule} from "@crosspublic/database/src/jobs/jobs.module";
+import {SubscriptionModule} from "@crosspublic/database/src/subscription/subscription.module";
+import {CategoryModule} from "@crosspublic/database/src/categories/category.module";
+import {FaqModule} from "@crosspublic/database/src/faq/faq.module";
+import {DomainModule} from "@crosspublic/database/src/domains/domain.module";
+import {SettingsModule} from "@crosspublic/database/src/settings/settings.module";
+import {IntegrationsModule} from "@crosspublic/database/src/integrations/integrations.module";
 
 @Global()
 @Module({

@@ -1,11 +1,11 @@
 import '../styles.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import 'react-toastify/dist/ReactToastify.css';
-import {LayoutComponent} from "@meetfaq/panel/src/components/layout/layout.component";
+import {LayoutComponent} from "@crosspublic/panel/src/components/layout/layout.component";
 import {Metadata} from "next";
 import { cookies, headers } from 'next/headers';
 import { Inter } from 'next/font/google'
-import {fetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
+import {fetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
 import {redirect} from "next/navigation";
 
 // If loading a variable font, you don't need to specify the font weight

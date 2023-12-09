@@ -1,5 +1,5 @@
 import {ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus} from "@nestjs/common";
-import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
+import {AuthorizationActions, Sections} from "@crosspublic/backend/src/services/authorization/authorization.service";
 
 export class SubscriptionException extends HttpException {
   constructor(message: {

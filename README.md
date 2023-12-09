@@ -1,8 +1,8 @@
 <div align="center">
-  <a href="https://meetfaq.com?utm_source=github" target="_blank">
+  <a href="https://crosspublic.com?utm_source=github" target="_blank">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/github-20k/meetqa/assets/100117126/b1627f46-ab23-4a84-8a1f-e3c56d6411b0">
-    <img alt="MeetFAQ" src="https://github.com/github-20k/meetqa/assets/100117126/1f6c696c-d078-4e30-a8d6-bf503769059c" width="280"/>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/github-20k/crosspublic/assets/100117126/b1627f46-ab23-4a84-8a1f-e3c56d6411b0">
+    <img alt="crosspublic" src="https://github.com/github-20k/crosspublic/assets/100117126/1f6c696c-d078-4e30-a8d6-bf503769059c" width="280"/>
   </picture>
   </a>
 </div>
@@ -18,23 +18,23 @@ Extract your customer's conversation into an FAQ to make it available to everyon
 
   <p align="center">
     <br />
-    <a href="https://meetfaq.com/docs"><strong>Explore the docs »</strong></a>
+    <a href="https://crosspublic.com/docs"><strong>Explore the docs »</strong></a>
     <br/><br/>
-    <a href="https://meetfaq.com/register">Register to the cloud</a>
+    <a href="https://crosspublic.com/register">Register to the cloud</a>
     ·
     <a href="https://discord.gitroom.com">Join our Discord</a>
   </p>
 
-## ⭐️ Why MeetFAQ?
+## ⭐️ Why crosspublic?
 
-MeetFAQ connects to your support channels (At the moment Discord). <br />
+crosspublic connects to your support channels (At the moment Discord). <br />
 It lets you take conversations and convert them into an FAQ with ChatGPT, later to be accessible via a public URL.<br />
 You can also create an FAQ on your website directly with the system.
 
 ## ✨ Video Example
 
 <div align="center">
-  <video src="https://github.com/github-20k/meetqa/assets/100117126/caed6cdf-0582-4e90-aea6-e37081951c6e"></video>
+  <video src="https://github.com/github-20k/crosspublic/assets/100117126/caed6cdf-0582-4e90-aea6-e37081951c6e"></video>
 </div>
 
 ## 🔌 Infrastructure
@@ -43,13 +43,13 @@ This is a monorepo built with NX
 
 - `backend` - NestJS project manging all the API.
 - `discord` - NestJS project of the Discord bot.
-- `panel` - NextJS project of the MeetFAQ panel.
+- `panel` - NextJS project of the crosspublic panel.
 - `tanants` - NextJS website that is being used by the customers.
 - `marketing` - NextJS project of the marketing website.
 - `docs` - Mintlify documentation.
 
 ## ⚙️ Installation
-To install the project, check our [Quickstart guide](https://docs.meetfaq.com/quickstart).
+To install the project, check our [Quickstart guide](https://docs.crosspublic.com/quickstart).
 
 ## 🍾 Contact me
 

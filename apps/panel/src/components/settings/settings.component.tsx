@@ -1,9 +1,9 @@
-import {Block} from "@meetfaq/panel/src/components/utils/block";
-import Domains from "@meetfaq/panel/src/components/settings/domains/domains";
-import {SubdomainComponent} from "@meetfaq/panel/src/components/settings/subdomain.component";
+import {Block} from "@crosspublic/panel/src/components/utils/block";
+import Domains from "@crosspublic/panel/src/components/settings/domains/domains";
+import {SubdomainComponent} from "@crosspublic/panel/src/components/settings/subdomain.component";
 import {Metadata} from "next";
-import {wrapMeta} from "@meetfaq/panel/src/helpers/wrap.meta";
-import {ApiComponent} from "@meetfaq/panel/src/components/settings/api.component";
+import {wrapMeta} from "@crosspublic/panel/src/helpers/wrap.meta";
+import {ApiComponent} from "@crosspublic/panel/src/components/settings/api.component";
 
 export const metadata: Metadata = {
     title: 'Settings',

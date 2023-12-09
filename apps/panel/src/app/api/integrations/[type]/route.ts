@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import {fetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
+import {fetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
 
 export async function GET(request: NextRequest, context: {params: {type: string}}) {
   const auth = request.cookies.get('auth')?.value;

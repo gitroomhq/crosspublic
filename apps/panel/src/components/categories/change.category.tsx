@@ -1,9 +1,9 @@
 "use client";
 
 import {FC, useCallback, useState} from "react";
-import {ExtendedCategory} from "@meetfaq/panel/src/components/faqs/faq.component";
-import {deleteDialog} from "@meetfaq/panel/src/helpers/delete.dialog";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
+import {ExtendedCategory} from "@crosspublic/panel/src/components/faqs/faq.component";
+import {deleteDialog} from "@crosspublic/panel/src/helpers/delete.dialog";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
 
 export const ChangeCategory: FC<{categories: ExtendedCategory[], faq: string, changeCategory: (cat: string) => void}> = (props) =>  {
   const {categories, changeCategory} = props;

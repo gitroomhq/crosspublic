@@ -3,9 +3,9 @@
 import {useCallback, useState} from 'react'
 import LoadingDots from './components/loading-dots'
 import DomainCard from './components/domain-card'
-import {Input} from "@meetfaq/panel/src/components/utils/input";
-import {Button} from "@meetfaq/panel/src/components/utils/button";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
+import {Input} from "@crosspublic/panel/src/components/utils/input";
+import {Button} from "@crosspublic/panel/src/components/utils/button";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
 import {SubmitHandler, useForm} from "react-hook-form";
 import slugify from "slugify";
 

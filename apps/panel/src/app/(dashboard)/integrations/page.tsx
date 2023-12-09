@@ -1,7 +1,7 @@
 import {Metadata} from "next";
-import {IntegrationComponent} from "@meetfaq/panel/src/components/integrations/integration.component";
-import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
-import {userToken} from "@meetfaq/panel/src/components/utils/user.token";
+import {IntegrationComponent} from "@crosspublic/panel/src/components/integrations/integration.component";
+import {customFetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
+import {userToken} from "@crosspublic/panel/src/components/utils/user.token";
 
 export const metadata: Metadata = {
   title: 'Integrations',

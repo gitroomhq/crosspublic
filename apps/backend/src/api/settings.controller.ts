@@ -1,15 +1,15 @@
 import {Body, Controller, Delete, Get, Param, Post} from "@nestjs/common";
-import {SettingsService} from "@meetfaq/database/src/settings/settings.service";
-import {GetUserFromRequest} from "@meetfaq/helpers/src/user/user.from.request";
-import {UserInterface} from "@meetfaq/helpers/src/user/user.interface";
-import {CheckSubdomainValidator} from "@meetfaq/validators/src/settings/check.subdomain.validator";
-import {IdStringValidator} from "@meetfaq/validators/src/general/id.string.validator";
-import {AddDomainValidator} from "@meetfaq/validators/src/settings/add.domain.validator";
-import {CheckPolicies} from "@meetfaq/backend/src/services/authorization/authorization.ability";
-import {AuthorizationActions, Sections} from "@meetfaq/backend/src/services/authorization/authorization.service";
-import {Revalidate} from "@meetfaq/backend/src/services/revalidate";
-import {RevalidateService} from "@meetfaq/helpers/src/revalidate/revalidate.service";
-import {OrganizationService} from "@meetfaq/database/src/organization/organization.service";
+import {SettingsService} from "@crosspublic/database/src/settings/settings.service";
+import {GetUserFromRequest} from "@crosspublic/helpers/src/user/user.from.request";
+import {UserInterface} from "@crosspublic/helpers/src/user/user.interface";
+import {CheckSubdomainValidator} from "@crosspublic/validators/src/settings/check.subdomain.validator";
+import {IdStringValidator} from "@crosspublic/validators/src/general/id.string.validator";
+import {AddDomainValidator} from "@crosspublic/validators/src/settings/add.domain.validator";
+import {CheckPolicies} from "@crosspublic/backend/src/services/authorization/authorization.ability";
+import {AuthorizationActions, Sections} from "@crosspublic/backend/src/services/authorization/authorization.service";
+import {Revalidate} from "@crosspublic/backend/src/services/revalidate";
+import {RevalidateService} from "@crosspublic/helpers/src/revalidate/revalidate.service";
+import {OrganizationService} from "@crosspublic/database/src/organization/organization.service";
 import {ApiHeaders, ApiTags} from "@nestjs/swagger";
 
 @ApiTags('Settings')

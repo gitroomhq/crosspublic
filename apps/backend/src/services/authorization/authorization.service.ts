@@ -1,12 +1,12 @@
-import {SubscriptionService} from "@meetfaq/database/src/subscription/subscription.service";
+import {SubscriptionService} from "@crosspublic/database/src/subscription/subscription.service";
 import {Ability, AbilityBuilder, AbilityClass} from "@casl/ability";
-import {FaqService} from "@meetfaq/database/src/faq/faq.service";
-import {CategoryService} from "@meetfaq/database/src/categories/category.service";
-import {DomainService} from "@meetfaq/database/src/domains/domain.service";
+import {FaqService} from "@crosspublic/database/src/faq/faq.service";
+import {CategoryService} from "@crosspublic/database/src/categories/category.service";
+import {DomainService} from "@crosspublic/database/src/domains/domain.service";
 import {Injectable} from "@nestjs/common";
-import {pricing} from "@meetfaq/helpers/src/pricing/pricing";
-import {IntegrationsService} from "@meetfaq/database/src/integrations/integrations.service";
-import {UserService} from "@meetfaq/database/src/users/user.service";
+import {pricing} from "@crosspublic/helpers/src/pricing/pricing";
+import {IntegrationsService} from "@crosspublic/database/src/integrations/integrations.service";
+import {UserService} from "@crosspublic/database/src/users/user.service";
 
 export enum Sections {
     FAQ = 'faq',

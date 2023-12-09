@@ -1,5 +1,5 @@
 import Faq from "./Faq";
-import { pricing } from "@meetfaq/helpers/src/pricing/pricing";
+import { pricing } from "@crosspublic/helpers/src/pricing/pricing";
 
 export default function Faqs() {
     return (
@@ -9,7 +9,7 @@ export default function Faqs() {
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-white md:text-3xl lg:text-4xl balance">Frequently Asked Questions</h2>
                 </div>
                 <div className="divide-y divide-gray-200 border-y border-gray-200 dark:divide-gray-800 dark:border-gray-800 lg:w-7/12">
-                    <Faq id="faq-1" question="Do I have to pay for MeetFAQ?">
+                    <Faq id="faq-1" question="Do I have to pay for crosspublic?">
                         <p className="mb-1 text-base text-gray-600 dark:text-gray-400">
                           You can either use the cloud version and enjoy the free-tier
                         </p>
@@ -20,7 +20,7 @@ export default function Faqs() {
                           <li className="text-gray-600 font-bold">Free subdomain</li>
                         </ul>
                         <p className="pb-6 text-base text-gray-600">
-                          Or <a href="https://github.com/github-20k/meetfaq" className="underline hover:font-bold">self-host</a> the app and enjoy unlimited features
+                          Or <a href="https://github.com/github-20k/crosspublic" className="underline hover:font-bold">self-host</a> the app and enjoy unlimited features
                         </p>
                     </Faq>
                     <Faq id="faq-2" question="What communication methods are currently supported?">

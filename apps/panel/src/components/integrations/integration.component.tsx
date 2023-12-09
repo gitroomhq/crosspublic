@@ -1,14 +1,24 @@
 "use client";
 
-import {wrapMeta} from "@meetfaq/panel/src/helpers/wrap.meta";
-import {Block} from "@meetfaq/panel/src/components/utils/block";
-import {Integrations} from '@prisma/client';
+import {wrapMeta} from "@crosspublic/panel/src/helpers/wrap.meta";
+import {Block} from "@crosspublic/panel/src/components/utils/block";
+import {Integrations, IntegrationType} from '@prisma/client';
 import { Button } from "../utils/button";
-import {CreateIntegration} from "@meetfaq/panel/src/components/integrations/create.integration";
+import {CreateIntegration} from "@crosspublic/panel/src/components/integrations/create.integration";
 import {useCallback} from "react";
-import {deleteDialog} from "@meetfaq/panel/src/helpers/delete.dialog";
-import {useFetch} from "@meetfaq/panel/src/helpers/fetch.context";
+import {deleteDialog} from "@crosspublic/panel/src/helpers/delete.dialog";
+import {useFetch} from "@crosspublic/panel/src/helpers/fetch.context";
 import {useRouter} from "next/navigation";
+
+const getPicture = (integration: Integrations) => {
+  switch (integration.type) {
+    default:
+    case IntegrationType.DISCORD:
+      return '/integrations/discord.png';
+    case IntegrationType.SLACK:
+      return '/integrations/slack.png';
+  }
+}
 
 export const IntegrationComponent = wrapMeta<{integrations: Array<Integrations & {_count: {users: number}}>}>((props) => {
   const {integrations} = props;
@@ -32,7 +42,7 @@ export const IntegrationComponent = wrapMeta<{integrations: Array<Integrations &
         }}>Add Integration</Button>
       </div>
       <Block>
-        <div className="flex">
+        <div className="flex gap-3">
         {!integrations.length ? (
           <div className="flex flex-col items-center justify-center flex-1">
             <div className="text-2xl font-bold">
@@ -48,8 +58,8 @@ export const IntegrationComponent = wrapMeta<{integrations: Array<Integrations &
             className="pointer relative flex flex-col items-center border-gray border p-2 rounded-2xl gap-3"
           >
             <img
-              src="/integrations/discord.png"
-              alt="Discord"
+              src={getPicture(integration)}
+              alt={integration.type}
               className="w-[100px] h-[100px] rounded-2xl"
             />
             <div className="font-bold">

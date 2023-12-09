@@ -1,8 +1,8 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {RegistrationValidator} from "@meetfaq/validators/src/auth/registration.validator";
+import {RegistrationValidator} from "@crosspublic/validators/src/auth/registration.validator";
 import slugify from "slugify";
-import {makeId} from "@meetfaq/helpers/src/makeid/make.id";
+import {makeId} from "@crosspublic/helpers/src/makeid/make.id";
 import {hashSync} from 'bcrypt';
 
 @Injectable()

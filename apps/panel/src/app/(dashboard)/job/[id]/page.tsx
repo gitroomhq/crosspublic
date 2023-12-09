@@ -1,6 +1,6 @@
-import {customFetchBackend} from "@meetfaq/helpers/src/fetchObject/custom.fetch.backend";
-import {userToken} from "@meetfaq/panel/src/components/utils/user.token";
-import {JobComponent} from "@meetfaq/panel/src/components/jobs/job.component";
+import {customFetchBackend} from "@crosspublic/helpers/src/fetchObject/custom.fetch.backend";
+import {userToken} from "@crosspublic/panel/src/components/utils/user.token";
+import {JobComponent} from "@crosspublic/panel/src/components/jobs/job.component";
 import {Metadata} from "next";
 import {Suspense} from "react";
 

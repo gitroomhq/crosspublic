@@ -1,7 +1,7 @@
 import {PrismaRepository} from "../../src/prisma.service";
 import {Injectable} from "@nestjs/common";
-import {DomainSubDomainOrganizationValidator} from "@meetfaq/validators/src/public/domain.subDomain.organization.validator";
-import {UpdateStyleValidator} from "@meetfaq/validators/src/organizations/update.style.validator";
+import {DomainSubDomainOrganizationValidator} from "@crosspublic/validators/src/public/domain.subDomain.organization.validator";
+import {UpdateStyleValidator} from "@crosspublic/validators/src/organizations/update.style.validator";
 
 @Injectable()
 export class OrganizationRepository {
@@ -41,7 +41,7 @@ export class OrganizationRepository {
         id
       },
       data: {
-        brandingText: 'Powered by MeetFAQ'
+        brandingText: 'Powered by crosspublic'
       }
     });
   }
