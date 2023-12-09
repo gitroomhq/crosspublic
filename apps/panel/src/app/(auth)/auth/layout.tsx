@@ -30,3 +30,4 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
       </html>
   )
 }
+
