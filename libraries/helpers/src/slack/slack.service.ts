@@ -15,7 +15,7 @@ export class SlackService {
       client_id: process.env.SLACK_CLIENT_ID!,
       client_secret: process.env.SLACK_CLIENT_SECRET!,
       code,
-      redirect_uri: `https://redirectmeto.com/${process.env.FRONTEND_URL}/api/integrations/slack`
+      redirect_uri: process?.env?.FRONTEND_URL?.indexOf('localhost')! > -1 ? `https://redirectmeto.com/${process.env.FRONTEND_URL}/api/integrations/slack` : `${process.env.FRONTEND_URL}/api/integrations/slack`
     });
 
     const authResult = await SlackService.runAuthTest(resp.access_token!, {});
