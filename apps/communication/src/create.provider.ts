@@ -81,6 +81,7 @@ export function createProvider<T, X, Y extends IntegrationType>(params: {
         );
 
         if (!data) {
+          await params.sendMessage(setup, arg, `User not found, or you don't have access to this server`);
           return;
         }
 
