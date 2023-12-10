@@ -1,0 +1,3 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm run generate-prisma && npx nx run backend:communication:production"
