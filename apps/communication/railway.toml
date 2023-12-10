@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "npm run generate-prisma && npx nx run backend:communication:production"
+buildCommand = "npm run generate-prisma && npx nx run communication:build:production"
 
 [deploy]
 startCommand = "node dist/apps/communication/main.js"
