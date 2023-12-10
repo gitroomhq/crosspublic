@@ -44,7 +44,8 @@ export class IntegrationsController {
 
     if (type.type === 'slack') {
       const url = await installProvider.generateInstallUrl({
-        scopes: slackProps.scopes
+        scopes: slackProps.scopes,
+        userScopes: slackProps.userScopes
       });
 
       return {

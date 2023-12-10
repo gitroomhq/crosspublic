@@ -19,8 +19,7 @@
     "paths": {
       "@crosspublic/backend/*": ["apps/backend/*"],
       "@crosspublic/database/*": ["libraries/database/*"],
-      "@crosspublic/discord/*": ["apps/discord/*"],
-      "@crosspublic/slack/*": ["apps/slack/*"],
+      "@crosspublic/communication/*": ["apps/communication/*"],
       "@crosspublic/helpers/*": ["libraries/helpers/*"],
       "@crosspublic/validators/*": ["libraries/validators/*"],
       "@crosspublic/panel/*": ["apps/panel/*"],

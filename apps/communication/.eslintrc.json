@@ -2,7 +2,9 @@
   "extends": ["../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "rules": {
-    "@nx/enforce-module-boundaries": "off"
+    "@nx/enforce-module-boundaries": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-case-declarations": "off"
   },
   "overrides": [
     {

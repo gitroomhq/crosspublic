@@ -32,6 +32,7 @@ export class SlackService {
         userId: resp.bot_user_id,
         id: authResult.bot_id as string,
         token: resp?.access_token!,
+        userToken: resp?.authed_user?.access_token
       }
     }
   }

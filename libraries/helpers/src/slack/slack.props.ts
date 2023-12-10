@@ -13,5 +13,8 @@ export const slackProps = {
     'mpim:history',
     'users.profile:read',
     'commands',
+    'files:read',
+    'team:read',
   ],
+  userScopes: ['identify', 'files:read', 'files:write'],
 };

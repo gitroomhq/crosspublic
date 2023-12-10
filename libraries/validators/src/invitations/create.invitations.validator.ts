@@ -7,7 +7,11 @@ export abstract class Provider {
 export class Slack extends Provider {
   @IsString()
   @IsDefined()
-  slacky: string;
+  internalId: string;
+
+  @IsString()
+  @IsDefined()
+  guild: string;
 }
 
 export class Discord extends Provider{

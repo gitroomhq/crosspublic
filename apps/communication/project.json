@@ -1,7 +1,7 @@
 {
-  "name": "slack",
+  "name": "communication",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/slack/src",
+  "sourceRoot": "apps/communication/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -11,12 +11,12 @@
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/slack",
-        "main": "apps/slack/src/main.ts",
-        "tsConfig": "apps/slack/tsconfig.app.json",
-        "assets": ["apps/slack/src/assets"],
+        "outputPath": "dist/apps/communication",
+        "main": "apps/communication/src/main.ts",
+        "tsConfig": "apps/communication/tsconfig.app.json",
+        "assets": ["apps/communication/src/assets"],
         "isolatedConfig": true,
-        "webpackConfig": "apps/slack/webpack.config.js"
+        "webpackConfig": "apps/communication/webpack.config.js"
       },
       "configurations": {
         "development": {},
@@ -27,14 +27,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "slack:build"
+        "buildTarget": "communication:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "slack:build:development"
+          "buildTarget": "communication:build:development"
         },
         "production": {
-          "buildTarget": "slack:build:production"
+          "buildTarget": "communication:build:production"
         }
       }
     },
@@ -42,14 +42,14 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/slack/**/*.ts"]
+        "lintFilePatterns": ["apps/communication/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/slack/jest.config.ts"
+        "jestConfig": "apps/communication/jest.config.ts"
       }
     }
   },
