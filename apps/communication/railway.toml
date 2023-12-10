@@ -2,3 +2,6 @@
 builder = "nixpacks"
 buildCommand = "npm run generate-prisma && npx nx run backend:communication:production"
 
+[deploy]
+startCommand = "node dist/apps/communication/main.js"
+restartPolicyType = "ON_FAILURE"
