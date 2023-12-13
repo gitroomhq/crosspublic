@@ -12,11 +12,11 @@ export default function App({ Component, pageProps }: AppProps) {
         openGraph={{
           type: 'website',
           locale: 'en_IE',
-          url: 'https://www.url.ie/',
+          url: 'https://crosspublic.com/',
           siteName: 'crosspublic',
           images: [
             {
-              url: '/og.png',
+              url: 'https://crosspublic.com/og.png',
               width: 1200,
               height: 630,
               alt: 'crosspublic',
