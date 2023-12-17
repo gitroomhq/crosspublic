@@ -360,3 +360,13 @@ summary svg {
 .clip-path {
   clip-path: inset(1px 1px);
 }
+
+.content h1, .content h2, .content h3 {
+  font-size: 20px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.content p {
+  margin: 10px 0;
+}

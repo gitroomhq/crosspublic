@@ -11,6 +11,14 @@ export default function Footer() {
         {
             to: "https://gitroom.com/blog",
             label: "Blog",
+        },
+        {
+          to: "/terms-of-service",
+          label: "Terms of Service",
+        },
+        {
+          to: "/privacy-policy",
+          label: "Privacy Policy",
         }
     ];
 
