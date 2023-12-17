@@ -11,10 +11,10 @@ export const slackProvider = createProvider({
   setup: () => {
     return new App({
       ...slackProps,
-      port: +(process.env.PORT || 4203),
+      ...!process.env.NODE_ENV || process.env.NODE_ENV ? {port: +(process.env.PORT || 4203)} : {},
       signingSecret: process.env.SLACK_SIGNING_SECRET,
       appToken: process.env.SLACK_SOCKET_TOKEN,
-      socketMode: true,
+      socketMode: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
       installerOptions: {
         authVersion: 'v2',
         directInstall: true,
@@ -66,7 +66,7 @@ export const slackProvider = createProvider({
     });
   },
   start: (app) => {
-    return app.start();
+    return app.start(process.env.PORT);
   },
   ping: (app, arg) => {
     return arg.ack();
