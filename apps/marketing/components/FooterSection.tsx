@@ -19,6 +19,10 @@ export default function Footer() {
         {
           to: "/privacy-policy",
           label: "Privacy Policy",
+        },
+        {
+          to: "https://postiz.com",
+          label: "Postiz",
         }
     ];
 
